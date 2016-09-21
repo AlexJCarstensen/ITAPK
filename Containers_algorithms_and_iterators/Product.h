@@ -78,7 +78,7 @@ istream& operator>> ( istream& i, Product& p )
 void productDBRead(ProductList& pl, const string& fileName)
 {
     pl.clear();
-    std::ifstream pFile( fileName.c_str() );
+    ifstream pFile( fileName.c_str() );
     while( !pFile.eof() )
     {
         Product p;
