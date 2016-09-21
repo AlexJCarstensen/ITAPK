@@ -14,6 +14,8 @@
 #include <functional>
 #include <vector>
 #include <string>
+#include <boost/variant.hpp>
+#include <sstream>
 
 using namespace std;
 
@@ -120,13 +122,42 @@ void printAll(const ProductList &pl)
     cout << "##################################################" << endl;
 }
 
+bool isFloat(const string& s){
+    istringstream iss (s);
+    float f;
+    iss >> noskipws >> f;
+    return  iss.eof() && !iss.fail();
 
+}
+bool isInt(const string& s){
+    string::const_iterator it = s.begin();
+    while(it != s.end() && isdigit(*it)) ++it;
+    return !s.empty() && it == s.end();
+}
 /**
    Add item
 */
 void addItem(ProductList &pl)
 {
+    //boost::variant<string, float, int> myVal;
+    cout << "File Name: " << flush;
+    istream_iterator<string> inputIter(cin);
+    string name = *inputIter;
+    cout << "Price: " << flush;
+    inputIter++;
+    while(!isFloat(*inputIter)) {cout << "please input a number: " << flush; inputIter++;}
+    float price = stof(*inputIter);
+    cout << "Sold: " << flush;
+    inputIter++;
+    while(!isInt(*inputIter)) {cout << "please input a number: " << flush; inputIter++;}
+    unsigned int sold = stoi(*inputIter);
+
+    Product p(name, price, sold);
+    pl.push_back(p);
+
+
 }
+
 
 
 /**
