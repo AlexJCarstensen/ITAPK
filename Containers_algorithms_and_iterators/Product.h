@@ -110,9 +110,12 @@ void printAll(const ProductList &pl)
     cout << "##################################################" << endl;
     cout << "Printing out all products..." << endl;
     cout << "----------------------------" << endl;
+    ostream_iterator<Product> outputProduct(cout);
+
     for (ProductList::const_iterator iter = pl.begin(); iter != pl.end(); ++iter)
     {
-        cout << *iter << endl;
+        *outputProduct = *iter;
+        cout  << endl;
     }
     cout << "##################################################" << endl;
 }
