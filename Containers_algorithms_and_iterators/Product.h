@@ -59,15 +59,15 @@ private:
 };
 
 
-typedef vector<Product>  ProductList;
+typedef vector<Product> ProductList;
 
 
-ostream& operator<< ( ostream& o, const Product& p )
+ostream &operator<<(ostream &o, const Product &p)
 {
     return o << p.name_ << " " << p.price_ << " " << p.sold_;
 }
 
-istream& operator>> ( istream& i, Product& p )
+istream &operator>>(istream &i, Product &p)
 {
     return i >> p.name_ >> p.price_ >> p.sold_;
 }
@@ -75,28 +75,42 @@ istream& operator>> ( istream& i, Product& p )
 /**
  * Read products from file
  */
-void productDBRead(ProductList& pl, const string& fileName)
+void productDBRead(ProductList &pl, const string &fileName)
 {
     pl.clear();
-    ifstream pFile( fileName.c_str() );
-    while( !pFile.eof() )
+    ifstream pFile(fileName.c_str());
+
+    istream_iterator<Product> in_iter(pFile);
+    istream_iterator<Product> eof;
+
+    while (in_iter != eof)
     {
         Product p;
-        pFile >> p;
-        if( pFile ) pl.push_back( p );
+        p = *in_iter;
+        //back_inserter(pl);
+        pl.push_back(p);
+        in_iter++;
+
     }
+
+//    while( !pFile.eof() )
+//    {
+//        Product p;
+//        pFile >> p;
+//        if( pFile ) pl.push_back( p );
+//    }
 }
 
 
 /**
  * Printout all products
  */
-void printAll(const ProductList& pl)
+void printAll(const ProductList &pl)
 {
     cout << "##################################################" << endl;
     cout << "Printing out all products..." << endl;
     cout << "----------------------------" << endl;
-    for(ProductList::const_iterator iter = pl.begin(); iter != pl.end(); ++iter)
+    for (ProductList::const_iterator iter = pl.begin(); iter != pl.end(); ++iter)
     {
         cout << *iter << endl;
     }
@@ -104,11 +118,10 @@ void printAll(const ProductList& pl)
 }
 
 
-
 /**
    Add item
 */
-void addItem(ProductList& pl)
+void addItem(ProductList &pl)
 {
 }
 
@@ -116,7 +129,7 @@ void addItem(ProductList& pl)
 /**
    Write data to db file
 */
-void productDBWrite(const ProductList& pl, const string& fileName)
+void productDBWrite(const ProductList &pl, const string &fileName)
 {
 }
 
@@ -124,7 +137,7 @@ void productDBWrite(const ProductList& pl, const string& fileName)
 /**
  * Print poorly selling products
  */
-void printPoorlySellingProducts(const ProductList& pl)
+void printPoorlySellingProducts(const ProductList &pl)
 {
 }
 
@@ -132,7 +145,7 @@ void printPoorlySellingProducts(const ProductList& pl)
 /**
  * Set a discount on all products - Using for_each()
  */
-void addDiscountUsingForEach(ProductList& pl)
+void addDiscountUsingForEach(ProductList &pl)
 {
 }
 
@@ -140,7 +153,7 @@ void addDiscountUsingForEach(ProductList& pl)
 /**
  * Set a discount on all products - Using transform()
  */
-void addDiscountUsingTransform(ProductList& pl)
+void addDiscountUsingTransform(ProductList &pl)
 {
 }
 
@@ -148,7 +161,7 @@ void addDiscountUsingTransform(ProductList& pl)
 /**
  * Calculate the total amount of sold products
  */
-void calcTotalSoldProducts(ProductList& pl)
+void calcTotalSoldProducts(ProductList &pl)
 {
 }
 
