@@ -72,7 +72,7 @@ int main()
 {
     Machine machine;
     machine.initiate();
-    
+
     machine.process_event(EvOn());
     machine.process_event(EvAmTune());
     machine.process_event(EvOff());
