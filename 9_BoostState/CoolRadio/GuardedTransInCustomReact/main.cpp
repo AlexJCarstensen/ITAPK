@@ -45,6 +45,7 @@ struct CDPlaying;
 
 struct Machine : sc::state_machine<Machine, Off>
 {
+    bool cdIn_;
 };
 
 struct Off : sc::simple_state<Off, Machine>
@@ -61,14 +62,25 @@ struct On : sc::simple_state<On, Machine, RadioPlaying>
 struct RadioPlaying : sc::simple_state<RadioPlaying, On, FmTuner>
 {
     PRINT_ENTRY_EXIT(1, RadioPlaying);
-    typedef boost::mpl::list<sc::transition<EvCDInserted, CDLoading>,
+   /* typedef boost::mpl::list<sc::transition<EvCDInserted, CDLoading>,
             sc::transition<EvCD, CDPlaying>
-    >reactions;
+    >reactions;*/
+
+    typedef sc::custom_reaction<EvCD> reactions;
+    sc::result react(const EvCD&);
 };
 
+sc::result RadioPlaying::react(const EvCD&)
+{
+
+    if(!context<Machine>().cdIn_)
+        return discard_event();
+    else
+        return transit<CDPlaying>();
+}
 struct FmTuner : sc::simple_state<FmTuner, RadioPlaying>
 {
-    PRINT_ENTRY_EXIT(1, FmTuner);
+    PRINT_ENTRY_EXIT(2, FmTuner);
 
     typedef sc::transition<EvAmTuner, AmTuner> reactions;
 
@@ -76,7 +88,7 @@ struct FmTuner : sc::simple_state<FmTuner, RadioPlaying>
 
 struct AmTuner : sc::simple_state<AmTuner, RadioPlaying>
 {
-    PRINT_ENTRY_EXIT(1, AmTuner);
+    PRINT_ENTRY_EXIT(2, AmTuner);
 
     typedef sc::transition<EvFmTuner, FmTuner> reactions;
 
@@ -120,6 +132,8 @@ int main()
     myMachine.process_event(EvCDInserted());
     myMachine.process_event(EvCDState(true));
     myMachine.process_event(EvTuner());
+
+    myMachine.cdIn_ = true;
     myMachine.process_event(EvCD());
 
     myMachine.process_event(EvOff());
