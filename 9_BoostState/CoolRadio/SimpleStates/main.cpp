@@ -12,6 +12,9 @@ void print(unsigned int lvl, const std::string &name)
         std::cout << "*";
     std::cout << " " << name << std::endl;
 }
+#define PRINT_ENTRY_EXIT(lvl, name)             \
+  name() { print(lvl, #name"()"); }             \
+  ~name() { print(lvl, "~"#name"()"); }
 
 namespace sc = boost::statechart;
 
@@ -27,11 +30,7 @@ struct Machine : sc::state_machine<Machine, FmTuner>
 
 struct FmTuner : sc::simple_state<FmTuner, Machine>
 {
-    FmTuner()
-    { cout << __PRETTY_FUNCTION__ << endl; }
-
-    ~FmTuner()
-    { cout << __PRETTY_FUNCTION__ << endl; }
+    PRINT_ENTRY_EXIT(1, FmTuner);
 
     typedef sc::transition<EvAmTune, AmTuner> reactions;
 
@@ -39,11 +38,8 @@ struct FmTuner : sc::simple_state<FmTuner, Machine>
 
 struct AmTuner : sc::simple_state<AmTuner, Machine>
 {
-    AmTuner()
-    { cout << __PRETTY_FUNCTION__ << endl; }
+    PRINT_ENTRY_EXIT(1, AmTuner);
 
-    ~AmTuner()
-    { cout << __PRETTY_FUNCTION__ << endl; }
 
     typedef sc::transition<EvFmTune, FmTuner> reactions;
 
@@ -53,7 +49,6 @@ int main()
 {
     Machine machine;
     machine.initiate();
-
 
     machine.process_event(EvAmTune());
     machine.process_event(EvFmTune());
