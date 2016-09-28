@@ -93,7 +93,7 @@ struct CDLoading : sc::simple_state<CDLoading, On>
 
     /* Missing code */
 
-    sc::result react(const EvCDState & ev){
+    sc::result react(const EvCDState &ev){
         if(ev.isCD_)
             return transit<CDPlaying>();
         else

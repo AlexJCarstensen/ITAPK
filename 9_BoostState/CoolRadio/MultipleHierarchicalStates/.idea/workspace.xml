@@ -11,12 +11,8 @@
     </ADDITIONAL_GENERATION_ENVIRONMENT>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a9c9ed25-0179-4ff2-a58a-6597c0d9e5d9" name="Default" comment="removed transition from Radioplying">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../SimpleStates/.idea/vcs.xml" />
+    <list default="true" id="a9c9ed25-0179-4ff2-a58a-6597c0d9e5d9" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.cpp" afterPath="$PROJECT_DIR$/main.cpp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../SimpleStates/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../SimpleStates/.idea/workspace.xml" />
     </list>
     <ignored path="MultipleHierarchicalStates.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -103,7 +99,7 @@
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1">
+    <navigator proportions="" version="1">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -116,11 +112,7 @@
       <manualOrder />
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes>
-      <pane id="ProjectPane">
-        <subPane />
-      </pane>
-    </panes>
+    <panes />
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -311,12 +303,20 @@
       <option name="presentableId" value="Default" />
       <updated>1474876310119</updated>
       <workItem from="1474876311469" duration="3607000" />
-      <workItem from="1475048031429" duration="603000" />
+      <workItem from="1475048031429" duration="621000" />
     </task>
+    <task id="LOCAL-00001" summary="removed transition from Radioplying">
+      <created>1475048642048</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1475048642048</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4210000" />
+    <option name="totallyTimeSpent" value="4228000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="65" y="24" width="1855" height="952" extended-state="6" />

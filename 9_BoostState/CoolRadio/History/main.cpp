@@ -1,9 +1,9 @@
-#include <iostream>
-#include <string>
 #include <boost/statechart/state_machine.hpp>
 #include <boost/statechart/simple_state.hpp>
 #include <boost/statechart/transition.hpp>
 #include <boost/statechart/custom_reaction.hpp>
+#include <boost/statechart/shallow_history.hpp>
+#include <iostream>
 
 
 using namespace std;
@@ -53,13 +53,13 @@ struct Off : sc::simple_state<Off, Machine>
     typedef sc::transition<EvOn, On> reactions;
     PRINT_ENTRY_EXIT(0, Off);
 };
-struct On : sc::simple_state<On, Machine, RadioPlaying>
+struct On : sc::simple_state<On, Machine, boost::mpl::list<sc::shallow_history<RadioPlaying> >, sc::has_shallow_history >
 {
     typedef sc::transition<EvOff, Off> reactions;
     PRINT_ENTRY_EXIT(0, On);
 };
 
-struct RadioPlaying : sc::simple_state<RadioPlaying, On, FmTuner>
+struct RadioPlaying : sc::simple_state<RadioPlaying, On, boost::mpl::list<sc::shallow_history<FmTuner> >, sc::has_shallow_history>
 {
     PRINT_ENTRY_EXIT(1, RadioPlaying);
     /* typedef boost::mpl::list<sc::transition<EvCDInserted, CDLoading>,
@@ -134,7 +134,6 @@ int main()
     myMachine.process_event(EvCDInserted());
     myMachine.process_event(EvCDState(true));
     myMachine.process_event(EvTuner());
-
     myMachine.cdIn_ = true;
     myMachine.process_event(EvCD());
 
