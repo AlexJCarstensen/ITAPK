@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.6)
 project(SimpleStates)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
-set(SOURCE_FILES main.cpp Machine.h AmTuner.h FmTuner.h)
+set(SOURCE_FILES main.cpp)
 if(Boost_FOUND)
     message(STATUS "Boost_INCLUDE_DIRS: ${Boost_INCLUDE_DIRS}")
     message(STATUS "Boost_LIBRARIES: ${Boost_LIBRARIES}")
