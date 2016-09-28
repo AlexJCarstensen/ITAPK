@@ -1,5 +1,4 @@
 #include <iostream>
-#include <string>
 #include <boost/statechart/state_machine.hpp>
 #include <boost/statechart/simple_state.hpp>
 #include <boost/statechart/transition.hpp>
@@ -47,12 +46,12 @@ struct On : sc::simple_state<On, Machine, RadioPlaying>
 struct RadioPlaying : sc::simple_state<RadioPlaying, On, FmTuner>
 {
     PRINT_ENTRY_EXIT(1, RadioPlaying);
-    typedef sc::transition<EvFmTune, RadioPlaying> reactions;
+    //typedef sc::transition<EvFmTune, FmTuner> reactions;
 };
 
 struct FmTuner : sc::simple_state<FmTuner, RadioPlaying>
 {
-    PRINT_ENTRY_EXIT(1, FmTuner);
+    PRINT_ENTRY_EXIT(2, FmTuner);
 
     typedef sc::transition<EvAmTune, AmTuner> reactions;
 
@@ -60,7 +59,7 @@ struct FmTuner : sc::simple_state<FmTuner, RadioPlaying>
 
 struct AmTuner : sc::simple_state<AmTuner, RadioPlaying>
 {
-    PRINT_ENTRY_EXIT(1, AmTuner);
+    PRINT_ENTRY_EXIT(2, AmTuner);
 
 
     typedef sc::transition<EvFmTune, FmTuner> reactions;
