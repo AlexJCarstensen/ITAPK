@@ -1,5 +1,6 @@
 
 #include "pokemonState.h"
+#include "Pokemon.h"
 
 
 using namespace pokemonGame;
@@ -22,6 +23,7 @@ int main()
     game.process_event(EvFaint());
     game.process_event(EvGameOff());
 
+    Pokemon<23> pikachu("pikachu", pokemonGame::Element::Lightning);
 
     return 0;
 }

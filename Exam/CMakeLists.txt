@@ -3,7 +3,7 @@ project(Exam)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
-set(SOURCE_FILES main.cpp pokemonState.h)
+set(SOURCE_FILES main.cpp pokemonState.h Pokemon.h)
 
 if (Boost_FOUND)
     message(STATUS "Boost_INCLUDE_DIRS: ${Boost_INCLUDE_DIRS}")
