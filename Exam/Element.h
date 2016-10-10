@@ -9,11 +9,11 @@ namespace pokemonGame {
 
     enum Elements
     {
-        eFire,
-        eLightning,
-        eGrass,
-        eWater,
-        eGround
+        FIRE,
+        LIGHTNING,
+        GRASS,
+        WATER,
+        GROUND
 
     };
 
@@ -33,11 +33,11 @@ namespace pokemonGame {
     public:
         Fire() {};
         ~Fire(){};
-        Elements getElement(){ return  elements_;};
+        Elements getElement(){return  elements_;};
     private:
-        Elements elements_{Elements::eFire};
-        Elements weakness_{Elements::eWater};
-        Elements super_{Elements::eGrass};
+        Elements elements_{Elements::FIRE};
+        Elements weakness_{Elements::WATER};
+        Elements super_{Elements::GRASS};
 
     };
 
@@ -48,9 +48,9 @@ namespace pokemonGame {
           ~Water(){};
         Elements getElement(){ return  elements_;};
     private:
-        Elements elements_{Elements::eWater};
-        Elements weakness_{Elements::eLightning};
-        Elements super_{Elements::eGround};
+        Elements elements_{Elements::WATER};
+        Elements weakness_{Elements::LIGHTNING};
+        Elements super_{Elements::GROUND};
 
     };
 
@@ -61,9 +61,9 @@ namespace pokemonGame {
           ~Lightning(){};
         Elements getElement(){ return  elements_;};
     private:
-        Elements elements_{Elements::eLightning};
-        Elements weakness_{Elements::eGround};
-        Elements super_{Elements::eWater};
+        Elements elements_{Elements::LIGHTNING};
+        Elements weakness_{Elements::GROUND};
+        Elements super_{Elements::WATER};
 
     };
 
@@ -74,9 +74,9 @@ namespace pokemonGame {
           ~Ground(){};
         Elements getElement(){ return  elements_;};
     private:
-        Elements elements_{Elements::eGround};
-        Elements weakness_{Elements::eWater};
-        Elements super_{Elements::eLightning};
+        Elements elements_{Elements::GROUND};
+        Elements weakness_{Elements::WATER};
+        Elements super_{Elements::LIGHTNING};
 
     };
 
@@ -87,9 +87,9 @@ namespace pokemonGame {
           ~Grass(){};
         Elements getElement(){ return  elements_;};
     private:
-        Elements elements_{Elements::eGrass};
-        Elements weakness_{Elements::eFire};
-        Elements super_{Elements::eWater};
+        Elements elements_{Elements::GRASS};
+        Elements weakness_{Elements::FIRE};
+        Elements super_{Elements::WATER};
 
     };
 

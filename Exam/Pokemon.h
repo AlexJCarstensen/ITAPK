@@ -33,7 +33,7 @@ namespace pokemonGame
         Element& element_;
         size_t lvl_;
         size_t health_{30};
-        std::vector<IMove > moves_;
+        std::vector<IMove> moves_;
     };
 
 }
