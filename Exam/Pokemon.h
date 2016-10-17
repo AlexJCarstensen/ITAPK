@@ -25,6 +25,7 @@ namespace pokemonGame
         }
         int getHealth(){return health_;}
         int setHealth(size_t newHealth){health_ = newHealth;}
+        Element* getElement(){return element_;}
 
         bool operator==(Pokemon& other)const {
             if (this->element_ == other.element_)

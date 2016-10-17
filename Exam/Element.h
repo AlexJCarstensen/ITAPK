@@ -31,6 +31,15 @@ namespace pokemonGame {
                return true;
            return false;
        }
+       bool isSuperEffective(Element* e)
+       {
+           return (e->getElement() == this->getSuper());
+       }
+       bool isNotEffective(Element* e)
+       {
+           return (e->getElement() == this->getWeakness());
+       }
+
    private:
        Elements elements_;
    };
@@ -43,6 +52,7 @@ namespace pokemonGame {
         Elements getElement(){return  elements_;}
         Elements getWeakness(){return weakness_;}
         Elements getSuper() {return super_;}
+
     private:
         Elements elements_{Elements::FIRE};
         Elements weakness_{Elements::WATER};
