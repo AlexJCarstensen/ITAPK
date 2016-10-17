@@ -6,15 +6,18 @@
 #define EXAM_ITEMS_H
 
 #include <glob.h>
-
-class Item
+namespace pokemonGame
 {
-public:
-    Item();
-    virtual ~Item();
-private:
-    unsigned char itemsCount_{};
-};
+    class Item
+    {
+    public:
+        Item();
 
+        virtual ~Item();
+
+    private:
+        unsigned char itemsCount_{};
+    };
+}
 
 #endif //EXAM_ITEMS_H

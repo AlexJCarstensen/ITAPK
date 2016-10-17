@@ -3,13 +3,40 @@
 //
 
 #include "Player.h"
-
-pokemonGame::Player::Player()
+namespace pokemonGame
 {
+    pokemonGame::Player::Player()
+    {
 
-}
+    }
 
-pokemonGame::Player::~Player()
-{
+    pokemonGame::Player::~Player()
+    {
 
+    }
+
+    void Player::walkIntoTheWilderness()
+    {
+
+    }
+
+    void Player::goToTheShop()
+    {
+
+    }
+
+    void Player::lookInPokedex()
+    {
+
+    }
+
+    void Player::checkYourPokemons()
+    {
+
+    }
+
+    void Player::checkYourItems()
+    {
+
+    }
 }

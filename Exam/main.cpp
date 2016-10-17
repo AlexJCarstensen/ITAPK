@@ -11,10 +11,13 @@ using namespace pokemonGame;
 
 int main()
 {
+    Game game;
+    game.startGame();
+    Player player;
+    game.enterWorld(player);
 
 
-    //Game game;
-    //game.startGame();
+
 //    auto t = game.seePokemons();
 //    auto s = game.seeElements();
 ////    for (auto &&item : t)

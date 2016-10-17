@@ -3,13 +3,17 @@
 //
 
 #include "Item.h"
-
-Item::Item()
+namespace pokemonGame
 {
 
-}
 
-Item::~Item()
-{
+    Item::Item()
+    {
 
+    }
+
+    Item::~Item()
+    {
+
+    }
 }

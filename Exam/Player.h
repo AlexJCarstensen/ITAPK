@@ -14,7 +14,11 @@ class Player
 public:
     Player();
     virtual ~Player();
-
+    void walkIntoTheWilderness();
+    void goToTheShop();
+    void lookInPokedex();
+    void checkYourPokemons();
+    void checkYourItems();
 private:
     std::vector<Item> items_;
 

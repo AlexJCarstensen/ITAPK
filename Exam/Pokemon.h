@@ -18,7 +18,7 @@ namespace pokemonGame
     class Pokemon : public IPokemon
     {
     public:
-        Pokemon(std::string name, std::shared_ptr<Element> element, size_t lvl) : name_(name), element_(element), lvl_(lvl)
+        Pokemon(std::string name, std::shared_ptr<Element> element, int lvl) : name_(name), element_(element), lvl_(lvl)
         {
             if(lvl_ > 1)
                 health_ = health_ + lvl_ * 1.5;
