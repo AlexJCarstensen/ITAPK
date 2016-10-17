@@ -12,21 +12,22 @@
 
 namespace pokemonGame {
 
-    template<Element* E>
+
     class AttackMove : public IMove{
     public:
-        AttackMove(std::string name, size_t power) :  IMove(E), power_(power), name_(name) {}
-        virtual ~AttackMove(){};
+        AttackMove(Element& e,std::string name, size_t power) :  IMove(e), power_(power), name_(name) {}
+        ~AttackMove(){};
 
-        void doMove(Pokemon& pokemon) {
+        void doMove(IPokemon& pokemon) {
             //TODO: Attack should do damage acording to type and power
             pokemon.setHealth((pokemon.getHealth() - power_));
 
-            if(this->element_->isSuperEffective(pokemon.getElement()))
+            if(this->element_.isSuperEffective(pokemon.getElement()))
             {
                 //TODO: Reduce opposing pokemon health much
+                std::cout << "Move is super effective" << std::endl;
             }
-            else if(this->element_->isNotEffective(pokemon.getElement()))
+            else if(this->element_.isNotEffective(pokemon.getElement()))
             {
                 //TODO: Reduce opposing pokemon health not much
             }

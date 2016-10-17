@@ -6,18 +6,20 @@
 #define EXAM_IMOVE_H
 
 #include "Element.h"
+#include "IPokemon.h"
+
 namespace pokemonGame {
     class IMove {
     public:
         IMove() = default;
-        IMove(Element* element) : element_(element){}
+        IMove(Element& element) : element_(element){}
 
-        virtual ~IMove();
+        virtual ~IMove(){};
 
-        virtual void doMove() = 0;
+        virtual void doMove(IPokemon& pokemon) = 0;
 
     protected:
-        Element* element_;
+        Element& element_;
     };
 }
 #endif //EXAM_IMOVE_H
