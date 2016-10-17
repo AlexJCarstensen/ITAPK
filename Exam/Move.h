@@ -20,20 +20,23 @@ namespace pokemonGame {
 
         void doMove(IPokemon& pokemon) {
             //TODO: Attack should do damage acording to type and power
-            pokemon.setHealth((pokemon.getHealth() - power_));
+
 
             if(this->element_.isSuperEffective(pokemon.getElement()))
             {
                 //TODO: Reduce opposing pokemon health much
                 std::cout << "Move is super effective" << std::endl;
+                pokemon.setHealth((pokemon.getHealth() - power_));
             }
             else if(this->element_.isNotEffective(pokemon.getElement()))
             {
                 //TODO: Reduce opposing pokemon health not much
+                std::cout << "Move is not effective" << std::endl;
             }
             else
             {
                 //TODO: Reduce opposing pokemon health normally
+                std::cout << "Move is normally effective" << std::endl;
             }
 
         }
@@ -42,6 +45,33 @@ namespace pokemonGame {
        // Element& element_;
         size_t power_;
         std::string name_;
+
+    };
+
+    class FireMoveSet
+    {
+    public:
+        IMove& getNewMove(int index)
+        {
+            return fireMoves[index];
+        }
+
+    private:
+        std::vector<IMove> fireMoves;
+    };
+
+
+
+    template<>
+    struct MoveChooser<Fire>{
+
+        std::vector<IMove> getMoves()
+        {
+            std::vector moves;
+
+            int move1 = rand() % 10;
+
+        }
 
     };
 };

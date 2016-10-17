@@ -35,6 +35,8 @@ int main()
     Pokemon pikachu1("pikachu1", fire, 2);
 
 
+
+
    if(pikachu.getElement() == pikachu1.getElement())
         std::cout << "hej" << std::endl;
 
