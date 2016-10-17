@@ -23,7 +23,7 @@ namespace pokemonGame {
         void initializeStateMachine();
 
     private:
-        //std::map<std::shared_ptr<Element>, Elements > elements_{};
+        std::map<Elements, std::shared_ptr<Element> > elements_{};
     };
 }
 
