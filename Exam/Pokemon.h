@@ -17,11 +17,10 @@ namespace pokemonGame
     class Pokemon
     {
     public:
-        Pokemon(std::string name, Element& element, size_t lvl) : name_(name), element_(element), lvl_(lvl)
+        Pokemon(std::string name, Element* element, size_t lvl) : name_(name), element_(element), lvl_(lvl)
         {
             if(lvl_ > 1)
                 health_ = health_ + lvl_ * 1.5;
-
 
         }
         int getHealth(){return health_;}
@@ -34,7 +33,7 @@ namespace pokemonGame
         }
     private:
         std::string name_;
-        Element& element_;
+        Element* element_;
         size_t lvl_;
         size_t health_{30};
         std::vector<IMove> moves_;

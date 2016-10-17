@@ -76,18 +76,18 @@ namespace pokemonGame
      * States *
      **********/
 
-    struct Game : sc::state_machine<Game, NotPlaying>
+    struct GameState : sc::state_machine<GameState, NotPlaying>
     {
 
     };
 
-    struct NotPlaying : sc::simple_state<NotPlaying, Game>
+    struct NotPlaying : sc::simple_state<NotPlaying, GameState>
     {
         typedef sc::transition<EvGameOn, Playing> reactions;
         PRINT_ENTRY_EXIT(0, NotPlaying)
     };
 
-    struct Playing : sc::simple_state<Playing, Game, Roaming>
+    struct Playing : sc::simple_state<Playing, GameState, Roaming>
     {
         typedef sc::transition<EvGameOff, NotPlaying> reactions;
         PRINT_ENTRY_EXIT(0, Playing)
