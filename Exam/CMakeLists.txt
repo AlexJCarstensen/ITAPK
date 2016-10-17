@@ -1,9 +1,10 @@
 cmake_minimum_required(VERSION 3.6)
 project(Exam)
 
+
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
-set(SOURCE_FILES main.cpp pokemonState.h Pokemon.h Move.h Game.cpp Game.h)
+set(SOURCE_FILES main.cpp pokemonState.h Pokemon.h Move.h)
 
 if (Boost_FOUND)
     message(STATUS "Boost_INCLUDE_DIRS: ${Boost_INCLUDE_DIRS}")
