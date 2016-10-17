@@ -23,9 +23,16 @@ namespace pokemonGame {
         Element(){};
         virtual ~Element(){};
         virtual Elements getElement() = 0;
+        virtual Elements getWeakness() = 0;
+        virtual Elements getSuper() = 0;
+
+       bool operator==(Element& other)const {
+           if (this->elements_ == other.elements_)
+               return true;
+           return false;
+       }
    private:
        Elements elements_;
-
    };
 
     class Fire : public Element
@@ -33,7 +40,9 @@ namespace pokemonGame {
     public:
         Fire() {};
         ~Fire(){};
-        Elements getElement(){return  elements_;};
+        Elements getElement(){return  elements_;}
+        Elements getWeakness(){return weakness_;}
+        Elements getSuper() {return super_;}
     private:
         Elements elements_{Elements::FIRE};
         Elements weakness_{Elements::WATER};
@@ -46,7 +55,9 @@ namespace pokemonGame {
     public:
         Water() {};
           ~Water(){};
-        Elements getElement(){ return  elements_;};
+        Elements getElement(){ return  elements_;}
+        Elements getWeakness(){return weakness_;}
+        Elements getSuper() {return super_;}
     private:
         Elements elements_{Elements::WATER};
         Elements weakness_{Elements::LIGHTNING};
@@ -59,7 +70,10 @@ namespace pokemonGame {
     public:
         Lightning() {};
           ~Lightning(){};
-        Elements getElement(){ return  elements_;};
+        Elements getElement(){ return  elements_;}
+        Elements getWeakness(){return weakness_;}
+        Elements getSuper() {return super_;}
+
     private:
         Elements elements_{Elements::LIGHTNING};
         Elements weakness_{Elements::GROUND};
@@ -72,7 +86,9 @@ namespace pokemonGame {
     public:
         Ground() {};
           ~Ground(){};
-        Elements getElement(){ return  elements_;};
+        Elements getElement(){ return  elements_;}
+        Elements getWeakness(){return weakness_;}
+        Elements getSuper() {return super_;}
     private:
         Elements elements_{Elements::GROUND};
         Elements weakness_{Elements::WATER};
@@ -85,7 +101,9 @@ namespace pokemonGame {
     public:
         Grass() {};
           ~Grass(){};
-        Elements getElement(){ return  elements_;};
+        Elements getElement(){ return  elements_;}
+        Elements getWeakness(){return weakness_;}
+        Elements getSuper() {return super_;}
     private:
         Elements elements_{Elements::GRASS};
         Elements weakness_{Elements::FIRE};

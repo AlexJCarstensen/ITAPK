@@ -27,7 +27,11 @@ namespace pokemonGame
         int getHealth(){return health_;}
         int setHealth(size_t newHealth){health_ = newHealth;}
 
-
+        bool operator==(Pokemon& other)const {
+            if (this->element_ == other.element_)
+                return true;
+            return false;
+        }
     private:
         std::string name_;
         Element& element_;

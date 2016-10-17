@@ -25,8 +25,13 @@ int main()
 //    game.process_event(EvFaint());
 //    game.process_event(EvGameOff());
 
-    Lightning lightning;
-    Pokemon pikachu("pikachu", lightning, 2);
+    //Lightning lightning;
+    Fire fire;
+    Pokemon pikachu("pikachu", fire, 2);
+   // Pokemon pikachu1("pikachu1", fire, 2);
+
+   //if(pikachu == pikachu1)
+        std::cout << "hej" << std::endl;
 
     return 0;
 }
