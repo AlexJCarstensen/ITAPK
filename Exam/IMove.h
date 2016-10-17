@@ -16,7 +16,7 @@ namespace pokemonGame {
 
         virtual void doMove() = 0;
 
-    private:
+    protected:
         Element* element_;
     };
 }

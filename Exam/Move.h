@@ -22,11 +22,11 @@ namespace pokemonGame {
             //TODO: Attack should do damage acording to type and power
             pokemon.setHealth((pokemon.getHealth() - power_));
 
-            if(element_.isSuperEffective(pokemon.getElement()))
+            if(this->element_->isSuperEffective(pokemon.getElement()))
             {
                 //TODO: Reduce opposing pokemon health much
             }
-            else if(element_.isNotEffective(pokemon.getElement()))
+            else if(this->element_->isNotEffective(pokemon.getElement()))
             {
                 //TODO: Reduce opposing pokemon health not much
             }
@@ -38,7 +38,7 @@ namespace pokemonGame {
         }
 
     private:
-        Element& element_;
+       // Element& element_;
         size_t power_;
         std::string name_;
 
