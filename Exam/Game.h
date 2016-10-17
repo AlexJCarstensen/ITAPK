@@ -8,6 +8,7 @@
 #include <memory>
 #include <map>
 #include "Element.h"
+#include "Pokemon.h"
 
 namespace pokemonGame {
 
@@ -15,15 +16,19 @@ namespace pokemonGame {
     public:
 
         void startGame();
-
+        std::vector<IPokemon*> seePokemons(); //debug
+        std::map<Elements, std::shared_ptr<Element>> seeElements();//debug
     private:
         void populateWorldWithPokemons();
         void initializeElements();
         void initializeMoves();
         void initializeStateMachine();
+        int randomLvl();
+
 
     private:
         std::map<Elements, std::shared_ptr<Element> > elements_{};
+        std::vector<IPokemon*> pokemons_{};
     };
 }
 

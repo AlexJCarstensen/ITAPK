@@ -48,32 +48,32 @@ namespace pokemonGame {
 
     };
 
-    class FireMoveSet
-    {
-    public:
-        IMove& getNewMove(int index)
-        {
-            return fireMoves[index];
-        }
+//    class FireMoveSet
+//    {
+//    public:
+//        IMove& getNewMove(int index)
+//        {
+//            return fireMoves[index];
+//        }
+//
+//    private:
+//        std::vector<IMove> fireMoves;
+//    };
 
-    private:
-        std::vector<IMove> fireMoves;
-    };
 
 
-
-    template<>
-    struct MoveChooser<Fire>{
-
-        std::vector<IMove> getMoves()
-        {
-            std::vector moves;
-
-            int move1 = rand() % 10;
-
-        }
-
-    };
+//    template<>
+//    struct MoveChooser<Fire>{
+//
+//        std::vector<IMove> getMoves()
+//        {
+//            std::vector moves;
+//
+//            int move1 = rand() % 10;
+//
+//        }
+//
+//    };
 };
 
 

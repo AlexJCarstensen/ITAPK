@@ -12,6 +12,8 @@ namespace pokemonGame {
     class IPokemon {
 
     public:
+        IPokemon() = default;
+        virtual ~IPokemon(){};
         virtual int getHealth() = 0;
         virtual int setHealth(size_t newHealth) = 0;
         virtual Element* getElement() = 0;
