@@ -7,7 +7,7 @@
 namespace pokemonGame {
 
 
-    enum Elements
+   enum Elements
     {
         FIRE,
         LIGHTNING,

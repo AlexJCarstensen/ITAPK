@@ -4,14 +4,14 @@
 
 #ifndef EXAM_GAME_H
 #define EXAM_GAME_H
-
-#include "pokemonState.h"
+#include <iostream>
+#include <memory>
+#include <map>
 #include "Element.h"
 
 namespace pokemonGame {
 
-    typedef std::map<const std::string, std::shared_ptr<Element> > myElementMap;
-    class Game : sc::state_machine<Game, NotPlaying> {
+    class Game  {
     public:
 
         void startGame();
@@ -23,7 +23,6 @@ namespace pokemonGame {
         void initializeStateMachine();
 
     private:
-        //Element *lightningPtr
         std::map<std::shared_ptr<Element>, Elements > elements_{};
     };
 }

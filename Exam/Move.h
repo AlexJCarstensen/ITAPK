@@ -5,17 +5,17 @@
 #ifndef EXAM_MOVES_H
 #define EXAM_MOVES_H
 
-#include <iostream>"
+#include <iostream>
 #include "Element.h"
 #include "IMove.h"
 #include "Pokemon.h"
 
 namespace pokemonGame {
 
-    template<Element E>
-    class AttackMove : public IMove<E>{
+    template<Element* E>
+    class AttackMove : public IMove{
     public:
-        AttackMove(std::string name, size_t power) :  power_(power), name_(name) {}
+        AttackMove(std::string name, size_t power) :  IMove(E), power_(power), name_(name) {}
         virtual ~AttackMove(){};
 
         void doMove(Pokemon& pokemon) {
@@ -38,7 +38,7 @@ namespace pokemonGame {
         }
 
     private:
-        Element element_;
+        Element& element_;
         size_t power_;
         std::string name_;
 

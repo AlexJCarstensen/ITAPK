@@ -10,14 +10,14 @@ namespace pokemonGame {
     class IMove {
     public:
         IMove() = default;
-        IMove(Element& element) : element_(element){}
+        IMove(Element* element) : element_(element){}
 
         virtual ~IMove();
 
         virtual void doMove() = 0;
 
     private:
-        Element& element_;
+        Element* element_;
     };
 }
 #endif //EXAM_IMOVE_H

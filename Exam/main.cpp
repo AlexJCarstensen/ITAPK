@@ -4,6 +4,7 @@
 #include "Element.h"
 #include "Pokemon.h"
 #include "Game.h"
+#include "Move.h"
 
 
 using namespace pokemonGame;
@@ -12,7 +13,8 @@ int main()
 {
 
 
-
+//    Game game;
+ //   game.startGame();
 //    GameState.process_event(EvGameOn());
 //    GameState.process_event(EvEncounter());
 //    GameState.process_event(EvBallThrow());
@@ -29,10 +31,12 @@ int main()
 
     Element *lightning = new Lightning();
     Element *fire = new Fire();
+
     Pokemon pikachu("pikachu", lightning, 2);
     Pokemon pikachu1("pikachu1", fire, 2);
 
-   if(pikachu == pikachu1)
+
+   if(pikachu.getElement() == pikachu1.getElement())
         std::cout << "hej" << std::endl;
 
     return 0;
