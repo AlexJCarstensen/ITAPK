@@ -9,11 +9,17 @@
 
 using namespace pokemonGame;
 
+
+
+
 int main()
 {
-    Game game;
+
+
+    GameState *gameState = new GameState();
+    Game game(gameState);
     game.startGame();
-    Player player;
+    Player player(gameState);
     game.enterWorld(player);
 
 
@@ -35,17 +41,19 @@ int main()
 //
 //
 //    }
-//    GameState.process_event(EvGameOn());
-//    GameState.process_event(EvEncounter());
-//    GameState.process_event(EvBallThrow());
-//    GameState.process_event(EvBrokeFree());
-//    GameState.process_event(EvBallThrow());
-//    GameState.process_event(EvCatch());
-//    GameState.process_event(EvEncounter());
-//    GameState.process_event(EvFlee());
-//    GameState.process_event(EvEncounter());
-//    GameState.process_event(EvFaint());
-//    GameState.process_event(EvGameOff());
+//    GameState gameState;
+//    gameState.initiate();
+//    gameState.process_event(EvGameOn());
+//    gameState.process_event(EvEncounter());
+//    gameState.process_event(EvBallThrow());
+//    gameState.process_event(EvBrokeFree());
+//    gameState.process_event(EvBallThrow());
+//    gameState.process_event(EvCatch());
+//    gameState.process_event(EvEncounter());
+//    gameState.process_event(EvFlee());
+//    gameState.process_event(EvEncounter());
+//    gameState.process_event(EvFaint());
+//    gameState.process_event(EvGameOff());
 
     // SHARED Ptr i forhold til hvor mange pokemoner der har reference til et bestemt element
 

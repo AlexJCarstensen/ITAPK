@@ -7,20 +7,29 @@
 
 #include <vector>
 #include "Item.h"
+#include "pokemonState.h"
+#include "IPokemon.h"
+#include "Pokemon.h"
 
 namespace pokemonGame{
 class Player
 {
 public:
-    Player();
+    Player() = default;
+    Player(GameState *gameState);
     virtual ~Player();
     void walkIntoTheWilderness();
     void goToTheShop();
     void lookInPokedex();
     void checkYourPokemons();
     void checkYourItems();
+
+    void setPokemonsSeen(std::vector<IPokemon*> &pokemons);//DEBUG
 private:
     std::vector<Item> items_;
+    std::vector<IPokemon*> caughtPokemons_;
+    std::vector<IPokemon*> seenPokemons_;
+    GameState* gameState_;
 
 };
 }

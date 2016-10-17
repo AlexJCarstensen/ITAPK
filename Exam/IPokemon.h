@@ -16,7 +16,10 @@ namespace pokemonGame {
         virtual ~IPokemon(){};
         virtual int getHealth() = 0;
         virtual int setHealth(size_t newHealth) = 0;
+        virtual std::string getName() = 0;
         virtual Element* getElement() = 0;
+        virtual bool isCaught() = 0;
+
     };
 }
 

@@ -6,6 +6,7 @@
 #define EXAM_ITEMS_H
 
 #include <glob.h>
+#include <iostream>
 namespace pokemonGame
 {
     class Item
@@ -14,9 +15,12 @@ namespace pokemonGame
         Item();
 
         virtual ~Item();
+        unsigned char getItemsCount();
+        std::string getItemName();
 
     private:
         unsigned char itemsCount_{};
+        std::string itemName_{};
     };
 }
 

@@ -27,7 +27,9 @@ namespace pokemonGame
         ~Pokemon(){ };
         int getHealth(){return health_;}
         int setHealth(size_t newHealth){health_ = newHealth;}
+        std::string getName(){ return name_;}
         Element* getElement(){return element_.get();}
+        bool isCaught(){return caught;}
 
         bool operator==(Pokemon& other)const {
             if (this->element_ == other.element_)
@@ -40,6 +42,7 @@ namespace pokemonGame
         size_t lvl_;
         size_t health_{30};
         std::vector<IMove*> moves_;
+        bool caught;
     };
 
 }

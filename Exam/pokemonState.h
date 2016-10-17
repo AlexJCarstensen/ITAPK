@@ -5,32 +5,27 @@
 #ifndef EXAM_POKEMONSTATE_H
 #define EXAM_POKEMONSTATE_H
 
+
 #include <iostream>
 
 #include <boost/statechart/state_machine.hpp>
 #include <boost/statechart/simple_state.hpp>
 #include <boost/statechart/transition.hpp>
 #include <boost/statechart/custom_reaction.hpp>
+#include "macro.h"
 
 namespace pokemonGame
 {
 
     namespace sc = boost::statechart;
+/*****************
+* For debugging *
+*****************/
 
-//    /*****************
-//     * For debugging *
-//     *****************/
-//
-//    void print(unsigned int lvl, const std::string &name)
-//    {
-//        for (unsigned int i = 0; i < lvl; i++)
-//            std::cout << "*" << std::flush;
-//        std::cout << " " << name << std::endl;
-//    }
-//
-//#define PRINT_ENTRY_EXIT(lvl, name)     \
-//    name() { print(lvl ,#name"()"); }   \
-//    ~name() { print(lvl ,"~"#name"()"); }
+
+#define PRINT_ENTRY_EXIT(lvl, name)     \
+    name() { macro::print(lvl ,#name"()"); }   \
+    ~name() { macro::print(lvl ,"~"#name"()"); }
 
     /*****************
      *     Events    *
@@ -84,19 +79,19 @@ namespace pokemonGame
     struct NotPlaying : sc::simple_state<NotPlaying, GameState>
     {
         typedef sc::transition<EvGameOn, Playing> reactions;
-       // PRINT_ENTRY_EXIT(0, NotPlaying)
+        PRINT_ENTRY_EXIT(0, NotPlaying)
     };
 
     struct Playing : sc::simple_state<Playing, GameState, Roaming>
     {
         typedef sc::transition<EvGameOff, NotPlaying> reactions;
-        //PRINT_ENTRY_EXIT(0, Playing)
+        PRINT_ENTRY_EXIT(0, Playing)
     };
 
     struct Roaming : sc::simple_state<Roaming, Playing>
     {
         typedef sc::transition<EvEncounter, Encountering> reactions;
-        //PRINT_ENTRY_EXIT(1, Roaming)
+        PRINT_ENTRY_EXIT(1, Roaming)
     };
 
 
@@ -106,19 +101,19 @@ namespace pokemonGame
                 sc::transition<EvCatch, Roaming>,
                 sc::transition<EvFaint, Roaming>
         > reactions;
-        //PRINT_ENTRY_EXIT(1, Encountering)
+        PRINT_ENTRY_EXIT(1, Encountering)
     };
 
     struct Battling : sc::simple_state<Battling, Encountering>
     {
         typedef sc::transition<EvBallThrow, Catching> reactions;
-        //PRINT_ENTRY_EXIT(2, Battling);
+        PRINT_ENTRY_EXIT(2, Battling);
     };
 
     struct Catching : sc::simple_state<Catching, Encountering>
     {
         typedef sc::transition<EvBrokeFree, Battling> reactions;
-        //PRINT_ENTRY_EXIT(2, Catching);
+        PRINT_ENTRY_EXIT(2, Catching);
 
     };
 

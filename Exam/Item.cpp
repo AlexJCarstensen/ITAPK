@@ -16,4 +16,14 @@ namespace pokemonGame
     {
 
     }
+
+    unsigned char Item::getItemsCount()
+    {
+        return itemsCount_;
+    }
+
+    std::string Item::getItemName()
+    {
+        return itemName_;
+    }
 }
