@@ -13,8 +13,8 @@ int main()
 {
 
 
-//    Game game;
-//    game.startGame();
+    Game game;
+    game.startGame();
 //    GameState.process_event(EvGameOn());
 //    GameState.process_event(EvEncounter());
 //    GameState.process_event(EvBallThrow());

@@ -10,13 +10,13 @@ using namespace std;
 
 namespace pokemonGame {
 
-//    void Game::startGame() {
-//
-//        initializeElements();
-//        initializeMoves();
-//        populateWorldWithPokemons();
-//        initializeStateMachine();
-//    }
+    void Game::startGame() {
+
+        initializeElements();
+        initializeMoves();
+        populateWorldWithPokemons();
+        initializeStateMachine();
+    }
 
     void Game::populateWorldWithPokemons() {
 
