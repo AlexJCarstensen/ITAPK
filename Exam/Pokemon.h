@@ -10,6 +10,7 @@
 #include "Element.h"
 #include "IMove.h"
 #include "IPokemon.h"
+#include "Move.h"
 
 namespace pokemonGame
 {
@@ -18,10 +19,11 @@ namespace pokemonGame
     class Pokemon : public IPokemon
     {
     public:
-        Pokemon(std::string name, std::shared_ptr<Element> element, int lvl) : name_(name), element_(element), lvl_(lvl)
+        Pokemon(std::string name, std::shared_ptr<Element> element, int lvl, std::vector<IMove*> moves) : name_(name), element_(element), lvl_(lvl), moves_(moves)
         {
             if(lvl_ > 1)
                 health_ = health_ + lvl_ * 1.5;
+
 
         }
         ~Pokemon(){ };

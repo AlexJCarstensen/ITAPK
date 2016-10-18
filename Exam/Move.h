@@ -50,32 +50,83 @@ namespace pokemonGame {
 
     };
 
-//    class FireMoveSet
-//    {
-//    public:
-//        IMove& getNewMove(int index)
-//        {
-//            return fireMoves[index];
-//        }
-//
-//    private:
-//        std::vector<IMove> fireMoves;
-//    };
+
+    //For debugging moves
+    class FireMoveSet
+    {
+    public:
+
+        FireMoveSet()
+        {
+            //Creating moves to put in container
+            Fire fire;
+            IMove *fireBlast = new AttackMove(fire, "Fire Blast", 80);
+            IMove *ember = new AttackMove(fire, "Ember", 15);
+            IMove *flamathrower = new AttackMove(fire, "Flamethrower", 50);
+            IMove *fireFang = new AttackMove(fire, "Fire fang", 25);
+            IMove *fireSpin = new AttackMove(fire, "Firespin", 30);
+            IMove *firePunch = new AttackMove(fire, "Fire Punch", 45);
+
+            //Creating basic move
+            basicMove = ember;
+
+            //Inserting moves to container
+            fireMoves = {fireBlast, ember, flamathrower, fireFang, fireSpin,firePunch};
+        }
+        ~FireMoveSet()
+        {
+
+            for (auto &&move : fireMoves) {
+                delete move;
+            }
+        }
+
+        IMove* getNewMove(int index)
+        {
+            if(index >= 0 && index < fireMoves.size())
+            {return  fireMoves[index];}
+            else return basicMove;
+
+        }
+
+    private:
+        std::vector<IMove*> fireMoves;
+        IMove *basicMove;
+    };
 
 
+    //Basic Template
+    template<int N>
+    struct MoveChooser
+    {
+    };
 
-//    template<>
-//    struct MoveChooser<Fire>{
-//
-//        std::vector<IMove> getMoves()
-//        {
-//            std::vector moves;
-//
-//            int move1 = rand() % 10;
-//
-//        }
-//
-//    };
+    //Fire chooser
+    template<>
+    struct MoveChooser<1>{
+
+        std::vector<IMove*> getMoves()
+        {
+            std::vector<IMove*> moves;
+            FireMoveSet firemoves;
+
+            //Creating random numbers between 0 and 5
+            int move1 = rand() % 6;
+            int move2 = rand() % 6;
+            int move3 = rand() % 6;
+            int move4 = rand() % 6;
+
+            //Generating new moves
+            moves.push_back(firemoves.getNewMove(move1));
+            moves.push_back(firemoves.getNewMove(move2));
+            moves.push_back(firemoves.getNewMove(move3));
+            moves.push_back(firemoves.getNewMove(move4));
+
+            return moves;
+
+        }
+
+    };
 };
 
 
