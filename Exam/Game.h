@@ -15,7 +15,10 @@ namespace pokemonGame {
 
     class Game {
     public:
-        //Game& operator=(Game const&) = delete;  // Copy assign
+        Game(Game const&) = delete;             // Copy construct
+        Game(Game&&) = delete;                  // Move construct
+        Game& operator=(Game const&) = delete;  // Copy assign
+        Game& operator=(Game &&) = delete;
         static Game* getInstance();
         virtual ~Game();
         void startGame();
