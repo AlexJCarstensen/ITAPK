@@ -151,13 +151,13 @@ namespace pokemonGame
         return elements_;
     }
 
-    void Game::enterWorld(Player& player)
+    void Game::enterWorld(Player &player)
     {
-        player.setPokemonsSeen(pokemons_); //DEBUG
+        player.setPokemonsSeen(pokemons_); //TODO DEBUG
         cout << "Welcome to the world of Pokemons" << endl;
         gameState_->process_event(EvGameOn());
         bool playing = true;
-        while(playing)
+        while (playing)
         {
             char choice;
 
@@ -172,7 +172,7 @@ namespace pokemonGame
             cout << "Your choice: " << flush;
             cin >> choice;
 
-            switch(choice)
+            switch (choice)
             {
                 case '1':
                     player.walkIntoTheWilderness();
@@ -203,7 +203,14 @@ namespace pokemonGame
         }
     }
 
+    Game::~Game()
+    {
+        for (auto &&pokemon : pokemons_)
+        {
+            delete pokemon;
+        }
 
+    }
 
 
 }

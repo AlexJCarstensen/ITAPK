@@ -15,11 +15,10 @@ using namespace pokemonGame;
 int main()
 {
 
-
-    GameState *gameState = new GameState();
-    Game game(gameState);
+    std::unique_ptr<GameState> gameStatePtr (new GameState());
+    Game game(gameStatePtr.get());
     game.startGame();
-    Player player(gameState);
+    Player player(gameStatePtr.get());
     game.enterWorld(player);
 
 

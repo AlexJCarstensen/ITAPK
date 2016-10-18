@@ -24,7 +24,7 @@ public:
     void checkYourPokemons();
     void checkYourItems();
 
-    void setPokemonsSeen(std::vector<IPokemon*> &pokemons);//DEBUG
+    void setPokemonsSeen(std::vector<IPokemon*> &pokemons);// TODO DEBUG
 private:
     std::vector<Item> items_;
     std::vector<IPokemon*> caughtPokemons_;

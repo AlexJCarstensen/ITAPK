@@ -21,6 +21,15 @@ namespace pokemonGame
     void Player::walkIntoTheWilderness()
     {
         //TODO do some randomizing  with encountering
+
+        auto encounter = [](){
+            std::random_device rd;
+            std::mt19937 eng(rd());
+            std::uniform_int_distribution<> distr(1, 100);
+            return distr(eng);
+        };
+        //if(encounter > 50)
+
         gameState_->process_event(EvEncounter());
     }
 
@@ -58,7 +67,7 @@ namespace pokemonGame
 
         }
     }
-
+    // TODO DEBUG
     void Player::setPokemonsSeen(std::vector<IPokemon*> &pokemons)
     {
         seenPokemons_ = pokemons;
