@@ -5,6 +5,7 @@
 
 #include "Game.h"
 #include "pokemonState.h"
+#include "MoveChoosers.h"
 
 
 using namespace std;
@@ -29,7 +30,7 @@ namespace pokemonGame {
     void Game::populateWorldWithPokemons()
     {
         //To satisfy compiler..... for now
-        std:vector<IMove*> emptyMoves;
+        std:vector<std::shared_ptr<IMove>> emptyMoves;
         /******************
         *  Fire Pokemons  *
         ******************/
