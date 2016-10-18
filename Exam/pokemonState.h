@@ -76,10 +76,7 @@ namespace pokemonGame
      * States *
      **********/
 
-//    struct GameState : sc::state_machine<GameState, NotPlaying>
-//    {
-//
-//    };
+
 
     struct NotPlaying : sc::simple_state<NotPlaying, GameState>
     {
@@ -102,12 +99,6 @@ namespace pokemonGame
         {
 
             boost::signals2::signal<void ()> sig;
-            //sig.connect(std::bind(&Game::getInstance::encounterPokemon(), this, _1));
-           // sig.connect(&encounterPokemon);
-
-            // Call all of the slots
-           // sig();
-            //std::bind(&Foo::get, foo1, 3)
             sig.connect(std::bind(&Game::encounterPokemon, Game::getInstance()));
             sig();
             return transit<Encountering>();
@@ -119,12 +110,7 @@ namespace pokemonGame
     {
 
 
-//        boost::signals2::signal<void ()> sig;
-//        Game game;
-//        sig.connect(game);
-//
-//        // Call all of the slots
-//        sig();
+
 
         typedef boost::mpl::list<sc::transition<EvFlee, Roaming>,
                 sc::transition<EvCatch, Roaming>,
@@ -133,16 +119,7 @@ namespace pokemonGame
 
         PRINT_ENTRY_EXIT(1, Encountering)
 
-//        sc::result react(const EvEncounter& ev)
-//        {
-//
-//            boost::signals2::signal<void()> sig;
-//
-//            sig.connect(Game::getInstance());
-//
-//            // Call all of the slots
-//            sig();
-//        }
+
     };
 
     struct Battling : sc::simple_state<Battling, Encountering>

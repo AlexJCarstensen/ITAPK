@@ -29,6 +29,9 @@ namespace pokemonGame
         if(encounter() > 50)
         {
             gameState_->process_event(EvEncounter());
+            //TODO put these somewhere else.
+            gameState_->process_event(EvBallThrow());
+            gameState_->process_event(EvCatch());
         }
         else{
             std::cout << "Sadly you didn't find any Pokemons" << std::endl;

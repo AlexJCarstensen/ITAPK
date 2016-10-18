@@ -15,8 +15,8 @@ namespace pokemonGame {
 
     class Game {
     public:
-        Game& operator=(Game const&) = delete;  // Copy assign
-        static Game& getInstance();
+        //Game& operator=(Game const&) = delete;  // Copy assign
+        static Game* getInstance();
         virtual ~Game();
         void startGame();
         void enterWorld();
@@ -27,7 +27,7 @@ namespace pokemonGame {
         void setPokemons(std::vector<IPokemon*> pokemons); //TODO debug
         std::map<Elements, std::shared_ptr<Element>> seeElements();//TODO debug
     protected:
-        Game();
+        Game() = default;
 
 
     private:
@@ -43,6 +43,7 @@ namespace pokemonGame {
         std::vector<IPokemon*> pokemons_;
         GameState* gameState_;
         Player* player_;
+        static Game* instance_;
 
 
     };

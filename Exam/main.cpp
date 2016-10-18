@@ -10,11 +10,11 @@ using namespace pokemonGame;
 int main()
 {
     std::unique_ptr<GameState> gameStatePtr (new GameState());
-    Game::getInstance().setGameState(gameStatePtr.get());
-    Game::getInstance().startGame();
+    Game::getInstance()->setGameState(gameStatePtr.get());
+    Game::getInstance()->startGame();
     std::unique_ptr<Player> playerPtr (new Player(gameStatePtr.get()));
-    Game::getInstance().setPlayer(playerPtr.get());
-    Game::getInstance().enterWorld();
+    Game::getInstance()->setPlayer(playerPtr.get());
+    Game::getInstance()->enterWorld();
 
 
 

@@ -5,17 +5,14 @@
 
 #include "Game.h"
 #include "pokemonState.h"
-#include "Pokemon.h"
-#include "Move.h"
+
 
 using namespace std;
 
-namespace pokemonGame
-{
+namespace pokemonGame {
+    Game *Game::instance_ = nullptr;
 
-
-    void Game::startGame()
-    {
+    void Game::startGame() {
 
         initializeElements();
         initializeMoves();
@@ -218,34 +215,31 @@ namespace pokemonGame
 
     }
 
-    Game &Game::getInstance() {
-        static Game *instance = new Game();
-        return *instance;
-    }
+    Game *Game::getInstance() {
 
-//    Game::~Game() {
-//        for (auto &&pokemon : pokemons_)
-//        {
-//            delete pokemon;
-//        }
-//
-//    }
-
-    Game::Game() {
-
+        if (!instance_)
+            instance_ = new Game();
+        return instance_;
     }
 
     Game::~Game() {
-
+        for (auto &&pokemon : pokemons_) {
+            delete pokemon;
+        }
+        delete instance_;
     }
 
+
     void Game::encounterPokemon() {
-        std::cout << "Wild " << pokemons_[rand() % pokemons_.size()]->getName() << " encountered" << std::endl;
+
+
+        std::cout << "Wild " << "DO RANDOM POKEMON NOT CAUGHT!" << " encountered" << std::endl;
+        //std::cout << "Wild " << "test" << " encountered" << std::endl;
 
     }
 
     void Game::setPlayer(Player *player) {
-    player_ = player;
+        player_ = player;
     }
 
 
