@@ -12,10 +12,7 @@ using namespace std;
 
 namespace pokemonGame
 {
-    Game::Game(GameState *gameState) : gameState_(gameState)
-    {
 
-    }
 
     void Game::startGame()
     {
@@ -87,13 +84,15 @@ namespace pokemonGame
         Pokemon *sandslash = new Pokemon("Sandslash", elements_.find(Elements::GROUND)->second, randomLvl());
         Pokemon *machamp = new Pokemon("Machamp", elements_.find(Elements::GROUND)->second, randomLvl());
 
+        std::vector<IPokemon*> pokemons = {charmander, moltres, charizard, arcanine, magmar, flareon,
+                                           pickachu, electrabuzz, magneton, electrode, jolteon, zapdos,
+                                           squirtle, blastoise, vaporeon, lapras, magikarp, omastar,
+                                           bulbasaur, venosaur, butterfree, victreebel, exeggutor, scyther,
+                                           diglett, golem, machoke, kabutops, sandslash, machamp};
 
-        pokemons_ = {
-                charmander, moltres, charizard, arcanine, magmar, flareon,
-                pickachu, electrabuzz, magneton, electrode, jolteon, zapdos,
-                squirtle, blastoise, vaporeon, lapras, magikarp, omastar,
-                bulbasaur, venosaur, butterfree, victreebel, exeggutor, scyther,
-                diglett, golem, machoke, kabutops, sandslash, machamp};
+        setPokemons(pokemons);
+//        pokemons_ = {
+//                };
 
 //        for (auto && poke : pokemons_) {
 //            cout << poke->getHealth() << endl;
@@ -130,7 +129,6 @@ namespace pokemonGame
     void Game::initializeStateMachine()
     {
         gameState_->initiate();
-
     }
 
     int Game::randomLvl()
@@ -141,10 +139,7 @@ namespace pokemonGame
         return distr(eng);
     }
 
-    vector<IPokemon *> Game::seePokemons()
-    {
-        return pokemons_;
-    }
+
 
     map<Elements, shared_ptr<Element>> Game::seeElements()
     {
@@ -153,7 +148,7 @@ namespace pokemonGame
 
     void Game::enterWorld(Player &player)
     {
-        player.setPokemonsSeen(pokemons_); //TODO DEBUG
+        //player.setPokemonsSeen(pokemons_); //TODO DEBUG
         cout << "Welcome to the world of Pokemons" << endl;
         gameState_->process_event(EvGameOn());
         bool playing = true;
@@ -203,12 +198,37 @@ namespace pokemonGame
         }
     }
 
-    Game::~Game()
-    {
+
+
+    std::vector<IPokemon *> Game::getPokemons() {
+        return pokemons_;
+    }
+
+    void Game::setPokemons(std::vector<IPokemon*> pokemons) {
+        pokemons_ = pokemons;
+    }
+
+    void Game::setGameState(GameState *gameState) {
+        gameState_ = gameState;
+
+    }
+
+    Game &Game::getInstance() {
+        static Game instance;
+        // Instantiated on first use.
+
+        return instance;
+    }
+
+    Game::~Game() {
         for (auto &&pokemon : pokemons_)
         {
             delete pokemon;
         }
+
+    }
+
+    Game::Game() {
 
     }
 

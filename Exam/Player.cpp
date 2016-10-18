@@ -4,8 +4,6 @@
 
 #include "Player.h"
 #include "pokemonState.h"
-#include "Pokemon.h"
-
 namespace pokemonGame
 {
 
@@ -28,9 +26,12 @@ namespace pokemonGame
             std::uniform_int_distribution<> distr(1, 100);
             return distr(eng);
         };
-        //if(encounter > 50)
+        if(encounter() > 50)
+        {
+            gameState_->process_event(EvEncounter());
+        }
 
-        gameState_->process_event(EvEncounter());
+
     }
 
     void Player::goToTheShop()

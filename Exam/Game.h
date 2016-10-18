@@ -10,19 +10,31 @@
 #include "Element.h"
 #include "Pokemon.h"
 #include "Player.h"
-#include "pokemonState.h"
-
 namespace pokemonGame {
 
-    class Game  {
+
+    class Game {
     public:
-        Game() = default;
-        Game(GameState* gameState);
-        virtual ~Game();
+        Game(Game const&) = delete;             // Copy construct
+        Game(Game&&) = delete;                  // Move construct
+        Game& operator=(Game const&) = delete;  // Copy assign
+        Game& operator=(Game &&) = delete;      // Move assign
+        static Game& getInstance();
+
         void startGame();
         void enterWorld(Player& player);
-        std::vector<IPokemon*> seePokemons(); //TODO debug
+        void operator()() const
+        {
+            std::cout << "Hello, World!" << std::endl;
+        }
+        void setGameState(GameState* gameState);
+        std::vector<IPokemon*> getPokemons(); //TODO debug
+        void setPokemons(std::vector<IPokemon*> pokemons); //TODO debug
         std::map<Elements, std::shared_ptr<Element>> seeElements();//TODO debug
+    protected:
+        Game();
+        virtual ~Game();
+
     private:
         void populateWorldWithPokemons();
         void initializeElements();
@@ -33,7 +45,7 @@ namespace pokemonGame {
 
     private:
         std::map<Elements, std::shared_ptr<Element> > elements_{};
-        std::vector<IPokemon*> pokemons_{};
+        std::vector<IPokemon*> pokemons_;
         GameState* gameState_;
 
 

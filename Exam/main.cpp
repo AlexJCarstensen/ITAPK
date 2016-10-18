@@ -1,10 +1,5 @@
 
 #include "pokemonState.h"
-#include <iostream>
-#include "Element.h"
-#include "Pokemon.h"
-#include "Game.h"
-#include "Move.h"
 
 
 using namespace pokemonGame;
@@ -14,12 +9,12 @@ using namespace pokemonGame;
 
 int main()
 {
-
     std::unique_ptr<GameState> gameStatePtr (new GameState());
-    Game game(gameStatePtr.get());
-    game.startGame();
+    Game::getInstance().setGameState(gameStatePtr.get());
+    Game::getInstance().startGame();
     Player player(gameStatePtr.get());
-    game.enterWorld(player);
+    Game::getInstance().enterWorld(player);
+
 
 
 

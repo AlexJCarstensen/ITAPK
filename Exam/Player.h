@@ -7,9 +7,8 @@
 
 #include <vector>
 #include "Item.h"
-#include "pokemonState.h"
+#include "GameState.h"
 #include "IPokemon.h"
-#include "Pokemon.h"
 
 namespace pokemonGame{
 class Player

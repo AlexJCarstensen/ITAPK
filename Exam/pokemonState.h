@@ -6,21 +6,25 @@
 #define EXAM_POKEMONSTATE_H
 
 
+
 #include <iostream>
 
 #include <boost/statechart/state_machine.hpp>
 #include <boost/statechart/simple_state.hpp>
 #include <boost/statechart/transition.hpp>
 #include <boost/statechart/custom_reaction.hpp>
+#include <boost/signals2/signal.hpp>
 #include "macro.h"
+#include "Game.h"
+#include "GameState.h"
 
 namespace pokemonGame
 {
 
     namespace sc = boost::statechart;
-/*****************
-* For debugging *
-*****************/
+    /*****************
+    * For debugging *
+    *****************/
 
 
 #define PRINT_ENTRY_EXIT(lvl, name)     \
@@ -33,6 +37,7 @@ namespace pokemonGame
 
     struct EvEncounter : sc::event<EvEncounter>
     {
+        EvEncounter()  {}
     };
     struct EvFlee : sc::event<EvFlee>
     {
@@ -71,10 +76,10 @@ namespace pokemonGame
      * States *
      **********/
 
-    struct GameState : sc::state_machine<GameState, NotPlaying>
-    {
-
-    };
+//    struct GameState : sc::state_machine<GameState, NotPlaying>
+//    {
+//
+//    };
 
     struct NotPlaying : sc::simple_state<NotPlaying, GameState>
     {
@@ -97,11 +102,33 @@ namespace pokemonGame
 
     struct Encountering : sc::simple_state<Encountering, Playing, Battling>
     {
-        typedef boost::mpl::list<sc::transition<EvFlee, Roaming>,
+
+
+//        boost::signals2::signal<void ()> sig;
+//        Game game;
+//        sig.connect(game);
+//
+//        // Call all of the slots
+//        sig();
+
+        typedef boost::mpl::list<sc::custom_reaction<EvEncounter>,
+                sc::transition<EvFlee, Roaming>,
                 sc::transition<EvCatch, Roaming>,
                 sc::transition<EvFaint, Roaming>
         > reactions;
+
         PRINT_ENTRY_EXIT(1, Encountering)
+
+        sc::result react(const EvEncounter& ev)
+        {
+
+            boost::signals2::signal<void()> sig;
+
+            sig.connect(Game::getInstance());
+
+            // Call all of the slots
+            sig();
+        }
     };
 
     struct Battling : sc::simple_state<Battling, Encountering>
