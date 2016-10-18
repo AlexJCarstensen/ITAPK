@@ -7,13 +7,13 @@
 namespace pokemonGame {
 
 
-   enum Elements
+   enum class Elements
     {
-        FIRE,
-        LIGHTNING,
-        GRASS,
-        WATER,
-        GROUND
+        FIRE = 1,
+        LIGHTNING = 2,
+        GRASS = 3,
+        WATER = 4,
+        GROUND = 5
 
     };
 
