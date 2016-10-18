@@ -24,19 +24,21 @@ namespace pokemonGame {
 
             if(this->element_.isSuperEffective(pokemon.getElement()))
             {
-                //TODO: Reduce opposing pokemon health much
+                //Reduce opposing pokemon health significantly
                 std::cout << "Move is super effective" << std::endl;
-                pokemon.setHealth((pokemon.getHealth() - power_));
+                pokemon.setHealth((pokemon.getHealth() - (power_ * 1.5)));
             }
             else if(this->element_.isNotEffective(pokemon.getElement()))
             {
-                //TODO: Reduce opposing pokemon health not much
+                //Reduce opposing pokemon health slightly
                 std::cout << "Move is not effective" << std::endl;
+                pokemon.setHealth((pokemon.getHealth() - (power_ * 0.5)));
             }
             else
             {
-                //TODO: Reduce opposing pokemon health normally
+                //Reduce opposing pokemon health normally
                 std::cout << "Move is normally effective" << std::endl;
+                pokemon.setHealth((pokemon.getHealth() - power_ ));
             }
 
         }
