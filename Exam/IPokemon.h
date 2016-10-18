@@ -7,6 +7,7 @@
 
 #include "Element.h"
 
+
 namespace pokemonGame {
 
     class IPokemon {
@@ -18,6 +19,8 @@ namespace pokemonGame {
         virtual int setHealth(size_t newHealth) = 0;
         virtual std::string getName() = 0;
         virtual Element* getElement() = 0;
+        virtual std::vector<std::string> getMoves() = 0;
+        virtual void DisplayMoves() = 0;
         virtual bool isCaught() = 0;
 
     };

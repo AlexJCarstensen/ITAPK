@@ -7,6 +7,7 @@
 #include "pokemonState.h"
 #include "Pokemon.h"
 #include "Move.h"
+#include "MoveChoosers.h"
 
 using namespace std;
 
@@ -30,13 +31,13 @@ namespace pokemonGame
     void Game::populateWorldWithPokemons()
     {
         //To satisfy compiler..... for now
-        std:vector<IMove*> emptyMoves;
+        std:vector<std::shared_ptr<IMove>> emptyMoves;
         /******************
         *  Fire Pokemons  *
         ******************/
 
         MoveChooser<(int)Elements::FIRE> fireMoveChooser;
-        std::vector<IMove*> fireMoves = fireMoveChooser.getMoves();
+        std::vector<std::shared_ptr<IMove>> fireMoves = fireMoveChooser.getMoves();
 
         Pokemon *charmander = new Pokemon("Charmander", elements_.find(Elements::FIRE)->second, randomLvl(), fireMoves);
         Pokemon *moltres = new Pokemon("Moltres", elements_.find(Elements::FIRE)->second, randomLvl(),fireMoves);
@@ -45,16 +46,32 @@ namespace pokemonGame
         Pokemon *magmar = new Pokemon("Magmar", elements_.find(Elements::FIRE)->second, randomLvl(), fireMoves);
         Pokemon *flareon = new Pokemon("Flareon", elements_.find(Elements::FIRE)->second, randomLvl(), fireMoves);
 
+
+
+
+
+//        vector<string> moves = charmander->getMoves();
+//
+//        for (auto &&  move: moves) {
+//  std::cout << move << std::endl;
+//}
+
+
+
+
+
+
         /***********************
         *  Lightning Pokemons  *
         ***********************/
-
-        Pokemon *pickachu = new Pokemon("Pickachu", elements_.find(Elements::LIGHTNING)->second, randomLvl(), emptyMoves);
-        Pokemon *electrabuzz = new Pokemon("Electrabuzz", elements_.find(Elements::LIGHTNING)->second, randomLvl(),emptyMoves);
-        Pokemon *magneton = new Pokemon("Magneton", elements_.find(Elements::LIGHTNING)->second, randomLvl(), emptyMoves);
-        Pokemon *electrode = new Pokemon("Electrode", elements_.find(Elements::LIGHTNING)->second, randomLvl(), emptyMoves);
-        Pokemon *jolteon = new Pokemon("Jolteon", elements_.find(Elements::LIGHTNING)->second, randomLvl(), emptyMoves);
-        Pokemon *zapdos = new Pokemon("Zapdos", elements_.find(Elements::LIGHTNING)->second, randomLvl(), emptyMoves);
+        MoveChooser<(int)Elements::LIGHTNING> lightningMoveChooser;
+        std::vector<std::shared_ptr<IMove>> lightningMoves = lightningMoveChooser.getMoves();
+        Pokemon *pickachu = new Pokemon("Pickachu", elements_.find(Elements::LIGHTNING)->second, randomLvl(), lightningMoves);
+        Pokemon *electrabuzz = new Pokemon("Electrabuzz", elements_.find(Elements::LIGHTNING)->second, randomLvl(),lightningMoves);
+        Pokemon *magneton = new Pokemon("Magneton", elements_.find(Elements::LIGHTNING)->second, randomLvl(), lightningMoves);
+        Pokemon *electrode = new Pokemon("Electrode", elements_.find(Elements::LIGHTNING)->second, randomLvl(), lightningMoves);
+        Pokemon *jolteon = new Pokemon("Jolteon", elements_.find(Elements::LIGHTNING)->second, randomLvl(), lightningMoves);
+        Pokemon *zapdos = new Pokemon("Zapdos", elements_.find(Elements::LIGHTNING)->second, randomLvl(), lightningMoves);
 
         /*******************
         *  Water Pokemons  *
@@ -88,6 +105,14 @@ namespace pokemonGame
         Pokemon *kabutops = new Pokemon("Kabutops", elements_.find(Elements::GROUND)->second, randomLvl(), emptyMoves);
         Pokemon *sandslash = new Pokemon("Sandslash", elements_.find(Elements::GROUND)->second, randomLvl(), emptyMoves);
         Pokemon *machamp = new Pokemon("Machamp", elements_.find(Elements::GROUND)->second, randomLvl(),emptyMoves);
+
+
+        IPokemon *debugMon = pickachu;
+
+        cout << debugMon->getName() << " moves: " << endl;
+
+        debugMon->DisplayMoves();
+
 
         std::vector<IPokemon*> pokemons = {charmander, moltres, charizard, arcanine, magmar, flareon,
                                            pickachu, electrabuzz, magneton, electrode, jolteon, zapdos,
