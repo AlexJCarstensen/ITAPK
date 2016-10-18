@@ -30,6 +30,9 @@ namespace pokemonGame
         {
             gameState_->process_event(EvEncounter());
         }
+        else{
+            std::cout << "Sadly you didn't find any Pokemons" << std::endl;
+        }
 
 
     }

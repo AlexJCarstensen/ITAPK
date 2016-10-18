@@ -95,8 +95,23 @@ namespace pokemonGame
 
     struct Roaming : sc::simple_state<Roaming, Playing>
     {
-        typedef sc::transition<EvEncounter, Encountering> reactions;
+        typedef boost::mpl::list<sc::custom_reaction<EvEncounter>,
+                sc::transition<EvEncounter, Encountering> > reactions;
         PRINT_ENTRY_EXIT(1, Roaming)
+        sc::result react(const EvEncounter& ev)
+        {
+
+            boost::signals2::signal<void ()> sig;
+            //sig.connect(std::bind(&Game::getInstance::encounterPokemon(), this, _1));
+           // sig.connect(&encounterPokemon);
+
+            // Call all of the slots
+           // sig();
+            //std::bind(&Foo::get, foo1, 3)
+            sig.connect(std::bind(&Game::encounterPokemon, Game::getInstance()));
+            sig();
+            return transit<Encountering>();
+        }
     };
 
 
@@ -111,24 +126,23 @@ namespace pokemonGame
 //        // Call all of the slots
 //        sig();
 
-        typedef boost::mpl::list<sc::custom_reaction<EvEncounter>,
-                sc::transition<EvFlee, Roaming>,
+        typedef boost::mpl::list<sc::transition<EvFlee, Roaming>,
                 sc::transition<EvCatch, Roaming>,
                 sc::transition<EvFaint, Roaming>
         > reactions;
 
         PRINT_ENTRY_EXIT(1, Encountering)
 
-        sc::result react(const EvEncounter& ev)
-        {
-
-            boost::signals2::signal<void()> sig;
-
-            sig.connect(Game::getInstance());
-
-            // Call all of the slots
-            sig();
-        }
+//        sc::result react(const EvEncounter& ev)
+//        {
+//
+//            boost::signals2::signal<void()> sig;
+//
+//            sig.connect(Game::getInstance());
+//
+//            // Call all of the slots
+//            sig();
+//        }
     };
 
     struct Battling : sc::simple_state<Battling, Encountering>

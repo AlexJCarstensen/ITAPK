@@ -151,7 +151,7 @@ namespace pokemonGame
         return elements_;
     }
 
-    void Game::enterWorld(Player &player)
+    void Game::enterWorld()
     {
         //player.setPokemonsSeen(pokemons_); //TODO DEBUG
         cout << "Welcome to the world of Pokemons" << endl;
@@ -175,23 +175,23 @@ namespace pokemonGame
             switch (choice)
             {
                 case '1':
-                    player.walkIntoTheWilderness();
+                    player_->walkIntoTheWilderness();
                     break;
 
                 case '2':
-                    player.goToTheShop();
+                    player_->goToTheShop();
                     break;
 
                 case '3':
-                    player.lookInPokedex();
+                    player_->lookInPokedex();
                     break;
 
                 case '4':
-                    player.checkYourPokemons();
+                    player_->checkYourPokemons();
                     break;
 
                 case '5':
-                    player.checkYourItems();
+                    player_->checkYourItems();
                     break;
 
                 case '6':
@@ -219,22 +219,33 @@ namespace pokemonGame
     }
 
     Game &Game::getInstance() {
-        static Game instance;
-        // Instantiated on first use.
-
-        return instance;
+        static Game *instance = new Game();
+        return *instance;
     }
 
-    Game::~Game() {
-        for (auto &&pokemon : pokemons_)
-        {
-            delete pokemon;
-        }
-
-    }
+//    Game::~Game() {
+//        for (auto &&pokemon : pokemons_)
+//        {
+//            delete pokemon;
+//        }
+//
+//    }
 
     Game::Game() {
 
+    }
+
+    Game::~Game() {
+
+    }
+
+    void Game::encounterPokemon() {
+        std::cout << "Wild " << pokemons_[rand() % pokemons_.size()]->getName() << " encountered" << std::endl;
+
+    }
+
+    void Game::setPlayer(Player *player) {
+    player_ = player;
     }
 
 
