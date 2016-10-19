@@ -9,6 +9,7 @@
 #include <algorithm>
 #include <random>
 #include "IMove.h"
+#include "IMoveSet.h"
 #include "MoveSets.h"
 
 namespace pokemonGame
@@ -76,15 +77,16 @@ namespace pokemonGame
 
         std::vector<std::shared_ptr<IMove>> getMoves() {
             std::vector<std::shared_ptr<IMove>> moves;
-            FireMoveSet firemoves;
+            IMoveSet* firemoves;
+            firemoves = new FireMoveSet();
 
             //Generating numbers to retrieve from firemoveSet
-            vector<int> moveNumbers = generateMoveNumbers(firemoves.NumberOfMoves()-1);
+            vector<int> moveNumbers = generateMoveNumbers(firemoves->NumberOfMoves()-1);
 
             //Generating new moves based on numbers generated
             for (auto &&number  : moveNumbers)
             {
-                moves.push_back(firemoves.getNewMove(number));
+                moves.push_back(firemoves->getNewMove(number));
             }
 
             return moves;
@@ -94,20 +96,21 @@ namespace pokemonGame
 
     };
 
+    //Lightning chooser
     template<>
     struct MoveChooser<(int) Elements::LIGHTNING> {
 
         std::vector<std::shared_ptr<IMove>> getMoves() {
             std::vector<std::shared_ptr<IMove>> moves;
-            LightningMoveSet lightningmoves;
+            IMoveSet* lightningmoves = new LightningMoveSet();
 
             //Generating numbers to retrieve from firemoveSet
-            vector<int> moveNumbers = generateMoveNumbers(lightningmoves.NumberOfMoves()-1);
+            vector<int> moveNumbers = generateMoveNumbers(lightningmoves->NumberOfMoves()-1);
 
             //Generating new moves based on numbers generated
             for (auto &&number  : moveNumbers)
             {
-                moves.push_back(lightningmoves.getNewMove(number));
+                moves.push_back(lightningmoves->getNewMove(number));
             }
 
             return moves;
@@ -115,27 +118,70 @@ namespace pokemonGame
 
     };
 
-//    template<>
-//    struct MoveChooser<(int) Elements::GRASS> {
-//
-//        std::vector<std::shared_ptr<IMove>> getMoves() {
-//            std::vector<std::shared_ptr<IMove>> moves;
-//            LightningMoveSet lightningmoves;
-//
-//            //Generating numbers to retrieve from firemoveSet
-//            vector<int> moveNumbers = generateMoveNumbers(lightningmoves.NumberOfMoves()-1);
-//
-//            //Generating new moves based on numbers generated
-//            for (auto &&number  : moveNumbers)
-//            {
-//                moves.push_back(lightningmoves.getNewMove(number));
-//            }
-//
-//            return moves;
-//        }
-//
-//    };
+    //Grass chooser
+    template<>
+    struct MoveChooser<(int) Elements::GRASS> {
 
-}
+        std::vector<std::shared_ptr<IMove>> getMoves() {
+            std::vector<std::shared_ptr<IMove>> moves;
+            IMoveSet* grassmoves = new GrassMoveSet();
+
+            //Generating numbers to retrieve from firemoveSet
+            vector<int> moveNumbers = generateMoveNumbers(grassmoves->NumberOfMoves()-1);
+
+            //Generating new moves based on numbers generated
+            for (auto &&number  : moveNumbers)
+            {
+                moves.push_back(grassmoves->getNewMove(number));
+            }
+
+            return moves;
+        }
+
+
+
+    };
+
+    //Water chooser
+    template<>
+    struct MoveChooser<(int) Elements::WATER> {
+
+        std::vector<std::shared_ptr<IMove>> getMoves() {
+            std::vector<std::shared_ptr<IMove>> moves;
+            IMoveSet *watermoves = new WaterMoveSet();
+
+            //Generating numbers to retrieve from firemoveSet
+            vector<int> moveNumbers = generateMoveNumbers(watermoves->NumberOfMoves() - 1);
+
+            //Generating new moves based on numbers generated
+            for (auto &&number  : moveNumbers) {
+                moves.push_back(watermoves->getNewMove(number));
+            }
+
+            return moves;
+        }
+    };
+
+    //Ground chooser
+    template<>
+    struct MoveChooser<(int) Elements::GROUND> {
+
+        std::vector<std::shared_ptr<IMove>> getMoves() {
+            std::vector<std::shared_ptr<IMove>> moves;
+            IMoveSet *groundmoves = new GroundMoveSet();
+
+            //Generating numbers to retrieve from firemoveSet
+            vector<int> moveNumbers = generateMoveNumbers(groundmoves->NumberOfMoves() - 1);
+
+            //Generating new moves based on numbers generated
+            for (auto &&number  : moveNumbers) {
+                moves.push_back(groundmoves->getNewMove(number));
+            }
+
+            return moves;
+        }
+    };
+
+    }
 
 #endif //EXAM_MOVECHOOSERS_H

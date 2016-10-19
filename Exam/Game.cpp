@@ -35,96 +35,104 @@ namespace pokemonGame {
         ******************/
 
         MoveChooser<(int) Elements::FIRE> fireMoveChooser;
-        std::vector<std::shared_ptr<IMove>> fireMoves = fireMoveChooser.getMoves();
 
         Pokemon *charmander = new Pokemon("Charmander", elements_.find(Elements::FIRE)->second, randomNumber(1, 100),
-                                          fireMoves);
+                                          fireMoveChooser.getMoves());
         Pokemon *moltres = new Pokemon("Moltres", elements_.find(Elements::FIRE)->second, randomNumber(1, 100),
-                                       fireMoves);
+                                       fireMoveChooser.getMoves());
         Pokemon *charizard = new Pokemon("Charizard", elements_.find(Elements::FIRE)->second, randomNumber(1, 100),
-                                         fireMoves);
+                                         fireMoveChooser.getMoves());
         Pokemon *arcanine = new Pokemon("Arcanine", elements_.find(Elements::FIRE)->second, randomNumber(1, 100),
-                                        fireMoves);
+                                        fireMoveChooser.getMoves());
         Pokemon *magmar = new Pokemon("Magmar", elements_.find(Elements::FIRE)->second, randomNumber(1, 100),
-                                      fireMoves);
+                                      fireMoveChooser.getMoves());
         Pokemon *flareon = new Pokemon("Flareon", elements_.find(Elements::FIRE)->second, randomNumber(1, 100),
-                                       fireMoves);
+                                       fireMoveChooser.getMoves());
 
         /***********************
         *  Lightning Pokemons  *
         ***********************/
         MoveChooser<(int) Elements::LIGHTNING> lightningMoveChooser;
-        std::vector<std::shared_ptr<IMove>> lightningMoves = lightningMoveChooser.getMoves();
+
         Pokemon *pickachu = new Pokemon("Pickachu", elements_.find(Elements::LIGHTNING)->second, randomNumber(1, 100),
-                                        lightningMoves);
+                                        lightningMoveChooser.getMoves());
         Pokemon *electrabuzz = new Pokemon("Electrabuzz", elements_.find(Elements::LIGHTNING)->second,
-                                           randomNumber(1, 100), lightningMoves);
+                                           randomNumber(1, 100), lightningMoveChooser.getMoves());
         Pokemon *magneton = new Pokemon("Magneton", elements_.find(Elements::LIGHTNING)->second, randomNumber(1, 100),
-                                        lightningMoves);
+                                        lightningMoveChooser.getMoves());
         Pokemon *electrode = new Pokemon("Electrode", elements_.find(Elements::LIGHTNING)->second, randomNumber(1, 100),
-                                         lightningMoves);
+                                         lightningMoveChooser.getMoves());
         Pokemon *jolteon = new Pokemon("Jolteon", elements_.find(Elements::LIGHTNING)->second, randomNumber(1, 100),
-                                       lightningMoves);
+                                       lightningMoveChooser.getMoves());
         Pokemon *zapdos = new Pokemon("Zapdos", elements_.find(Elements::LIGHTNING)->second, randomNumber(1, 100),
-                                      lightningMoves);
+                                      lightningMoveChooser.getMoves());
 
         /*******************
         *  Water Pokemons  *
         *******************/
+        MoveChooser<(int) Elements::WATER> waterMoveChooser;
 
         Pokemon *squirtle = new Pokemon("Squirtle", elements_.find(Elements::WATER)->second, randomNumber(1, 100),
-                                        emptyMoves);
+                                        waterMoveChooser.getMoves());
         Pokemon *blastoise = new Pokemon("Blastoise", elements_.find(Elements::WATER)->second, randomNumber(1, 100),
-                                         emptyMoves);
+                                         waterMoveChooser.getMoves());
         Pokemon *vaporeon = new Pokemon("Vaporeon", elements_.find(Elements::WATER)->second, randomNumber(1, 100),
-                                        emptyMoves);
+                                        waterMoveChooser.getMoves());
         Pokemon *lapras = new Pokemon("Lapras", elements_.find(Elements::WATER)->second, randomNumber(1, 100),
-                                      emptyMoves);
+                                      waterMoveChooser.getMoves());
         Pokemon *magikarp = new Pokemon("Magikarp", elements_.find(Elements::WATER)->second, randomNumber(1, 100),
-                                        emptyMoves);
+                                        waterMoveChooser.getMoves());
         Pokemon *omastar = new Pokemon("Omastar", elements_.find(Elements::WATER)->second, randomNumber(1, 100),
-                                       emptyMoves);
+                                       waterMoveChooser.getMoves());
 
         /*******************
         *  Grass Pokemons  *
         *******************/
 
+        MoveChooser<(int) Elements::GRASS> grassMoveChooser;
+
         Pokemon *bulbasaur = new Pokemon("Bulbasaur", elements_.find(Elements::GRASS)->second, randomNumber(1, 100),
-                                         emptyMoves);
+                                         grassMoveChooser.getMoves());
         Pokemon *venosaur = new Pokemon("Venosaur", elements_.find(Elements::GRASS)->second, randomNumber(1, 100),
-                                        emptyMoves);
+                                        grassMoveChooser.getMoves());
         Pokemon *butterfree = new Pokemon("Butterfree", elements_.find(Elements::GRASS)->second, randomNumber(1, 100),
-                                          emptyMoves);
+                                          grassMoveChooser.getMoves());
         Pokemon *victreebel = new Pokemon("Victreebel", elements_.find(Elements::GRASS)->second, randomNumber(1, 100),
-                                          emptyMoves);
+                                          grassMoveChooser.getMoves());
         Pokemon *exeggutor = new Pokemon("Exeggutor", elements_.find(Elements::GRASS)->second, randomNumber(1, 100),
-                                         emptyMoves);
+                                         grassMoveChooser.getMoves());
         Pokemon *scyther = new Pokemon("Scyther", elements_.find(Elements::GRASS)->second, randomNumber(1, 100),
-                                       emptyMoves);
+                                       grassMoveChooser.getMoves());
 
         /********************
         *  Ground Pokemons  *
         ********************/
+        MoveChooser<(int) Elements::GROUND> groundMoveChooser;
+
 
         Pokemon *diglett = new Pokemon("Diglett", elements_.find(Elements::GROUND)->second, randomNumber(1, 100),
-                                       emptyMoves);
+                                       groundMoveChooser.getMoves());
         Pokemon *golem = new Pokemon("Golem", elements_.find(Elements::GROUND)->second, randomNumber(1, 100),
-                                     emptyMoves);
+                                     groundMoveChooser.getMoves());
         Pokemon *machoke = new Pokemon("Machoke", elements_.find(Elements::GROUND)->second, randomNumber(1, 100),
-                                       emptyMoves);
+                                       groundMoveChooser.getMoves());
         Pokemon *kabutops = new Pokemon("Kabutops", elements_.find(Elements::GROUND)->second, randomNumber(1, 100),
-                                        emptyMoves);
+                                        groundMoveChooser.getMoves());
         Pokemon *sandslash = new Pokemon("Sandslash", elements_.find(Elements::GROUND)->second, randomNumber(1, 100),
-                                         emptyMoves);
+                                         groundMoveChooser.getMoves());
         Pokemon *machamp = new Pokemon("Machamp", elements_.find(Elements::GROUND)->second, randomNumber(1, 100),
-                                       emptyMoves);
+                                       groundMoveChooser.getMoves());
 
 
-        IPokemon *debugMon = pickachu;
+        IPokemon *debugMon = bulbasaur;
 
         cout << debugMon->getName() << " moves: " << endl;
 
         debugMon->DisplayMoves();
+
+        cout << butterfree->getName() << " moves: " << endl;
+
+        butterfree->DisplayMoves();
 
 
         std::vector<IPokemon *> pokemons = {charmander, moltres, charizard, arcanine, magmar, flareon,

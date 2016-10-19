@@ -10,15 +10,17 @@
 #include "Move.h"
 #include "Element.h"
 #include "Pokemon.h"
-
+#include "IMoveSet.h"
 
 
 namespace pokemonGame {
 
     using namespace std;
 
-    //For debugging moves
-    class FireMoveSet {
+
+
+
+    class FireMoveSet : public IMoveSet {
     public:
 
         FireMoveSet() {
@@ -35,28 +37,22 @@ namespace pokemonGame {
             //basicMove = ember;
 
             //Inserting moves to container
-            fireMoves = {fireBlast, ember, flamethrower, fireFang, fireSpin, firePunch};
+            moves_ = {fireBlast, ember, flamethrower, fireFang, fireSpin, firePunch};
         }
 
-        int NumberOfMoves() {
-            return fireMoves.size();
-        }
+
 
 
         std::shared_ptr<IMove> getNewMove(int index) {
-            if (index >= 0 && index < fireMoves.size()) { return fireMoves[index]; }
-            else return basicMove;
+            if (index >= 0 && index < moves_.size()) { return moves_[index]; }
+            else return basicMove_;
 
         }
 
-    private:
-        std::vector<std::shared_ptr<IMove>> fireMoves;
-        std::shared_ptr<IMove> basicMove;
+
     };
 
-
-
-    class LightningMoveSet {
+    class LightningMoveSet : public IMoveSet{
     public:
 
         LightningMoveSet() {
@@ -73,23 +69,113 @@ namespace pokemonGame {
             //basicMove = ember;
 
             //Inserting moves to container
-            lighningMoves = {thunderbolt, thunder, thundershock, thunderpunch, charge, voltTackle};
-        }
-
-        int NumberOfMoves() {
-            return lighningMoves.size();
+            moves_ = {thunderbolt, thunder, thundershock, thunderpunch, charge, voltTackle};
         }
 
 
         std::shared_ptr<IMove> getNewMove(int index) {
-            if (index >= 0 && index < lighningMoves.size()) { return lighningMoves[index]; }
-            else return basicMove;
+            if (index >= 0 && index < moves_.size()) { return moves_[index]; }
+            else return basicMove_;
 
         }
 
-    private:
-        std::vector<std::shared_ptr<IMove>> lighningMoves;
-        std::shared_ptr<IMove> basicMove;
+
+    };
+
+    class GrassMoveSet : public IMoveSet{
+    public:
+
+        GrassMoveSet() {
+            //Creating moves to put in container
+            Grass grass;
+            shared_ptr <IMove> razorLeafs = make_shared<AttackMove>(grass, "Razor Leafs", 25);
+            shared_ptr <IMove> megaDrain = make_shared<AttackMove>(grass, "Thunder", 30);
+            shared_ptr <IMove> absorb = make_shared<AttackMove>(grass, "Absorb", 15);
+            shared_ptr <IMove> solarBeam = make_shared<AttackMove>(grass, "Solar Beam", 80);
+            shared_ptr <IMove> vineWhip = make_shared<AttackMove>(grass, "Vine Whip", 45);
+            shared_ptr <IMove> leafBlade = make_shared<AttackMove>(grass, "Leaf Blade", 50);
+
+            //Creating basic move
+            //basicMove = ember;
+
+            //Inserting moves to container
+            moves_ = {razorLeafs, megaDrain, absorb, solarBeam, vineWhip, leafBlade};
+        }
+
+
+
+
+        std::shared_ptr<IMove> getNewMove(int index) {
+            if (index >= 0 && index < moves_.size()) { return moves_[index]; }
+            else return basicMove_;
+
+        }
+
+
+    };
+
+    class WaterMoveSet : public IMoveSet{
+    public:
+
+        WaterMoveSet() {
+            //Creating moves to put in container
+            Water water;
+            shared_ptr <IMove> watergun = make_shared<AttackMove>(water, "Water gun", 15);
+            shared_ptr <IMove> hydroPump = make_shared<AttackMove>(water, "Hydro pump", 80);
+            shared_ptr <IMove> bubbleBeam = make_shared<AttackMove>(water, "Bubble beam", 40);
+            shared_ptr <IMove> bubble = make_shared<AttackMove>(water, "Bubble", 25);
+            shared_ptr <IMove> aquaTail = make_shared<AttackMove>(water, "Aqua tail", 30);
+            shared_ptr <IMove> surf = make_shared<AttackMove>(water, "Surf", 50);
+
+            //Creating basic move
+            //basicMove = ember;
+
+            //Inserting moves to container
+            moves_ = {watergun, hydroPump, bubbleBeam, bubble, aquaTail, surf};
+        }
+
+
+
+
+        std::shared_ptr<IMove> getNewMove(int index) {
+            if (index >= 0 && index < moves_.size()) { return moves_[index]; }
+            else return basicMove_;
+
+        }
+
+
+    };
+
+    class GroundMoveSet : public IMoveSet{
+    public:
+
+        GroundMoveSet() {
+            //Creating moves to put in container
+            Ground ground;
+            shared_ptr <IMove> earthquake = make_shared<AttackMove>(ground, "Earthquake", 100);
+            shared_ptr <IMove> dig = make_shared<AttackMove>(ground, "Dig", 50);
+            shared_ptr <IMove> mudShot = make_shared<AttackMove>(ground, "Mud shot", 35);
+            shared_ptr <IMove> bullDoze = make_shared<AttackMove>(ground, "Bulldoze", 25);
+            shared_ptr <IMove> mudSlap = make_shared<AttackMove>(ground, "Mud slap", 15);
+            shared_ptr <IMove> fissure = make_shared<AttackMove>(ground, "Fissure", 40);
+
+            //Creating basic move
+            //basicMove = ember;
+
+            //Inserting moves to container
+            moves_ = {earthquake, dig, mudShot, bullDoze, mudSlap, fissure};
+        }
+
+
+
+
+        std::shared_ptr<IMove> getNewMove(int index) {
+            if (index >= 0 && index < moves_.size()) { return moves_[index]; }
+            else return basicMove_;
+
+        }
+
+
     };
 }
 
