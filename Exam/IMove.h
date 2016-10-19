@@ -12,7 +12,7 @@ namespace pokemonGame {
     class IMove {
     public:
         IMove() = default;
-        IMove(Element& element) : element_(element){}
+        IMove(std::shared_ptr<Element> element) : element_(element){}
 
         virtual ~IMove(){};
 
@@ -27,7 +27,7 @@ namespace pokemonGame {
     protected:
 
         bool isAttack_;
-        Element& element_;
+        std::shared_ptr<Element> element_;
     };
 }
 #endif //EXAM_IMOVE_H

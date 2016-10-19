@@ -25,7 +25,7 @@ namespace pokemonGame {
 
         FireMoveSet() {
             //Creating moves to put in container
-            Fire fire;
+            shared_ptr<Element> fire = make_shared<Fire>();
             shared_ptr <IMove> fireBlast = make_shared<AttackMove>(fire, "Fire Blast", 80);
             shared_ptr <IMove> ember = make_shared<AttackMove>(fire, "Ember", 15);
             shared_ptr <IMove> flamethrower = make_shared<AttackMove>(fire, "Flamethrower", 50);
@@ -57,7 +57,7 @@ namespace pokemonGame {
 
         LightningMoveSet() {
             //Creating moves to put in container
-            Lightning lightning;
+            shared_ptr<Element> lightning = make_shared<Lightning>();
             shared_ptr <IMove> thunderbolt = make_shared<AttackMove>(lightning, "Thunderbolt", 80);
             shared_ptr <IMove> thunder = make_shared<AttackMove>(lightning, "Thunder", 15);
             shared_ptr <IMove> thundershock = make_shared<AttackMove>(lightning, "Thundershock", 50);
@@ -87,7 +87,7 @@ namespace pokemonGame {
 
         GrassMoveSet() {
             //Creating moves to put in container
-            Grass grass;
+            shared_ptr<Element> grass = make_shared<Grass>();
             shared_ptr <IMove> razorLeafs = make_shared<AttackMove>(grass, "Razor Leafs", 25);
             shared_ptr <IMove> megaDrain = make_shared<AttackMove>(grass, "Thunder", 30);
             shared_ptr <IMove> absorb = make_shared<AttackMove>(grass, "Absorb", 15);
@@ -119,7 +119,7 @@ namespace pokemonGame {
 
         WaterMoveSet() {
             //Creating moves to put in container
-            Water water;
+            shared_ptr<Element> water = make_shared<Water>();
             shared_ptr <IMove> watergun = make_shared<AttackMove>(water, "Water gun", 15);
             shared_ptr <IMove> hydroPump = make_shared<AttackMove>(water, "Hydro pump", 80);
             shared_ptr <IMove> bubbleBeam = make_shared<AttackMove>(water, "Bubble beam", 40);
@@ -151,7 +151,7 @@ namespace pokemonGame {
 
         GroundMoveSet() {
             //Creating moves to put in container
-            Ground ground;
+            shared_ptr<Element> ground = make_shared<Ground>();
             shared_ptr <IMove> earthquake = make_shared<AttackMove>(ground, "Earthquake", 100);
             shared_ptr <IMove> dig = make_shared<AttackMove>(ground, "Dig", 50);
             shared_ptr <IMove> mudShot = make_shared<AttackMove>(ground, "Mud shot", 35);
