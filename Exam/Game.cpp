@@ -369,5 +369,9 @@ namespace pokemonGame {
         player_ = player;
     }
 
+    void Game::setShop(Shop *shop) {
+        shop_ = shop;
+    }
+
 
 }
