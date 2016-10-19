@@ -28,7 +28,7 @@ public:
 
     void setPokemonsSeen(std::vector<IPokemon*> &pokemons);// TODO DEBUG
 private:
-    std::vector<IItem> items_{};
+    std::vector<IItem*> items_{};
     std::vector<IPokemon*> caughtPokemons_{};
     std::vector<IPokemon*> seenPokemons_{};
     IPokemon* favoritePokemon_{nullptr};

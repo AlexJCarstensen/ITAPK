@@ -10,6 +10,8 @@
 #include "Element.h"
 #include "Pokemon.h"
 #include "Player.h"
+#include "Shop.h"
+
 namespace pokemonGame {
 
 
@@ -25,6 +27,7 @@ namespace pokemonGame {
         void enterWorld();
         void setGameState(GameState* gameState);
         void setPlayer(Player* player);
+        void setShop(Shop* shop);
         void encounterPokemon();
         std::vector<IPokemon*> getPokemons(); //TODO debug
         void setPokemons(std::vector<IPokemon*> pokemons); //TODO debug
@@ -46,6 +49,7 @@ namespace pokemonGame {
         std::vector<IPokemon*> pokemons_;
         GameState* gameState_;
         Player* player_;
+        Shop* shop_;
         static Game* instance_;
 
 

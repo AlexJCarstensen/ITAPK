@@ -6,13 +6,13 @@
 #include "pokemonState.h"
 #include "NoFavoritePokemonException.h"
 
-namespace pokemonGame
-{
+namespace pokemonGame {
 
 
-    Player::~Player()
-    {
-
+    Player::~Player() {
+        for (auto &&item :items_) {
+            delete item;
+        }
     }
 
     void Player::walkIntoTheWilderness()
