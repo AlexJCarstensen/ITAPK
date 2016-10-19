@@ -28,7 +28,7 @@ private:
     std::vector<Item> items_;
     std::vector<IPokemon*> caughtPokemons_;
     std::vector<IPokemon*> seenPokemons_;
-    GameState* gameState_;
+    GameState* gameState_; //TODO maybe let game handle the state.. set up signal instead
 
 };
 }

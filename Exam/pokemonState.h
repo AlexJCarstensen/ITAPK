@@ -37,7 +37,6 @@ namespace pokemonGame
 
     struct EvEncounter : sc::event<EvEncounter>
     {
-        EvEncounter()  {}
     };
     struct EvFlee : sc::event<EvFlee>
     {
@@ -92,34 +91,20 @@ namespace pokemonGame
 
     struct Roaming : sc::simple_state<Roaming, Playing>
     {
-        typedef boost::mpl::list<sc::custom_reaction<EvEncounter>,
-                sc::transition<EvEncounter, Encountering> > reactions;
+        typedef boost::mpl::list<sc::transition<EvEncounter, Encountering> > reactions;
         PRINT_ENTRY_EXIT(1, Roaming)
-        sc::result react(const EvEncounter& ev)
-        {
 
-            boost::signals2::signal<void ()> sig;
-            sig.connect(std::bind(&Game::encounterPokemon, Game::getInstance()));
-            sig();
-            return transit<Encountering>();
-        }
     };
 
 
     struct Encountering : sc::simple_state<Encountering, Playing, Battling>
     {
-
-
-
-
         typedef boost::mpl::list<sc::transition<EvFlee, Roaming>,
                 sc::transition<EvCatch, Roaming>,
                 sc::transition<EvFaint, Roaming>
         > reactions;
 
         PRINT_ENTRY_EXIT(1, Encountering)
-
-
     };
 
     struct Battling : sc::simple_state<Battling, Encountering>

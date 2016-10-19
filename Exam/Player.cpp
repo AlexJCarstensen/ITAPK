@@ -9,7 +9,6 @@ namespace pokemonGame
 
     Player::Player(GameState *gameState) : gameState_(gameState)
     {
-
     }
     Player::~Player()
     {
@@ -18,8 +17,6 @@ namespace pokemonGame
 
     void Player::walkIntoTheWilderness()
     {
-        //TODO do some randomizing  with encountering
-
         auto encounter = [](){
             std::random_device rd;
             std::mt19937 eng(rd());
@@ -28,7 +25,9 @@ namespace pokemonGame
         };
         if(encounter() > 50)
         {
-            gameState_->process_event(EvEncounter());
+            boost::signals2::signal<void ()> sig;
+            sig.connect(std::bind(&Game::encounterPokemon, Game::getInstance()));
+            sig();
             //TODO put these somewhere else.
             gameState_->process_event(EvBallThrow());
             gameState_->process_event(EvCatch());

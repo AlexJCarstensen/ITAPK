@@ -38,57 +38,57 @@ namespace pokemonGame {
         MoveChooser<(int)Elements::FIRE> fireMoveChooser;
         std::vector<std::shared_ptr<IMove>> fireMoves = fireMoveChooser.getMoves();
 
-        Pokemon *charmander = new Pokemon("Charmander", elements_.find(Elements::FIRE)->second, randomLvl(), fireMoves);
-        Pokemon *moltres = new Pokemon("Moltres", elements_.find(Elements::FIRE)->second, randomLvl(),fireMoves);
-        Pokemon *charizard = new Pokemon("Charizard", elements_.find(Elements::FIRE)->second, randomLvl(), fireMoves);
-        Pokemon *arcanine = new Pokemon("Arcanine", elements_.find(Elements::FIRE)->second, randomLvl(), fireMoves);
-        Pokemon *magmar = new Pokemon("Magmar", elements_.find(Elements::FIRE)->second, randomLvl(), fireMoves);
-        Pokemon *flareon = new Pokemon("Flareon", elements_.find(Elements::FIRE)->second, randomLvl(), fireMoves);
+        Pokemon *charmander = new Pokemon("Charmander", elements_.find(Elements::FIRE)->second, randomLvl(1,100), fireMoves);
+        Pokemon *moltres = new Pokemon("Moltres", elements_.find(Elements::FIRE)->second, randomLvl(1,100),fireMoves);
+        Pokemon *charizard = new Pokemon("Charizard", elements_.find(Elements::FIRE)->second, randomLvl(1,100), fireMoves);
+        Pokemon *arcanine = new Pokemon("Arcanine", elements_.find(Elements::FIRE)->second, randomLvl(1,100), fireMoves);
+        Pokemon *magmar = new Pokemon("Magmar", elements_.find(Elements::FIRE)->second, randomLvl(1,100), fireMoves);
+        Pokemon *flareon = new Pokemon("Flareon", elements_.find(Elements::FIRE)->second, randomLvl(1,100), fireMoves);
 
         /***********************
         *  Lightning Pokemons  *
         ***********************/
         MoveChooser<(int)Elements::LIGHTNING> lightningMoveChooser;
         std::vector<std::shared_ptr<IMove>> lightningMoves = lightningMoveChooser.getMoves();
-        Pokemon *pickachu = new Pokemon("Pickachu", elements_.find(Elements::LIGHTNING)->second, randomLvl(), lightningMoves);
-        Pokemon *electrabuzz = new Pokemon("Electrabuzz", elements_.find(Elements::LIGHTNING)->second, randomLvl(),lightningMoves);
-        Pokemon *magneton = new Pokemon("Magneton", elements_.find(Elements::LIGHTNING)->second, randomLvl(), lightningMoves);
-        Pokemon *electrode = new Pokemon("Electrode", elements_.find(Elements::LIGHTNING)->second, randomLvl(), lightningMoves);
-        Pokemon *jolteon = new Pokemon("Jolteon", elements_.find(Elements::LIGHTNING)->second, randomLvl(), lightningMoves);
-        Pokemon *zapdos = new Pokemon("Zapdos", elements_.find(Elements::LIGHTNING)->second, randomLvl(), lightningMoves);
+        Pokemon *pickachu = new Pokemon("Pickachu", elements_.find(Elements::LIGHTNING)->second, randomLvl(1,100), lightningMoves);
+        Pokemon *electrabuzz = new Pokemon("Electrabuzz", elements_.find(Elements::LIGHTNING)->second, randomLvl(1,100),lightningMoves);
+        Pokemon *magneton = new Pokemon("Magneton", elements_.find(Elements::LIGHTNING)->second, randomLvl(1,100), lightningMoves);
+        Pokemon *electrode = new Pokemon("Electrode", elements_.find(Elements::LIGHTNING)->second, randomLvl(1,100), lightningMoves);
+        Pokemon *jolteon = new Pokemon("Jolteon", elements_.find(Elements::LIGHTNING)->second, randomLvl(1,100), lightningMoves);
+        Pokemon *zapdos = new Pokemon("Zapdos", elements_.find(Elements::LIGHTNING)->second, randomLvl(1,100), lightningMoves);
 
         /*******************
         *  Water Pokemons  *
         *******************/
 
-        Pokemon *squirtle = new Pokemon("Squirtle", elements_.find(Elements::WATER)->second, randomLvl(),emptyMoves);
-        Pokemon *blastoise = new Pokemon("Blastoise", elements_.find(Elements::WATER)->second, randomLvl(), emptyMoves);
-        Pokemon *vaporeon = new Pokemon("Vaporeon", elements_.find(Elements::WATER)->second, randomLvl(), emptyMoves);
-        Pokemon *lapras = new Pokemon("Lapras", elements_.find(Elements::WATER)->second, randomLvl(), emptyMoves);
-        Pokemon *magikarp = new Pokemon("Magikarp", elements_.find(Elements::WATER)->second, randomLvl(), emptyMoves);
-        Pokemon *omastar = new Pokemon("Omastar", elements_.find(Elements::WATER)->second, randomLvl(),emptyMoves);
+        Pokemon *squirtle = new Pokemon("Squirtle", elements_.find(Elements::WATER)->second, randomLvl(1,100),emptyMoves);
+        Pokemon *blastoise = new Pokemon("Blastoise", elements_.find(Elements::WATER)->second, randomLvl(1,100), emptyMoves);
+        Pokemon *vaporeon = new Pokemon("Vaporeon", elements_.find(Elements::WATER)->second, randomLvl(1,100), emptyMoves);
+        Pokemon *lapras = new Pokemon("Lapras", elements_.find(Elements::WATER)->second, randomLvl(1,100), emptyMoves);
+        Pokemon *magikarp = new Pokemon("Magikarp", elements_.find(Elements::WATER)->second, randomLvl(1,100), emptyMoves);
+        Pokemon *omastar = new Pokemon("Omastar", elements_.find(Elements::WATER)->second, randomLvl(1,100),emptyMoves);
 
         /*******************
         *  Grass Pokemons  *
         *******************/
 
-        Pokemon *bulbasaur = new Pokemon("Bulbasaur", elements_.find(Elements::GRASS)->second, randomLvl(), emptyMoves);
-        Pokemon *venosaur = new Pokemon("Venosaur", elements_.find(Elements::GRASS)->second, randomLvl(), emptyMoves);
-        Pokemon *butterfree = new Pokemon("Butterfree", elements_.find(Elements::GRASS)->second, randomLvl(), emptyMoves);
-        Pokemon *victreebel = new Pokemon("Victreebel", elements_.find(Elements::GRASS)->second, randomLvl(),emptyMoves);
-        Pokemon *exeggutor = new Pokemon("Exeggutor", elements_.find(Elements::GRASS)->second, randomLvl(), emptyMoves);
-        Pokemon *scyther = new Pokemon("Scyther", elements_.find(Elements::GRASS)->second, randomLvl(),emptyMoves);
+        Pokemon *bulbasaur = new Pokemon("Bulbasaur", elements_.find(Elements::GRASS)->second,randomLvl(1,100), emptyMoves);
+        Pokemon *venosaur = new Pokemon("Venosaur", elements_.find(Elements::GRASS)->second, randomLvl(1,100), emptyMoves);
+        Pokemon *butterfree = new Pokemon("Butterfree", elements_.find(Elements::GRASS)->second, randomLvl(1,100), emptyMoves);
+        Pokemon *victreebel = new Pokemon("Victreebel", elements_.find(Elements::GRASS)->second, randomLvl(1,100),emptyMoves);
+        Pokemon *exeggutor = new Pokemon("Exeggutor", elements_.find(Elements::GRASS)->second, randomLvl(1,100), emptyMoves);
+        Pokemon *scyther = new Pokemon("Scyther", elements_.find(Elements::GRASS)->second, randomLvl(1,100),emptyMoves);
 
         /********************
         *  Ground Pokemons  *
         ********************/
 
-        Pokemon *diglett = new Pokemon("Diglett", elements_.find(Elements::GROUND)->second, randomLvl(), emptyMoves);
-        Pokemon *golem = new Pokemon("Golem", elements_.find(Elements::GROUND)->second, randomLvl(), emptyMoves);
-        Pokemon *machoke = new Pokemon("Machoke", elements_.find(Elements::GROUND)->second, randomLvl(), emptyMoves);
-        Pokemon *kabutops = new Pokemon("Kabutops", elements_.find(Elements::GROUND)->second, randomLvl(), emptyMoves);
-        Pokemon *sandslash = new Pokemon("Sandslash", elements_.find(Elements::GROUND)->second, randomLvl(), emptyMoves);
-        Pokemon *machamp = new Pokemon("Machamp", elements_.find(Elements::GROUND)->second, randomLvl(),emptyMoves);
+        Pokemon *diglett = new Pokemon("Diglett", elements_.find(Elements::GROUND)->second, randomLvl(1,100), emptyMoves);
+        Pokemon *golem = new Pokemon("Golem", elements_.find(Elements::GROUND)->second, randomLvl(1,100), emptyMoves);
+        Pokemon *machoke = new Pokemon("Machoke", elements_.find(Elements::GROUND)->second, randomLvl(1,100), emptyMoves);
+        Pokemon *kabutops = new Pokemon("Kabutops", elements_.find(Elements::GROUND)->second, randomLvl(1,100), emptyMoves);
+        Pokemon *sandslash = new Pokemon("Sandslash", elements_.find(Elements::GROUND)->second, randomLvl(1,100), emptyMoves);
+        Pokemon *machamp = new Pokemon("Machamp", elements_.find(Elements::GROUND)->second, randomLvl(1,100),emptyMoves);
 
 
         IPokemon *debugMon = pickachu;
@@ -145,11 +145,11 @@ namespace pokemonGame {
         gameState_->initiate();
     }
 
-    int Game::randomLvl()
+    int Game::randomLvl(int min, int max)
     {
         random_device rd;
         mt19937 eng(rd());
-        uniform_int_distribution<> distr(1, 100);
+        uniform_int_distribution<> distr(min, max);
         return distr(eng);
     }
 
@@ -244,9 +244,19 @@ namespace pokemonGame {
 
     void Game::encounterPokemon() {
 
+        gameState_->process_event(EvEncounter());
+        IPokemon* PokemonPtr;
 
-        std::cout << "Wild " << "DO RANDOM POKEMON NOT CAUGHT!" << " encountered" << std::endl;
-        //std::cout << "Wild " << "test" << " encountered" << std::endl;
+        auto getRandomPokemon = [&PokemonPtr, this]{
+            PokemonPtr = pokemons_[randomLvl(0,pokemons_.size()-1)];
+
+            while(PokemonPtr->isCaught())
+                PokemonPtr = pokemons_[randomLvl(0,pokemons_.size()-1)];
+
+            return PokemonPtr;
+        };
+
+        std::cout << "Wild " << getRandomPokemon()->getName() << " encountered" << std::endl;
 
     }
 
