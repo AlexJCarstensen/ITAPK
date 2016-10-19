@@ -12,7 +12,7 @@ int main()
     std::unique_ptr<GameState> gameStatePtr (new GameState());
     Game::getInstance()->setGameState(gameStatePtr.get());
     Game::getInstance()->startGame();
-    std::unique_ptr<Player> playerPtr (new Player(gameStatePtr.get()));
+    std::unique_ptr<Player> playerPtr (new Player());
     Game::getInstance()->setPlayer(playerPtr.get());
     Game::getInstance()->enterWorld();
 

@@ -15,20 +15,23 @@ class Player
 {
 public:
     Player() = default;
-    Player(GameState *gameState);
     virtual ~Player();
     void walkIntoTheWilderness();
     void goToTheShop();
     void lookInPokedex();
-    void checkYourPokemons();
+    bool checkYourPokemons();
     void checkYourItems();
+    void setFavoritePokemon(std::string nameOfPokemon);
+    void fight(IPokemon * wildPokemon);
+    IPokemon* getFavoritePokemon() const;
+
 
     void setPokemonsSeen(std::vector<IPokemon*> &pokemons);// TODO DEBUG
 private:
-    std::vector<Item> items_;
-    std::vector<IPokemon*> caughtPokemons_;
-    std::vector<IPokemon*> seenPokemons_;
-    GameState* gameState_; //TODO maybe let game handle the state.. set up signal instead
+    std::vector<Item> items_{};
+    std::vector<IPokemon*> caughtPokemons_{};
+    std::vector<IPokemon*> seenPokemons_{};
+    IPokemon* favoritePokemon_{nullptr};
 
 };
 }

@@ -14,14 +14,28 @@ namespace pokemonGame {
 
     public:
         IPokemon() = default;
-        virtual ~IPokemon(){};
-        virtual int getHealth() = 0;
-        virtual int setHealth(size_t newHealth) = 0;
-        virtual std::string getName() = 0;
-        virtual Element* getElement() = 0;
-        virtual std::vector<std::string> getMoves() = 0;
-        virtual void DisplayMoves() = 0;
+
+        virtual ~IPokemon() {};
+
+        virtual int getCurrentHealth() const =0;
+
+        virtual int getHealth() const = 0;
+
+        virtual int setCurrentHealth(size_t newHealth) = 0;
+
+        virtual size_t getLvl() const = 0;
+
+        virtual std::string getName() const = 0;
+
+        virtual Element *getElement() const = 0;
+
+        virtual std::vector<std::string> getMoves()  = 0;
+
+        virtual std::vector<int>DisplayMoves() = 0;
+
         virtual bool isCaught() = 0;
+
+        virtual void printPokemon() = 0;
 
     };
 }

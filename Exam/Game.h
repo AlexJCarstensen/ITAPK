@@ -38,7 +38,7 @@ namespace pokemonGame {
         void initializeElements();
         void initializeMoves();
         void initializeStateMachine();
-        int randomLvl(int min, int max);
+        int randomNumber(int min, int max);
 
 
     private:
