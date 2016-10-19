@@ -297,7 +297,7 @@ namespace pokemonGame {
                 cout << "The Wild Pokemon "  << flush;
                 PokemonPtr->printPokemon();
                 cout << endl << endl;
-                if (player_->getFavoritePokemon()) {
+                if (!player_->getFavoritePokemon()) {
                     cout << "Your " << flush;
                     player_->getFavoritePokemon()->printPokemon();
                     cout << endl << endl;
@@ -317,10 +317,8 @@ namespace pokemonGame {
                 cout << endl;
                 switch (choice) {
                     case '1': {
-//                        player_->fight(PokemonPtr);
-//
-//                        if (!player_->getFavoritePokemon())
-//                            player_->fight(PokemonPtr);
+                      if (!player_->getFavoritePokemon())
+                            player_->fight(PokemonPtr);
                         break;
                     }
 
@@ -340,7 +338,7 @@ namespace pokemonGame {
                     }
 
                     case '4': {
-                        //TODO signal
+                        gameState_->process_event(EvFlee(false));
                         battling = false;
                         break;
                     }

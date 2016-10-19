@@ -31,7 +31,7 @@ namespace pokemonGame {
 
         virtual std::vector<std::string> getMoves()  = 0;
 
-        virtual std::vector<int>DisplayMoves() = 0;
+        virtual int DisplayMoves() = 0;
 
         virtual bool isCaught() = 0;
 

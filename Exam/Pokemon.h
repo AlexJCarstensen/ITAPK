@@ -50,15 +50,12 @@ namespace pokemonGame {
             return moveNames;
         }
 
-        vector<int> DisplayMoves() {
-            int number = 1;
-            vector<int> numbers;
+        int DisplayMoves() {
+            int number = 0;
             for (auto &&move : moves_) {
-                cout << number << ". " << move.get()->getMoveName() << endl;
-                numbers.push_back(number);
-                number++;
+                cout << ++number << ". " << move.get()->getMoveName() << endl;
             }
-            return numbers;
+            return number;
         }
 
 
@@ -88,11 +85,7 @@ namespace pokemonGame {
         bool caught;
     };
 
-//    std::ostream &operator<<(std::ostream &os, const Pokemon &pokemon) {
-//        os << pokemon.getName() << "\t" << "Lvl: " << pokemon.getLvl();
-//        os << pokemon.getName() << " has " << pokemon.getCurrentHealth() << " out of " << pokemon.getHealth();
-//        return os;
-//    }
+
 }
 
 #endif //EXAM_POKEMON_H

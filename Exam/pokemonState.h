@@ -40,6 +40,15 @@ namespace pokemonGame
     };
     struct EvFlee : sc::event<EvFlee>
     {
+        bool didPokemonFlee_;
+
+        EvFlee(const bool didPokemonFlee) : didPokemonFlee_(didPokemonFlee) {
+            if(didPokemonFlee)
+                std::cout << "Pokemon fled" << std::endl;
+            else
+                std::cout << "Safely got away" << std::endl;
+
+        }
     };
     struct EvCatch : sc::event<EvCatch>
     {
@@ -91,7 +100,7 @@ namespace pokemonGame
 
     struct Roaming : sc::simple_state<Roaming, Playing>
     {
-        typedef boost::mpl::list<sc::transition<EvEncounter, Encountering> > reactions;
+        typedef sc::transition<EvEncounter, Encountering>  reactions;
         PRINT_ENTRY_EXIT(1, Roaming)
 
     };

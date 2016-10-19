@@ -113,16 +113,23 @@ namespace pokemonGame
 
         }catch(NoFavoritePokemonException &ex)
         {
+            //TODO remove cout when final
             cout << ex.what() << endl << endl;
 
         }
 
     }
 
-//    void Player::fight(IPokemon * wildPokemon) {
-//        vector<int> numberOfMoves = favoritePokemon_->DisplayMoves();
+    void Player::fight(IPokemon * wildPokemon) {
+//        int numberOfMoves = favoritePokemon_->DisplayMoves();
 //        cout << "Your choice: " << flush;
-//        int choice;
+//        unsigned int choice;
+//
+//        if(choice > numberOfMoves)
+//            cout << "Invalid input.  Try again: ";
+//        else {
+//             favoritePokemon_->doMove;
+//        }
 //        while(!(cin >> choice)){
 //            cin.clear();
 //            for (auto && moves :numberOfMoves ) {
@@ -164,7 +171,7 @@ namespace pokemonGame
 ////                break;
 ////            }
 //
-//    }
+    }
 
 
 }
