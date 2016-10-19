@@ -88,7 +88,7 @@ namespace pokemonGame
 
     };
 
-    class Revive
+    class Revive : public IItem
     {
     public:
 
