@@ -35,7 +35,12 @@ namespace pokemonGame {
 
         virtual bool isCaught() = 0;
 
+        virtual void setCaught(bool isCaught) = 0;
+
         virtual void printPokemon() = 0;
+
+        virtual bool isFainted() = 0;
+
 
     };
 }

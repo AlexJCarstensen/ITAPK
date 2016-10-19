@@ -30,7 +30,19 @@ namespace pokemonGame {
 
         int getHealth() const { return health_; }
 
-        int setCurrentHealth(size_t newHealth) { currentHealth_ = newHealth; }
+        int setCurrentHealth(size_t newHealth)
+        {
+            currentHealth_ = newHealth;
+
+            if( currentHealth_ <= 0)
+            {
+                currentHealth_ = 0;
+                fainted_ = true;
+            } else
+            {
+                fainted_ = false;
+            }
+        }
 
         size_t getLvl() const { return lvl_; }
 
@@ -64,12 +76,16 @@ namespace pokemonGame {
 
         bool isCaught() { return caught; }
 
+        void setCaught(bool isCaught){caught = isCaught;}
+
 
         bool operator==(Pokemon &other) const {
             if (this->element_ == other.element_)
                 return true;
             return false;
         }
+
+        bool isFainted(){return fainted_;}
 
         void printPokemon()
         {
@@ -86,6 +102,7 @@ namespace pokemonGame {
         size_t currentHealth_{};
         std::vector<std::shared_ptr<IMove>> moves_;
         bool caught;
+        bool fainted_{false};
     };
 
 //    std::ostream &operator<<(std::ostream &os, const Pokemon &pokemon) {

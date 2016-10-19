@@ -67,7 +67,7 @@ namespace pokemonGame
 
         for (auto &&item : items_)
         {
-            std::cout << item.getItemName() <<": "<< item.getItemsCount() << std::endl;
+
 
         }
     }
