@@ -16,10 +16,17 @@ namespace pokemonGame {
 
         virtual ~IMove(){};
 
-        virtual void doMove(IPokemon& pokemon) = 0;
+        virtual void doMove(IPokemon *pokemon) = 0;
         virtual std::string getMoveName() = 0;
 
+
+        bool isAttack(){return isAttack_;}
+
+
+
     protected:
+
+        bool isAttack_;
         Element& element_;
     };
 }

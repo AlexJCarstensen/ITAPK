@@ -30,8 +30,8 @@ namespace pokemonGame {
         void setShop(Shop* shop);
         void enteredShop();
         void encounterPokemon();
-        std::vector<IPokemon*> getPokemons(); //TODO debug
-        void setPokemons(std::vector<IPokemon*> pokemons); //TODO debug
+        std::vector<shared_ptr<IPokemon>> getPokemons(); //TODO debug
+        void setPokemons(std::vector<shared_ptr<IPokemon>> pokemons); //TODO debug
         std::map<Elements, std::shared_ptr<Element>> seeElements();//TODO debug
     protected:
         Game() = default;
@@ -40,14 +40,13 @@ namespace pokemonGame {
     private:
         void populateWorldWithPokemons();
         void initializeElements();
-        void initializeMoves();
         void initializeStateMachine();
         int randomNumber(int min, int max);
 
 
     private:
         std::map<Elements, std::shared_ptr<Element> > elements_{};
-        std::vector<IPokemon*> pokemons_;
+        std::vector<shared_ptr<IPokemon>> pokemons_;
         GameState* gameState_;
         Player* player_;
         Shop* shop_;

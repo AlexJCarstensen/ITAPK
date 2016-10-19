@@ -17,7 +17,6 @@ namespace pokemonGame {
     void Game::startGame() {
 
         initializeElements();
-        initializeMoves();
         populateWorldWithPokemons();
         initializeStateMachine();
 //        for (auto &&item : this->elements_)
@@ -35,18 +34,18 @@ namespace pokemonGame {
         ******************/
 
         MoveChooser<(int) Elements::FIRE> fireMoveChooser;
-
-        Pokemon *charmander = new Pokemon("Charmander", elements_.find(Elements::FIRE)->second, randomNumber(1, 100),
-                                          fireMoveChooser.getMoves());
-        Pokemon *moltres = new Pokemon("Moltres", elements_.find(Elements::FIRE)->second, randomNumber(1, 100),
-                                       fireMoveChooser.getMoves());
-        Pokemon *charizard = new Pokemon("Charizard", elements_.find(Elements::FIRE)->second, randomNumber(1, 100),
-                                         fireMoveChooser.getMoves());
-        Pokemon *arcanine = new Pokemon("Arcanine", elements_.find(Elements::FIRE)->second, randomNumber(1, 100),
+        shared_ptr<IPokemon> charmander = make_shared<Pokemon>("Charmander", elements_.find(Elements::FIRE)->second, randomNumber(1, 100),
                                         fireMoveChooser.getMoves());
-        Pokemon *magmar = new Pokemon("Magmar", elements_.find(Elements::FIRE)->second, randomNumber(1, 100),
+
+          shared_ptr<IPokemon> moltres = make_shared<Pokemon>("Moltres", elements_.find(Elements::FIRE)->second, randomNumber(1, 100),
+                                       fireMoveChooser.getMoves());
+        shared_ptr<IPokemon> charizard = make_shared<Pokemon>("Charizard", elements_.find(Elements::FIRE)->second, randomNumber(1, 100),
+                                         fireMoveChooser.getMoves());
+        shared_ptr<IPokemon> arcanine = make_shared<Pokemon>("Arcanine", elements_.find(Elements::FIRE)->second, randomNumber(1, 100),
+                                        fireMoveChooser.getMoves());
+        shared_ptr<IPokemon> magmar = make_shared<Pokemon>("Magmar", elements_.find(Elements::FIRE)->second, randomNumber(1, 100),
                                       fireMoveChooser.getMoves());
-        Pokemon *flareon = new Pokemon("Flareon", elements_.find(Elements::FIRE)->second, randomNumber(1, 100),
+        shared_ptr<IPokemon> flareon = make_shared<Pokemon>("Flareon", elements_.find(Elements::FIRE)->second, randomNumber(1, 100),
                                        fireMoveChooser.getMoves());
 
         /***********************
@@ -54,17 +53,17 @@ namespace pokemonGame {
         ***********************/
         MoveChooser<(int) Elements::LIGHTNING> lightningMoveChooser;
 
-        Pokemon *pickachu = new Pokemon("Pickachu", elements_.find(Elements::LIGHTNING)->second, randomNumber(1, 100),
+        shared_ptr<IPokemon> pickachu = make_shared<Pokemon>("Pikachu", elements_.find(Elements::LIGHTNING)->second, randomNumber(1, 100),
                                         lightningMoveChooser.getMoves());
-        Pokemon *electrabuzz = new Pokemon("Electrabuzz", elements_.find(Elements::LIGHTNING)->second,
+        shared_ptr<IPokemon> electrabuzz = make_shared<Pokemon>("Electrabuzz", elements_.find(Elements::LIGHTNING)->second,
                                            randomNumber(1, 100), lightningMoveChooser.getMoves());
-        Pokemon *magneton = new Pokemon("Magneton", elements_.find(Elements::LIGHTNING)->second, randomNumber(1, 100),
+        shared_ptr<IPokemon> magneton = make_shared<Pokemon>("Magneton", elements_.find(Elements::LIGHTNING)->second, randomNumber(1, 100),
                                         lightningMoveChooser.getMoves());
-        Pokemon *electrode = new Pokemon("Electrode", elements_.find(Elements::LIGHTNING)->second, randomNumber(1, 100),
+        shared_ptr<IPokemon> electrode = make_shared<Pokemon>("Electrode", elements_.find(Elements::LIGHTNING)->second, randomNumber(1, 100),
                                          lightningMoveChooser.getMoves());
-        Pokemon *jolteon = new Pokemon("Jolteon", elements_.find(Elements::LIGHTNING)->second, randomNumber(1, 100),
+        shared_ptr<IPokemon> jolteon = make_shared<Pokemon>("Jolteon", elements_.find(Elements::LIGHTNING)->second, randomNumber(1, 100),
                                        lightningMoveChooser.getMoves());
-        Pokemon *zapdos = new Pokemon("Zapdos", elements_.find(Elements::LIGHTNING)->second, randomNumber(1, 100),
+        shared_ptr<IPokemon> zapdos = make_shared<Pokemon>("Zapdos", elements_.find(Elements::LIGHTNING)->second, randomNumber(1, 100),
                                       lightningMoveChooser.getMoves());
 
         /*******************
@@ -72,17 +71,17 @@ namespace pokemonGame {
         *******************/
         MoveChooser<(int) Elements::WATER> waterMoveChooser;
 
-        Pokemon *squirtle = new Pokemon("Squirtle", elements_.find(Elements::WATER)->second, randomNumber(1, 100),
+        shared_ptr<IPokemon> squirtle = make_shared<Pokemon>("Squirtle", elements_.find(Elements::WATER)->second, randomNumber(1, 100),
                                         waterMoveChooser.getMoves());
-        Pokemon *blastoise = new Pokemon("Blastoise", elements_.find(Elements::WATER)->second, randomNumber(1, 100),
+        shared_ptr<IPokemon> blastoise = make_shared<Pokemon>("Blastoise", elements_.find(Elements::WATER)->second, randomNumber(1, 100),
                                          waterMoveChooser.getMoves());
-        Pokemon *vaporeon = new Pokemon("Vaporeon", elements_.find(Elements::WATER)->second, randomNumber(1, 100),
+        shared_ptr<IPokemon> vaporeon = make_shared<Pokemon>("Vaporeon", elements_.find(Elements::WATER)->second, randomNumber(1, 100),
                                         waterMoveChooser.getMoves());
-        Pokemon *lapras = new Pokemon("Lapras", elements_.find(Elements::WATER)->second, randomNumber(1, 100),
+        shared_ptr<IPokemon> lapras = make_shared<Pokemon>("Lapras", elements_.find(Elements::WATER)->second, randomNumber(1, 100),
                                       waterMoveChooser.getMoves());
-        Pokemon *magikarp = new Pokemon("Magikarp", elements_.find(Elements::WATER)->second, randomNumber(1, 100),
+        shared_ptr<IPokemon> magikarp = make_shared<Pokemon>("Magikarp", elements_.find(Elements::WATER)->second, randomNumber(1, 100),
                                         waterMoveChooser.getMoves());
-        Pokemon *omastar = new Pokemon("Omastar", elements_.find(Elements::WATER)->second, randomNumber(1, 100),
+        shared_ptr<IPokemon> omastar = make_shared<Pokemon>("Omastar", elements_.find(Elements::WATER)->second, randomNumber(1, 100),
                                        waterMoveChooser.getMoves());
 
         /*******************
@@ -91,17 +90,17 @@ namespace pokemonGame {
 
         MoveChooser<(int) Elements::GRASS> grassMoveChooser;
 
-        Pokemon *bulbasaur = new Pokemon("Bulbasaur", elements_.find(Elements::GRASS)->second, randomNumber(1, 100),
+        shared_ptr<IPokemon> bulbasaur = make_shared<Pokemon>("Bulbasaur", elements_.find(Elements::GRASS)->second, randomNumber(1, 100),
                                          grassMoveChooser.getMoves());
-        Pokemon *venosaur = new Pokemon("Venosaur", elements_.find(Elements::GRASS)->second, randomNumber(1, 100),
+        shared_ptr<IPokemon> venosaur = make_shared<Pokemon>("Venosaur", elements_.find(Elements::GRASS)->second, randomNumber(1, 100),
                                         grassMoveChooser.getMoves());
-        Pokemon *butterfree = new Pokemon("Butterfree", elements_.find(Elements::GRASS)->second, randomNumber(1, 100),
+        shared_ptr<IPokemon> butterfree = make_shared<Pokemon>("Butterfree", elements_.find(Elements::GRASS)->second, randomNumber(1, 100),
                                           grassMoveChooser.getMoves());
-        Pokemon *victreebel = new Pokemon("Victreebel", elements_.find(Elements::GRASS)->second, randomNumber(1, 100),
+        shared_ptr<IPokemon> victreebel = make_shared<Pokemon>("Victreebel", elements_.find(Elements::GRASS)->second, randomNumber(1, 100),
                                           grassMoveChooser.getMoves());
-        Pokemon *exeggutor = new Pokemon("Exeggutor", elements_.find(Elements::GRASS)->second, randomNumber(1, 100),
+        shared_ptr<IPokemon>exeggutor = make_shared<Pokemon>("Exeggutor", elements_.find(Elements::GRASS)->second, randomNumber(1, 100),
                                          grassMoveChooser.getMoves());
-        Pokemon *scyther = new Pokemon("Scyther", elements_.find(Elements::GRASS)->second, randomNumber(1, 100),
+        shared_ptr<IPokemon> scyther = make_shared<Pokemon>("Scyther", elements_.find(Elements::GRASS)->second, randomNumber(1, 100),
                                        grassMoveChooser.getMoves());
 
         /********************
@@ -110,32 +109,32 @@ namespace pokemonGame {
         MoveChooser<(int) Elements::GROUND> groundMoveChooser;
 
 
-        Pokemon *diglett = new Pokemon("Diglett", elements_.find(Elements::GROUND)->second, randomNumber(1, 100),
+        shared_ptr<IPokemon> diglett = make_shared<Pokemon>("Diglett", elements_.find(Elements::GROUND)->second, randomNumber(1, 100),
                                        groundMoveChooser.getMoves());
-        Pokemon *golem = new Pokemon("Golem", elements_.find(Elements::GROUND)->second, randomNumber(1, 100),
+        shared_ptr<IPokemon> golem = make_shared<Pokemon>("Golem", elements_.find(Elements::GROUND)->second, randomNumber(1, 100),
                                      groundMoveChooser.getMoves());
-        Pokemon *machoke = new Pokemon("Machoke", elements_.find(Elements::GROUND)->second, randomNumber(1, 100),
+        shared_ptr<IPokemon> machoke = make_shared<Pokemon>("Machoke", elements_.find(Elements::GROUND)->second, randomNumber(1, 100),
                                        groundMoveChooser.getMoves());
-        Pokemon *kabutops = new Pokemon("Kabutops", elements_.find(Elements::GROUND)->second, randomNumber(1, 100),
+        shared_ptr<IPokemon> kabutops = make_shared<Pokemon>("Kabutops", elements_.find(Elements::GROUND)->second, randomNumber(1, 100),
                                         groundMoveChooser.getMoves());
-        Pokemon *sandslash = new Pokemon("Sandslash", elements_.find(Elements::GROUND)->second, randomNumber(1, 100),
+        shared_ptr<IPokemon> sandslash = make_shared<Pokemon>("Sandslash", elements_.find(Elements::GROUND)->second, randomNumber(1, 100),
                                          groundMoveChooser.getMoves());
-        Pokemon *machamp = new Pokemon("Machamp", elements_.find(Elements::GROUND)->second, randomNumber(1, 100),
+        shared_ptr<IPokemon> machamp = make_shared<Pokemon>("Machamp", elements_.find(Elements::GROUND)->second, randomNumber(1, 100),
                                        groundMoveChooser.getMoves());
 
+        //player_->setFavoritePokemon("Machamp");
+        shared_ptr<IPokemon> debugMon = bulbasaur;
 
-        IPokemon *debugMon = bulbasaur;
+        cout << debugMon.get()->getName() << " moves: " << endl;
 
-        cout << debugMon->getName() << " moves: " << endl;
+        debugMon.get()->DisplayMoves();
 
-        debugMon->DisplayMoves();
+        cout << butterfree.get()->getName() << " moves: " << endl;
 
-        cout << butterfree->getName() << " moves: " << endl;
-
-        butterfree->DisplayMoves();
+        butterfree.get()->DisplayMoves();
 
 
-        std::vector<IPokemon *> pokemons = {charmander, moltres, charizard, arcanine, magmar, flareon,
+        std::vector<shared_ptr<IPokemon>> pokemons = {charmander, moltres, charizard, arcanine, magmar, flareon,
                                             pickachu, electrabuzz, magneton, electrode, jolteon, zapdos,
                                             squirtle, blastoise, vaporeon, lapras, magikarp, omastar,
                                             bulbasaur, venosaur, butterfree, victreebel, exeggutor, scyther,
@@ -171,10 +170,6 @@ namespace pokemonGame {
 //        }
     }
 
-    void Game::initializeMoves() {
-
-    }
-
     void Game::initializeStateMachine() {
         gameState_->initiate();
     }
@@ -192,6 +187,7 @@ namespace pokemonGame {
     }
 
     void Game::enterWorld() {
+        player_->setPokemonsSeen(pokemons_);
         cout << "Welcome to the world of Pokemons" << endl;
         gameState_->process_event(EvGameOn());
         bool playing = true;
@@ -252,11 +248,11 @@ namespace pokemonGame {
     }
 
 
-    std::vector<IPokemon *> Game::getPokemons() {
+    std::vector<std::shared_ptr<IPokemon>> Game::getPokemons() {
         return pokemons_;
     }
 
-    void Game::setPokemons(std::vector<IPokemon *> pokemons) {
+    void Game::setPokemons(std::vector<shared_ptr<IPokemon>> pokemons) {
         pokemons_ = pokemons;
     }
 
@@ -273,9 +269,7 @@ namespace pokemonGame {
     }
 
     Game::~Game() {
-        for (auto &&pokemon : pokemons_) {
-            delete pokemon;
-        }
+
         delete instance_;
     }
 
@@ -285,7 +279,7 @@ namespace pokemonGame {
 
         if (randomNumber(0, 100) > 50) {
             gameState_->process_event(EvEncounter());
-            IPokemon *PokemonPtr;
+            shared_ptr<IPokemon> PokemonPtr;
 
             auto getRandomPokemon = [&PokemonPtr, this] {
                 PokemonPtr = pokemons_[randomNumber(0, pokemons_.size() - 1)];
@@ -302,9 +296,9 @@ namespace pokemonGame {
                 char choice;
 
                 cout << "The Wild Pokemon "  << flush;
-                PokemonPtr->printPokemon();
+                PokemonPtr.get()->printPokemon();
                 cout << endl << endl;
-                if (!player_->getFavoritePokemon()) {
+                if (player_->hasFavoritePokemon()) {
                     cout << "Your " << flush;
                     player_->getFavoritePokemon()->printPokemon();
                     cout << endl << endl;
@@ -324,7 +318,7 @@ namespace pokemonGame {
                 cout << endl;
                 switch (choice) {
                     case '1': {
-                      if (!player_->getFavoritePokemon())
+                      if (player_->hasFavoritePokemon())
                             player_->fight(PokemonPtr);
                         break;
                     }

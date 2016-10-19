@@ -41,6 +41,10 @@ namespace pokemonGame {
 
         virtual bool isFainted() = 0;
 
+        virtual bool doMove(IPokemon* pokemon, int index) = 0;
+
+
+
 
     };
 }

@@ -22,16 +22,22 @@ public:
     bool checkYourPokemons();
     void checkYourItems();
     void setFavoritePokemon(std::string nameOfPokemon);
-    void fight(IPokemon * wildPokemon);
-    IPokemon* getFavoritePokemon() const;
+    void fight(std::shared_ptr<IPokemon> wildPokemon);
+    std::shared_ptr<IPokemon> getFavoritePokemon() const;
+    bool hasFavoritePokemon();
 
 
-    void setPokemonsSeen(std::vector<IPokemon*> &pokemons);// TODO DEBUG
+    void setPokemonsSeen(std::vector<std::shared_ptr<IPokemon>> &pokemons);// TODO DEBUG
+
+private:
+    void getIntBetween(int& d, int min, int max, std::string prompt, std::string fail);
+    void getInt(int& d, std::string prompt, std::string fail);
 private:
     std::vector<IItem*> items_{};
-    std::vector<IPokemon*> caughtPokemons_{};
-    std::vector<IPokemon*> seenPokemons_{};
-    IPokemon* favoritePokemon_{nullptr};
+    std::vector<std::shared_ptr<IPokemon>> caughtPokemons_{};
+    std::vector<std::shared_ptr<IPokemon>> seenPokemons_{};
+    std::shared_ptr<IPokemon> favoritePokemon_{nullptr};
+    bool hasFavoritePokemon_;
 
 };
 }

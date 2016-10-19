@@ -75,6 +75,19 @@ namespace pokemonGame {
 
         void setCaught(bool isCaught){caught = isCaught;}
 
+        bool doMove(IPokemon* pokemon, int index)
+        {
+            if(moves_[index]->isAttack())
+            {
+                moves_[index]->doMove(pokemon);
+            }
+            else{
+                //TODO: make ultility moves and utility attacks like sleep
+                moves_[index]->doMove(this);
+            }
+
+        }
+
 
         bool operator==(Pokemon &other) const {
             if (this->element_ == other.element_)
