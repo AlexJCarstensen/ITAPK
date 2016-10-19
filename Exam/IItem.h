@@ -15,7 +15,7 @@ namespace pokemonGame
     public:
         IItem() = default;
 
-        virtual ~IItem();
+        virtual ~IItem(){};
         virtual std::string getItemName() = 0;
         virtual bool useItem(IPokemon* pokemon) = 0;
 

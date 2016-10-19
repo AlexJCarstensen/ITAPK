@@ -4,8 +4,7 @@ project(Exam)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14")
 
-set(SOURCE_FILES main.cpp pokemonState.h Pokemon.h Move.h Game.h Game.cpp IMove.h Element.h IPokemon.h Player.cpp Player.h IItem.h macro.h GameState.h MoveSets.h MoveChoosers.h NoFavoritePokemonException.h IMoveSet.h)
-set(SOURCE_FILES main.cpp pokemonState.h Pokemon.h Move.h Game.h Game.cpp IMove.h Element.h IPokemon.h Player.cpp Player.h IItem.h macro.h GameState.h MoveSets.h MoveChoosers.h NoFavoritePokemonException.h Shop.cpp Shop.h)
+set(SOURCE_FILES main.cpp pokemonState.h Pokemon.h Move.h Game.h Game.cpp IMove.h Element.h IPokemon.h Player.cpp Player.h IItem.h macro.h GameState.h MoveSets.h MoveChoosers.h NoFavoritePokemonException.h Shop.cpp Shop.h IMoveSet.h)
 
 if (Boost_FOUND)
     message(STATUS "Boost_INCLUDE_DIRS: ${Boost_INCLUDE_DIRS}")
