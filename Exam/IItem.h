@@ -8,79 +8,69 @@
 #include <glob.h>
 #include <iostream>
 #include "IPokemon.h"
-namespace pokemonGame
-{
-    class IItem
-    {
+
+namespace pokemonGame {
+    class IItem {
     public:
         IItem() = default;
 
-        virtual ~IItem(){};
+        virtual ~IItem() {};
+
         virtual std::string getItemName() = 0;
-        virtual bool useItem(IPokemon* pokemon) = 0;
+
+        virtual bool useItem(IPokemon *pokemon) = 0;
 
     };
 
-    class Potion : public IItem
-    {
+    class Potion : public IItem {
     public:
-        Potion(){
-         name_ = "Potion";
+        Potion() {
+            name_ = "Potion";
         }
 
-        ~Potion(){}
+        ~Potion() {}
 
-        std::string getItemName(){return name_;}
-        bool useItem(IPokemon* pokemon)
-        {
-            if(pokemon->getCurrentHealth() == pokemon->getHealth())
-            {return false;}
-            else
-            {
+        std::string getItemName() { return name_; }
+
+        bool useItem(IPokemon *pokemon) {
+            if (pokemon->getCurrentHealth() == pokemon->getHealth()) { return false; }
+            else {
                 unsigned int healthDif = pokemon->getHealth() - pokemon->getCurrentHealth();
 
-                if(healthDif < 20)
-                {pokemon->setCurrentHealth(pokemon->getCurrentHealth() + healthDif);}
-                else
-                {pokemon->setCurrentHealth(pokemon->getCurrentHealth() + 20);}
+                if (healthDif < 20) { pokemon->setCurrentHealth(pokemon->getCurrentHealth() + healthDif); }
+                else { pokemon->setCurrentHealth(pokemon->getCurrentHealth() + 20); }
 
                 return true;
             }
-
         }
-
 
     private:
         std::string name_;
-
     };
 
-    class Pokeball : public IItem
-    {
+    class Pokeball : public IItem {
     public:
-        Pokeball(){
+        Pokeball() {
             name_ = "PokeBall";
         }
-        ~Pokeball(){};
 
-        std::string getItemName(){return name_;}
-        bool useItem(IPokemon* pokemon)
-        {
+        ~Pokeball() {};
+
+        std::string getItemName() { return name_; }
+
+        bool useItem(IPokemon *pokemon) {
             //Making a random number based on level and current hp
 
-            unsigned int chanceHealth = 35 - (pokemon->getHealth()/pokemon->getCurrentHealth());
-            unsigned int chanceLevel = pokemon->getLvl() - (pokemon->getLvl()/5);
+            unsigned int chanceHealth = 35 - (pokemon->getHealth() / pokemon->getCurrentHealth());
+            unsigned int chanceLevel = pokemon->getLvl() - (pokemon->getLvl() / 5);
 
             unsigned int catchChange = rand() % 99 + 1;
 
-            if(catchChange <= (chanceHealth + chanceLevel))
-            {
+            if (catchChange <= (chanceHealth + chanceLevel)) {
                 pokemon->setCaught(true);
             }
 
-
             return pokemon->isCaught();
-
         }
 
     private:
@@ -88,25 +78,23 @@ namespace pokemonGame
 
     };
 
-    class Revive : public IItem
-    {
+    class Revive : public IItem {
     public:
 
-        Revive()
-        {
+        Revive() {
             name_ = "Revive";
         }
 
-        ~Revive(){};
+        ~Revive() {};
 
-        std::string getItemName(){return name_;}
-        bool useItem(IPokemon* pokemon)
-        {
-            if(pokemon->isFainted())
-            {
-                pokemon->setCurrentHealth(pokemon->getHealth()/2);
+        std::string getItemName() { return name_; }
+
+        bool useItem(IPokemon *pokemon) {
+            if (pokemon->isFainted()) {
+                pokemon->setCurrentHealth(pokemon->getHealth() / 2);
             }
         }
+
     private:
         std::string name_;
     };

@@ -4,6 +4,7 @@
 
 #ifndef EXAM_GAME_H
 #define EXAM_GAME_H
+
 #include <iostream>
 #include <memory>
 #include <map>
@@ -17,40 +18,56 @@ namespace pokemonGame {
 
     class Game {
     public:
-        Game(Game const&) = delete;             // Copy construct
-        Game(Game&&) = delete;                  // Move construct
-        Game& operator=(Game const&) = delete;  // Copy assign
-        Game& operator=(Game &&) = delete;
-        static Game* getInstance();
+        Game(Game const &) = delete;             // Copy construct
+        Game(Game &&) = delete;                  // Move construct
+        Game &operator=(Game const &) = delete;  // Copy assign
+        Game &operator=(Game &&) = delete;      // Move assign
+        static Game *getInstance();
+
         virtual ~Game();
+
         void startGame();
+
         void enterWorld();
-        void setGameState(GameState* gameState);
-        void setPlayer(Player* player);
-        void setShop(Shop* shop);
-        void enteredShop();
-        void encounterPokemon();
+
+        void setGameState(GameState *gameState);
+
+        void setPlayer(Player *player);
+
+        void setShop(Shop *shop);
+
+        void setPokemons(std::vector<shared_ptr<IPokemon>> pokemons);
+
         std::vector<shared_ptr<IPokemon>> getPokemons(); //TODO debug
-        void setPokemons(std::vector<shared_ptr<IPokemon>> pokemons); //TODO debug
         std::map<Elements, std::shared_ptr<Element>> seeElements();//TODO debug
+
+    public:
+        //Slots
+        void enteredShop();
+
+        void encounterPokemon();
+
     protected:
         Game() = default;
 
 
     private:
         void populateWorldWithPokemons();
+
         void initializeElements();
+
         void initializeStateMachine();
+
         int randomNumber(int min, int max);
 
 
     private:
         std::map<Elements, std::shared_ptr<Element> > elements_{};
         std::vector<shared_ptr<IPokemon>> pokemons_;
-        GameState* gameState_;
-        Player* player_;
-        Shop* shop_;
-        static Game* instance_;
+        GameState *gameState_;
+        Player *player_;
+        Shop *shop_;
+        static Game *instance_;
 
 
     };

@@ -14,11 +14,10 @@
 
 namespace pokemonGame {
 
-    using namespace std;
-
+//TODO make .cpp file
     class AttackMove : public IMove {
     public:
-        AttackMove(shared_ptr<Element> e, std::string name, size_t power) : IMove(e), power_(power), name_(name) {isAttack_ = true;}
+        AttackMove(std::shared_ptr<Element> e, std::string name, size_t power) : IMove(e), power_(power), name_(name) {isAttack_ = true;}
 
         ~AttackMove() {};
 
@@ -49,7 +48,6 @@ namespace pokemonGame {
         std::string getMoveName() { return name_; }
 
     private:
-        // Element& element_;
         size_t power_;
         std::string name_;
 

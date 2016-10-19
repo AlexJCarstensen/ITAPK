@@ -7,8 +7,7 @@
 namespace pokemonGame {
 
 
-   enum class Elements
-    {
+    enum class Elements {
         FIRE = 1,
         LIGHTNING = 2,
         GRASS = 3,
@@ -17,41 +16,47 @@ namespace pokemonGame {
 
     };
 
-   class Element
-   {
-   public:
-        Element(){};
-        virtual ~Element(){};
+    class Element {
+    public:
+        Element() {};
+
+        virtual ~Element() {};
+
         virtual Elements getElement() = 0;
+
         virtual Elements getWeakness() = 0;
+
         virtual Elements getSuper() = 0;
 
-       bool operator==(Element& other)const {
-           if (this->elements_ == other.elements_)
-               return true;
-           return false;
-       }
-       bool isSuperEffective(Element* e)
-       {
-           return (e->getElement() == this->getSuper());
-       }
-       bool isNotEffective(Element* e)
-       {
-           return (e->getElement() == this->getWeakness());
-       }
+        bool operator==(Element &other) const {
+            if (this->elements_ == other.elements_)
+                return true;
+            return false;
+        }
 
-   private:
-       Elements elements_;
-   };
+        bool isSuperEffective(Element *e) {
+            return (e->getElement() == this->getSuper());
+        }
 
-    class Fire : public Element
-    {
+        bool isNotEffective(Element *e) {
+            return (e->getElement() == this->getWeakness());
+        }
+
+    private:
+        Elements elements_;
+    };
+
+    class Fire : public Element {
     public:
         Fire() {};
-        ~Fire(){};
-        Elements getElement(){return  elements_;}
-        Elements getWeakness(){return weakness_;}
-        Elements getSuper() {return super_;}
+
+        ~Fire() {};
+
+        Elements getElement() { return elements_; }
+
+        Elements getWeakness() { return weakness_; }
+
+        Elements getSuper() { return super_; }
 
     private:
         Elements elements_{Elements::FIRE};
@@ -60,14 +65,18 @@ namespace pokemonGame {
 
     };
 
-    class Water : public Element
-    {
+    class Water : public Element {
     public:
         Water() {};
-          ~Water(){};
-        Elements getElement(){ return  elements_;}
-        Elements getWeakness(){return weakness_;}
-        Elements getSuper() {return super_;}
+
+        ~Water() {};
+
+        Elements getElement() { return elements_; }
+
+        Elements getWeakness() { return weakness_; }
+
+        Elements getSuper() { return super_; }
+
     private:
         Elements elements_{Elements::WATER};
         Elements weakness_{Elements::LIGHTNING};
@@ -75,14 +84,17 @@ namespace pokemonGame {
 
     };
 
-    class Lightning : public Element
-    {
+    class Lightning : public Element {
     public:
         Lightning() {};
-          ~Lightning(){};
-        Elements getElement(){ return  elements_;}
-        Elements getWeakness(){return weakness_;}
-        Elements getSuper() {return super_;}
+
+        ~Lightning() {};
+
+        Elements getElement() { return elements_; }
+
+        Elements getWeakness() { return weakness_; }
+
+        Elements getSuper() { return super_; }
 
     private:
         Elements elements_{Elements::LIGHTNING};
@@ -91,14 +103,18 @@ namespace pokemonGame {
 
     };
 
-    class Ground : public Element
-    {
+    class Ground : public Element {
     public:
         Ground() {};
-          ~Ground(){};
-        Elements getElement(){ return  elements_;}
-        Elements getWeakness(){return weakness_;}
-        Elements getSuper() {return super_;}
+
+        ~Ground() {};
+
+        Elements getElement() { return elements_; }
+
+        Elements getWeakness() { return weakness_; }
+
+        Elements getSuper() { return super_; }
+
     private:
         Elements elements_{Elements::GROUND};
         Elements weakness_{Elements::WATER};
@@ -106,21 +122,24 @@ namespace pokemonGame {
 
     };
 
-    class Grass : public Element
-    {
+    class Grass : public Element {
     public:
         Grass() {};
-          ~Grass(){};
-        Elements getElement(){ return  elements_;}
-        Elements getWeakness(){return weakness_;}
-        Elements getSuper() {return super_;}
+
+        ~Grass() {};
+
+        Elements getElement() { return elements_; }
+
+        Elements getWeakness() { return weakness_; }
+
+        Elements getSuper() { return super_; }
+
     private:
         Elements elements_{Elements::GRASS};
         Elements weakness_{Elements::FIRE};
         Elements super_{Elements::WATER};
 
     };
-
 
 
 }

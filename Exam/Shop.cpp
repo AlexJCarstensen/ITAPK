@@ -21,20 +21,20 @@ namespace pokemonGame {
     }
 
     pokemonGame::Shop::~Shop() {
-
+        //TODO destruct items
     }
 
     void pokemonGame::Shop::listItems() {
         std::cout << "Welcome to the shop! How may I assist you?" << std::endl;
         std::cout << "I have the following items for sale" << std::endl;
 
-        std::cout << items_.find("Potions")->first << " " << items_.find("Potions")->second.size() << std::endl;
-        std::cout << items_.find("Pokeballs")->first << " " << items_.find("Pokeballs")->second.size() << std::endl;
-        std::cout << items_.find("Revives")->first << " " << items_.find("Revives")->second.size() << std::endl;
+        std::cout << items_.find("Potions")->first << " x " << items_.find("Potions")->second.size() << std::endl;
+        std::cout << items_.find("Pokeballs")->first << " x " << items_.find("Pokeballs")->second.size() << std::endl;
+        std::cout << items_.find("Revives")->first << " x " << items_.find("Revives")->second.size() << std::endl;
     }
 
     pokemonGame::IItem *pokemonGame::Shop::buyItem(int number) {
-
+//TODO how do we do this
         switch (number) {
             case 1: {
                 if (items_.find("Potions")->second.empty()) {

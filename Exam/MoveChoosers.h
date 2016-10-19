@@ -14,9 +14,6 @@
 
 namespace pokemonGame
 {
-
-    using namespace std;
-
     static bool containsMove(vector<int> moves, int move) {
 
         if(std::find(moves.begin(), moves.end(), move) != moves.end()) {
@@ -45,8 +42,7 @@ namespace pokemonGame
             std::mt19937 eng(rd());
             uniform_int_distribution<> distr(0, maxNumberInMoveset);
             int move = distr(eng);
-            if(move >6 )
-                std::cout << "hej!" << std::endl;
+
 
             //if moveNumbers is empty, put in generated number
             if (moveNumbers.empty()) {

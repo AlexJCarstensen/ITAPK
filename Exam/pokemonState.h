@@ -20,6 +20,7 @@
 
 namespace pokemonGame
 {
+    //TODO make if debug and the print out
 
     namespace sc = boost::statechart;
     /*****************
@@ -84,8 +85,6 @@ namespace pokemonGame
      * States *
      **********/
 
-
-
     struct NotPlaying : sc::simple_state<NotPlaying, GameState>
     {
         typedef sc::transition<EvGameOn, Playing> reactions;
@@ -102,7 +101,6 @@ namespace pokemonGame
     {
         typedef sc::transition<EvEncounter, Encountering>  reactions;
         PRINT_ENTRY_EXIT(1, Roaming)
-
     };
 
 

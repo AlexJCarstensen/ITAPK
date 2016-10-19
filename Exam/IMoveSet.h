@@ -12,17 +12,13 @@
 
 namespace pokemonGame {
 
-    using namespace std;
-
-    class IMoveSet
-    {
+    class IMoveSet {
     public:
         IMoveSet() = default;
 
-        virtual ~IMoveSet(){};
+        virtual ~IMoveSet() {};
 
-        int NumberOfMoves()
-        {
+        int NumberOfMoves() {
             return moves_.size();
         };
 

@@ -33,12 +33,11 @@ private:
     void getIntBetween(int& d, int min, int max, std::string prompt, std::string fail);
     void getInt(int& d, std::string prompt, std::string fail);
 private:
-    std::vector<IItem*> items_{};
+    std::vector<IItem*> items_{}; //TODO make map with vector as in Shop
     std::vector<std::shared_ptr<IPokemon>> caughtPokemons_{};
     std::vector<std::shared_ptr<IPokemon>> seenPokemons_{};
     std::shared_ptr<IPokemon> favoritePokemon_{nullptr};
     bool hasFavoritePokemon_;
-
 };
 }
 
