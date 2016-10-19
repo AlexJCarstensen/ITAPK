@@ -6,7 +6,7 @@
 #define EXAM_PLAYER_H
 
 #include <vector>
-#include "Item.h"
+#include "IItem.h"
 #include "GameState.h"
 #include "IPokemon.h"
 
@@ -28,7 +28,7 @@ public:
 
     void setPokemonsSeen(std::vector<IPokemon*> &pokemons);// TODO DEBUG
 private:
-    std::vector<Item> items_{};
+    std::vector<IItem> items_{};
     std::vector<IPokemon*> caughtPokemons_{};
     std::vector<IPokemon*> seenPokemons_{};
     IPokemon* favoritePokemon_{nullptr};
