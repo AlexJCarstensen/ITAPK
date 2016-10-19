@@ -192,7 +192,6 @@ namespace pokemonGame {
     }
 
     void Game::enterWorld() {
-        player_->setPokemonsSeen(pokemons_); //TODO DEBUG
         cout << "Welcome to the world of Pokemons" << endl;
         gameState_->process_event(EvGameOn());
         bool playing = true;
@@ -379,6 +378,13 @@ namespace pokemonGame {
 
     void Game::setShop(Shop *shop) {
         shop_ = shop;
+    }
+
+    void Game::enteredShop(){
+        shop_->listItems();
+        //TODO buy item...
+
+
     }
 
 

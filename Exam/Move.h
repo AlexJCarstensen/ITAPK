@@ -23,7 +23,6 @@ namespace pokemonGame {
         ~AttackMove() {};
 
         void doMove(IPokemon &pokemon) {
-            //TODO: Attack should do damage acording to type and power
 
 
             if (this->element_.isSuperEffective(pokemon.getElement())) {

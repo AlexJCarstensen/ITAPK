@@ -11,6 +11,8 @@ int main()
 {
     std::unique_ptr<GameState> gameStatePtr (new GameState());
     Game::getInstance()->setGameState(gameStatePtr.get());
+    std::unique_ptr<Shop> shopPtr(new Shop());
+    Game::getInstance()->setShop(shopPtr.get());
     Game::getInstance()->startGame();
     std::unique_ptr<Player> playerPtr (new Player());
     Game::getInstance()->setPlayer(playerPtr.get());

@@ -25,8 +25,10 @@ namespace pokemonGame {
 
     void Player::goToTheShop()
     {
-        std::cout << "Welcome to the shop! How may I assist you?" << std::endl;
 
+        boost::signals2::signal<void ()> sig;
+        sig.connect(std::bind(&Game::enteredShop, Game::getInstance()));
+        sig();
     }
 
     void Player::lookInPokedex()

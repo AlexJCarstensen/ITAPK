@@ -28,6 +28,7 @@ namespace pokemonGame {
         void setGameState(GameState* gameState);
         void setPlayer(Player* player);
         void setShop(Shop* shop);
+        void enteredShop();
         void encounterPokemon();
         std::vector<IPokemon*> getPokemons(); //TODO debug
         void setPokemons(std::vector<IPokemon*> pokemons); //TODO debug
