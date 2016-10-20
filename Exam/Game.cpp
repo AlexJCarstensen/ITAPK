@@ -312,36 +312,62 @@ namespace pokemonGame {
                     case 1: {
                         if (player_->hasFavoritePokemon())
                             player_->fight(wildPokemon);
-                            wildPokemonAttacks(wildPokemon, player_->getFavoritePokemon());
+                        wildPokemonAttacks(wildPokemon, player_->getFavoritePokemon());
                         break;
                     }
 
                     case 2: {
                         player_->checkYourItems();
                         Game::getIntBetween(choice, 1, 3, "Choose an item: ", "Please select a number from 1-3");
+                        bool couldUsePotionOrRevive = false;
 
                         switch (choice) {
                             case 1: {
                                 //Pokeball
+                                gameState_->process_event(EvBallThrow());
+
                                 if (player_->useItem("Pokeballs", wildPokemon)) {
                                     player_->addPokemon(wildPokemon);
                                     gameState_->process_event(EvCatch());
                                     battling = false;
-                                }
+                                } else
+                                    gameState_->process_event(EvBrokeFree());
 
                                 break;
                             }
                             case 2: {
                                 //Potion
+
                                 player_->checkYourPokemons();
-                                Game::getIntBetween(choice, 1, player_->getNumberOfPokemons(), "Choose a pokemon: ", "Enter a number between 1 and " + player_->getNumberOfPokemons());
-                                player_->useItem("Potions", player_->getPokemon(choice-1));
+                                Game::getIntBetween(choice, 1, player_->getNumberOfPokemons(), "Choose a pokemon: ",
+                                                    "Enter a number between 1 and " +
+                                                    player_->getNumberOfPokemons());
+                                if (!player_->useItem("Potions", player_->getPokemon(choice - 1))) {
+                                    cout << "Your potion didnt have any effect on "
+                                         << player_->getPokemon(choice - 1)->getName() << endl;
+                                } else
+                                    couldUsePotionOrRevive = true;
+
+                                break;
+                            }
+                            case 3: {
+                                player_->checkYourPokemons();
+                                Game::getIntBetween(choice, 1, player_->getNumberOfPokemons(), "Choose a pokemon: ",
+                                                    "Enter a number between 1 and " + player_->getNumberOfPokemons());
+                                if (!player_->useItem("Revives", player_->getPokemon(choice - 1))) {
+                                    cout << "Your revive didnt have any effect on "
+                                         << player_->getPokemon(choice - 1)->getName() << endl;
+
+                                } else
+                                    couldUsePotionOrRevive = true;
+                                break;
                             }
                         }
-
+                        if (couldUsePotionOrRevive)
+                            wildPokemonAttacks(wildPokemon, player_->getFavoritePokemon());
                         break;
-                    }
 
+                    }
                     case 3: {
                         if (player_->checkYourPokemons()) {
                             cout << "Enter the Pokemon you wish to use: " << flush;
@@ -357,20 +383,18 @@ namespace pokemonGame {
                         battling = false;
                         break;
                     }
-
-
                 }
+
             }
-            //TODO put these somewhere else.
-            //gameState_->process_event(EvBallThrow());
-
-            //gameState_->process_event(EvCatch());
         } else {
-            std::cout << "Sadly you didn't find any Pokemons" << std::endl;
+            std::cout << "Sadly you didn't find any Pokemons" <<
+                      std::endl;
         }
-
     }
+    //TODO put these somewhere else.
+    //gameState_->process_event(EvBallThrow());
 
+    //gameState_->process_event(EvCatch());
     void Game::setPlayer(Player *player) {
         player_ = player;
     }
@@ -428,7 +452,7 @@ namespace pokemonGame {
 
     }
 
-    //Taken from: http://stackoverflow.com/questions/15467412/c-cin-only-accept-numeric-values
+//Taken from: http://stackoverflow.com/questions/15467412/c-cin-only-accept-numeric-values
     void Game::getIntBetween(int &choice, int min, int max, std::string prompt, std::string fail) {
 
         while (1) {
@@ -443,7 +467,7 @@ namespace pokemonGame {
 
     }
 
-    //Taken from: http://stackoverflow.com/questions/15467412/c-cin-only-accept-numeric-values
+//Taken from: http://stackoverflow.com/questions/15467412/c-cin-only-accept-numeric-values
     void Game::getInt(int &choice, std::string prompt, std::string fail) {
 
         while (1) {
@@ -471,12 +495,18 @@ namespace pokemonGame {
 
         int wildNumberOfMoves = wildPokemon->getMoves().size();
 
-        int randomChoice = rand() % wildNumberOfMoves+1;
+        int randomChoice = rand() % wildNumberOfMoves + 1;
 
         //Wild ourPokemon attacks
-        wildPokemon->doMove(ourPokemon.get(), randomChoice-1);
+        wildPokemon->doMove(ourPokemon.get(), randomChoice - 1);
 
     }
 
 
 }
+
+
+
+
+
+
