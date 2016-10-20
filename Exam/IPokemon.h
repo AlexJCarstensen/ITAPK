@@ -6,6 +6,7 @@
 #define EXAM_IPOKEMON_H
 
 #include "Element.h"
+#include <vector>
 
 
 namespace pokemonGame {
@@ -19,7 +20,7 @@ namespace pokemonGame {
 
         virtual int getCurrentHealth() const =0;
 
-        virtual int getHealth() const = 0;
+        virtual int getMaxHealth() const = 0;
 
         virtual int setCurrentHealth(size_t newHealth) = 0;
 

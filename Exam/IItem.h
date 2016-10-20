@@ -33,9 +33,9 @@ namespace pokemonGame {
         std::string getItemName() { return name_; }
 
         bool useItem(IPokemon *pokemon) {
-            if (pokemon->getCurrentHealth() == pokemon->getHealth()) { return false; }
+            if (pokemon->getCurrentHealth() == pokemon->getMaxHealth()) { return false; }
             else {
-                unsigned int healthDif = pokemon->getHealth() - pokemon->getCurrentHealth();
+                unsigned int healthDif = pokemon->getMaxHealth() - pokemon->getCurrentHealth();
 
                 if (healthDif < 20) { pokemon->setCurrentHealth(pokemon->getCurrentHealth() + healthDif); }
                 else { pokemon->setCurrentHealth(pokemon->getCurrentHealth() + 20); }
@@ -61,7 +61,7 @@ namespace pokemonGame {
         bool useItem(IPokemon *pokemon) {
             //Making a random number based on level and current hp
 
-            unsigned int chanceHealth = 35 - (pokemon->getHealth() / pokemon->getCurrentHealth());
+            unsigned int chanceHealth = 35 - (pokemon->getMaxHealth() / pokemon->getCurrentHealth());
             unsigned int chanceLevel = pokemon->getLvl() - (pokemon->getLvl() / 5);
 
             unsigned int catchChange = rand() % 99 + 1;
@@ -91,7 +91,7 @@ namespace pokemonGame {
 
         bool useItem(IPokemon *pokemon) {
             if (pokemon->isFainted()) {
-                pokemon->setCurrentHealth(pokemon->getHealth() / 2);
+                pokemon->setCurrentHealth(pokemon->getMaxHealth() / 2);
             }
         }
 
