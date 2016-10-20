@@ -118,14 +118,14 @@ namespace pokemonGame {
 
     }
 
-    void Player::fight(shared_ptr<IPokemon> wildPokemon) {
+    bool Player::fight(shared_ptr<IPokemon> wildPokemon) {
         //TODO should it be in game?
         int numberOfMoves = favoritePokemon_->DisplayMoves();
         int choice = 0;
         Game::getIntBetween(choice, 1, numberOfMoves, "Please select a move: ", "Not a valid move");
 
         //Our pokemon attacks
-        favoritePokemon_->doMove(wildPokemon.get(), choice - 1);
+        return favoritePokemon_->doMove(wildPokemon.get(), choice - 1);
 
 
 

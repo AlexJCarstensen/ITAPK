@@ -26,7 +26,7 @@ public:
     void checkYourItems();
     bool useItem(std::string item, std::shared_ptr<IPokemon> pokemon);
     void setFavoritePokemon(std::string nameOfPokemon);
-    void fight(std::shared_ptr<IPokemon> wildPokemon);
+    bool fight(std::shared_ptr<IPokemon> wildPokemon);
     std::shared_ptr<IPokemon> getFavoritePokemon() const;
     bool hasFavoritePokemon();
 

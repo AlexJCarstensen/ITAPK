@@ -22,7 +22,11 @@ namespace pokemonGame {
 
         virtual int getMaxHealth() const = 0;
 
-        virtual int setCurrentHealth(size_t newHealth) = 0;
+        virtual bool reduceCurrentHealth(size_t amount) = 0;
+
+        virtual void revive() = 0;
+
+        virtual void respawn()= 0;
 
         virtual size_t getLvl() const = 0;
 

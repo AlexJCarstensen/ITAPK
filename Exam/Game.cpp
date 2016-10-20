@@ -311,8 +311,15 @@ namespace pokemonGame {
                 switch (choice) {
                     case 1: {
                         if (player_->hasFavoritePokemon())
-                            player_->fight(wildPokemon);
-                        wildPokemonAttacks(wildPokemon, player_->getFavoritePokemon());
+                            if(player_->fight(wildPokemon))
+                            {
+                                std::cout << "Wild " << wildPokemon->getName() << " fainted" << std::endl;
+                                battling = false;
+                                gameState_->process_event(EvFaint());
+                                wildPokemon.get()->respawn();
+                                break;
+                            }
+                            wildPokemonAttacks(wildPokemon, player_->getFavoritePokemon());
                         break;
                     }
 

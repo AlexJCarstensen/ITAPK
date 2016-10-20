@@ -26,12 +26,17 @@ namespace pokemonGame {
     }
 
     bool Pokemon::doMove(IPokemon *pokemon, int index) {
+
+        bool killingBlow = false;
+
         if (moves_[index]->isAttack()) {
-            moves_[index]->doMove(pokemon);
+            killingBlow = moves_[index]->doMove(pokemon);
         } else {
             //TODO: make ultility moves and utility attacks like sleep
             moves_[index]->doMove(this);
         }
+
+        return killingBlow;
 
     }
 
@@ -66,15 +71,30 @@ namespace pokemonGame {
 
     void Pokemon::setCaught(bool isCaught) { caught = isCaught; }
 
-    int Pokemon::setCurrentHealth(size_t newHealth) {
-        currentHealth_ = newHealth;
+    bool Pokemon::reduceCurrentHealth(size_t amount) {
+        currentHealth_ = currentHealth_- amount;
 
         if (currentHealth_ <= 0) {
             currentHealth_ = 0;
             fainted_ = true;
+
         } else {
             fainted_ = false;
         }
+
+        return fainted_;
+    }
+
+    void Pokemon::respawn() {
+
+        currentHealth_ = maxHealth_;
+
+    }
+
+    void Pokemon::revive() {
+
+        currentHealth_ = maxHealth_/2;
+
     }
 
 

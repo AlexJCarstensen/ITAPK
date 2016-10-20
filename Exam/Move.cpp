@@ -9,27 +9,24 @@ namespace pokemonGame {
 
     AttackMove::AttackMove(std::shared_ptr<Element> e, std::string name, size_t power): IMove(e), power_(power), name_(name) {isAttack_ = true;}
 
-    void AttackMove::doMove(IPokemon *pokemon)
+    bool AttackMove::doMove(IPokemon *pokemon)
     {
-        Element *someElement = pokemon->getElement();
-
-        int someElementInt = (int)someElement->getElement();
-
-        int thisElementInt = (int)this->element_.get()->getElement();
-
+        bool killingBlow = false;
         if (this->element_.get()->isSuperEffective(pokemon->getElement())) {
             //Reduce opposing pokemon health significantly
             std::cout << name_ << " was super effective!" << std::endl;
-            pokemon->setCurrentHealth((pokemon->getMaxHealth() - (power_ * 1.5)));
+            killingBlow = pokemon->reduceCurrentHealth(power_ * 1.5);
         } else if (this->element_.get()->isNotEffective(pokemon->getElement())) {
             //Reduce opposing pokemon health slightly
             std::cout << name_ <<" is not very effective.." << std::endl;
-            pokemon->setCurrentHealth((pokemon->getMaxHealth() - (power_ * 0.5)));
+            killingBlow = pokemon->reduceCurrentHealth(power_ * 0.5);
         } else {
             //Reduce opposing pokemon health normally
             std::cout << name_ << " is normally effective" << std::endl;
-            pokemon->setCurrentHealth((pokemon->getMaxHealth() - power_));
+            killingBlow = pokemon->reduceCurrentHealth(power_);
         }
+
+        return killingBlow;
 
     }
 

@@ -25,7 +25,9 @@ namespace pokemonGame {
 
         int getMaxHealth() const;
 
-        int setCurrentHealth(size_t newHealth);
+        bool reduceCurrentHealth(size_t amount);
+
+        void revive();
 
         size_t getLvl() const;
 
@@ -53,13 +55,15 @@ namespace pokemonGame {
 
         void printPokemon();
 
+        void respawn();
+
 
     private:
         std::string name_;
         std::shared_ptr<Element> element_;
         size_t lvl_;
         size_t maxHealth_{30};
-        size_t currentHealth_{};
+        int currentHealth_{};
         std::vector<std::shared_ptr<IMove>> moves_;
         bool caught;
         bool fainted_{false};

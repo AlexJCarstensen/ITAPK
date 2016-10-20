@@ -21,7 +21,7 @@ namespace pokemonGame {
 
         ~AttackMove() {};
 
-        void doMove(IPokemon* pokemon);
+        bool doMove(IPokemon* pokemon);
 
         std::string getMoveName();
 

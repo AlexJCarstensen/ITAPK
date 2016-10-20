@@ -33,12 +33,12 @@ namespace pokemonGame {
         std::string getItemName() { return name_; }
 
         bool useItem(IPokemon *pokemon) {
-            if (pokemon->getCurrentHealth() == pokemon->getMaxHealth()) { return false; }
+            if (pokemon->getCurrentHealth() == pokemon->getMaxHealth() || pokemon->isFainted()) { return false; }
             else {
                 unsigned int healthDif = pokemon->getMaxHealth() - pokemon->getCurrentHealth();
 
-                if (healthDif < 20) { pokemon->setCurrentHealth(pokemon->getCurrentHealth() + healthDif); }
-                else { pokemon->setCurrentHealth(pokemon->getCurrentHealth() + 20); }
+                if (healthDif < 20) { pokemon->reduceCurrentHealth(pokemon->getCurrentHealth() + healthDif); }
+                else { pokemon->reduceCurrentHealth(pokemon->getCurrentHealth() + 20); }
 
                 return true;
             }
@@ -95,9 +95,14 @@ namespace pokemonGame {
         std::string getItemName() { return name_; }
 
         bool useItem(IPokemon *pokemon) {
+            bool revived = false;
+
             if (pokemon->isFainted()) {
-                pokemon->setCurrentHealth(pokemon->getMaxHealth() / 2);
+                pokemon->revive();
+                revived = true;
             }
+
+            return revived;
         }
 
     private:
