@@ -14,7 +14,7 @@
 
 namespace pokemonGame {
 
-//TODO make .cpp file
+
     class AttackMove : public IMove {
     public:
         AttackMove(std::shared_ptr<Element> e, std::string name, size_t power);
