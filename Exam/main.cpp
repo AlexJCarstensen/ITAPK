@@ -6,6 +6,9 @@ using namespace pokemonGame;
 
 
 int main() {
+
+
+
     std::unique_ptr<GameState> gameStatePtr(new GameState());
     Game::getInstance()->setGameState(gameStatePtr.get());
     std::unique_ptr<Shop> shopPtr(new Shop());

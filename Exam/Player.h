@@ -20,7 +20,11 @@ public:
     void goToTheShop();
     void lookInPokedex();
     bool checkYourPokemons();
+    void addPokemon(std::shared_ptr<IPokemon> pokemon);
+    int getNumberOfPokemons();
+    std::shared_ptr<IPokemon> getPokemon(int number);
     void checkYourItems();
+    bool useItem(std::string item, std::shared_ptr<IPokemon> pokemon);
     void setFavoritePokemon(std::string nameOfPokemon);
     void fight(std::shared_ptr<IPokemon> wildPokemon);
     std::shared_ptr<IPokemon> getFavoritePokemon() const;
@@ -37,7 +41,7 @@ private:
     std::vector<std::shared_ptr<IPokemon>> caughtPokemons_{};
     std::vector<std::shared_ptr<IPokemon>> seenPokemons_{};
     std::shared_ptr<IPokemon> favoritePokemon_{nullptr};
-    bool hasFavoritePokemon_;
+    bool hasFavoritePokemon_{false};
 };
 }
 

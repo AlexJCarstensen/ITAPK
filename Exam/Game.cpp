@@ -188,7 +188,7 @@ namespace pokemonGame {
     }
 
     void Game::enterWorld() {
-        player_->setPokemonsSeen(pokemons_); //TODO debug get all pokemons to player
+        //player_->setPokemonsSeen(pokemons_); //TODO debug get all pokemons to player
         cout << "Welcome to the world of Pokemons" << endl;
         gameState_->process_event(EvGameOn());
         bool playing = true;
@@ -274,23 +274,23 @@ namespace pokemonGame {
 
         if (randomNumber(0, 100) > 50) {
             gameState_->process_event(EvEncounter());
-            shared_ptr<IPokemon> PokemonPtr;
+            shared_ptr<IPokemon> wildPokemon;
 
-            auto getRandomPokemon = [&PokemonPtr, this] {
-                PokemonPtr = pokemons_[randomNumber(0, pokemons_.size() - 1)];
+            auto getRandomPokemon = [&wildPokemon, this] {
+                wildPokemon = pokemons_[randomNumber(0, pokemons_.size() - 1)];
 
-                while (PokemonPtr->isCaught())
-                    PokemonPtr = pokemons_[randomNumber(0, pokemons_.size() - 1)];
+                while (wildPokemon->isCaught())
+                    wildPokemon = pokemons_[randomNumber(0, pokemons_.size() - 1)];
 
-                return PokemonPtr;
+                return wildPokemon;
             };
 
             std::cout << "Wild " << getRandomPokemon()->getName() << " appeared" << std::endl << std::endl;
             bool battling = true;
             while (battling) {
-                char choice;
+                int choice;
 
-                PokemonPtr.get()->printPokemon();
+                wildPokemon.get()->printPokemon();
                 cout << endl << endl;
                 if (player_->hasFavoritePokemon()) {
                     cout << "Your " << flush;
@@ -306,21 +306,43 @@ namespace pokemonGame {
                 cout << "'4' Run" << endl;
 
 
-                cout << "Your choice: " << flush;
-                cin >> choice;
+                Game::getIntBetween(choice, 1, 4, "What do you want to do? ", "Please select a number from 1-4");
                 cout << endl;
                 switch (choice) {
-                    case '1': {
+                    case 1: {
                         if (player_->hasFavoritePokemon())
-                            player_->fight(PokemonPtr);
+                            player_->fight(wildPokemon);
+                            wildPokemonAttacks(wildPokemon, player_->getFavoritePokemon());
                         break;
                     }
 
-                    case '2':
+                    case 2: {
                         player_->checkYourItems();
-                        break;
+                        Game::getIntBetween(choice, 1, 3, "Choose an item: ", "Please select a number from 1-3");
 
-                    case '3': {
+                        switch (choice) {
+                            case 1: {
+                                //Pokeball
+                                if (player_->useItem("Pokeballs", wildPokemon)) {
+                                    player_->addPokemon(wildPokemon);
+                                    gameState_->process_event(EvCatch());
+                                    battling = false;
+                                }
+
+                                break;
+                            }
+                            case 2: {
+                                //Potion
+                                player_->checkYourPokemons();
+                                Game::getIntBetween(choice, 1, player_->getNumberOfPokemons(), "Choose a pokemon: ", "Enter a number between 1 and " + player_->getNumberOfPokemons());
+                                player_->useItem("Potions", player_->getPokemon(choice-1));
+                            }
+                        }
+
+                        break;
+                    }
+
+                    case 3: {
                         if (player_->checkYourPokemons()) {
                             cout << "Enter the Pokemon you wish to use: " << flush;
                             std::string choice;
@@ -330,7 +352,7 @@ namespace pokemonGame {
                         break;
                     }
 
-                    case '4': {
+                    case 4: {
                         gameState_->process_event(EvFlee(false));
                         battling = false;
                         break;
@@ -361,7 +383,7 @@ namespace pokemonGame {
         bool buying = true;
 
         while (buying) {
-        shop_->listItems();
+            shop_->listItems();
 
 
             cout << "What would you like to do: " << endl;
@@ -442,6 +464,17 @@ namespace pokemonGame {
                 break;
             }
         }
+
+    }
+
+    void Game::wildPokemonAttacks(std::shared_ptr<IPokemon> wildPokemon, std::shared_ptr<IPokemon> ourPokemon) {
+
+        int wildNumberOfMoves = wildPokemon->getMoves().size();
+
+        int randomChoice = rand() % wildNumberOfMoves+1;
+
+        //Wild ourPokemon attacks
+        wildPokemon->doMove(ourPokemon.get(), randomChoice-1);
 
     }
 

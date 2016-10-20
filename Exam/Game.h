@@ -64,6 +64,8 @@ namespace pokemonGame {
 
         int randomNumber(int min, int max);
 
+        void wildPokemonAttacks(std::shared_ptr<IPokemon> wildPokemon, std::shared_ptr<IPokemon> ourPokemon);
+
 
     private:
         std::map<Elements, std::shared_ptr<Element> > elements_{};

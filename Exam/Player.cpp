@@ -48,7 +48,10 @@ namespace pokemonGame {
         }
         cout << "You have the following Pokemons: " << endl;
 
+        int index = 1;
+
         for (auto &&caughtPokemon : caughtPokemons_) {
+            cout << index++ << flush;
             caughtPokemon->printPokemon();
             cout << endl;
         }
@@ -60,10 +63,12 @@ namespace pokemonGame {
 
         std::cout << "You have the following items: " << std::endl;
 
+        int index = 1;
         for (auto &&item : items_) {
-            cout << item.first << " x " << item.second.size() << endl;
+            cout << index++ << ". " << item.first << " x " << item.second.size() << endl;
 
         }
+
     }
 
     // TODO DEBUG
@@ -90,7 +95,7 @@ namespace pokemonGame {
             ex.what();
         }
 
-        cout << favoritePokemon_->getName() << endl;
+        cout << favoritePokemon_->getName() << " is now your favorite pokemon" <<endl;
     }
 
     shared_ptr<IPokemon> Player::getFavoritePokemon() const {
@@ -122,12 +127,8 @@ namespace pokemonGame {
         //Our pokemon attacks
         favoritePokemon_->doMove(wildPokemon.get(), choice - 1);
 
-        int wildNumberOfMoves = wildPokemon->getMoves().size() - 1;
 
-        int randomChoice = rand() % wildNumberOfMoves;
 
-        //Wild pokemon attacks
-        wildPokemon->doMove(favoritePokemon_.get(), randomChoice);
     }
 
 
@@ -157,4 +158,47 @@ namespace pokemonGame {
         items_ = {std::make_pair("Potions", std::move(potions)), std::make_pair("Pokeballs", std::move(pokeballs)),
                   std::make_pair("Revives", std::move(revives))};
     }
+
+    bool Player::useItem(std::string item, std::shared_ptr<IPokemon> pokemon) {
+
+        if(!items_.find(item)->second.empty())
+        {
+            auto it = std::prev(items_.find(item)->second.end());
+            bool success = it->get()->useItem(pokemon.get());
+
+            //If item is a pokeball, destroy after use
+            if(it->get()->getItemName() == "Pokeball") {
+                it->reset();
+                items_.find(item)->second.pop_back();
+            }
+                //if another item check success
+            else {
+                if (success) {
+                    it->reset();
+                    items_.find(item)->second.pop_back();
+                }
+
+            }
+
+            return success;
+        }
+
+
+    }
+
+    void Player::addPokemon(std::shared_ptr<IPokemon> pokemon) {
+
+        caughtPokemons_.push_back(pokemon);
+
+    }
+
+    int Player::getNumberOfPokemons() {
+        return caughtPokemons_.size();
+    }
+
+    std::shared_ptr<IPokemon> Player::getPokemon(int number) {
+        return caughtPokemons_.at(number);
+    }
+
+
 }
