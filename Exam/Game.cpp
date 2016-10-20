@@ -3,6 +3,7 @@
 //
 
 
+#include <sstream>
 #include "Game.h"
 #include "pokemonState.h"
 #include "MoveChoosers.h"
@@ -357,9 +358,90 @@ namespace pokemonGame {
     }
 
     void Game::enteredShop() {
-        shop_->listItems();
-        //TODO buy item...
+        bool buying = true;
 
+        while (buying) {
+        shop_->listItems();
+
+
+            cout << "What would you like to do: " << endl;
+            cout << "'1' Buy a Potion\t" << flush;
+            cout << "'2' Buy a Pokeball" << endl;
+            cout << "'3' Buy a Revive\t" << flush;
+            cout << "'4' Leave" << endl;
+
+            int choice;
+            getIntBetween(choice, 1, 4, "Please choose an action: ", "Please select a number from 1 to 4");
+            cout << endl;
+            switch (choice) {
+                case 1: {
+                    cout << "How many items do you want to buy? " << flush;
+                    cin >> choice;
+                    shop_->buyItem("Potions", choice, player_);
+                    break;
+                }
+
+                case 2:
+                    cout << "How many items do you want to buy? " << flush;
+                    cin >> choice;
+                    shop_->buyItem("Potions", choice, player_);
+                    break;
+
+                case 3: {
+                    cout << "How many items do you want to buy? " << flush;
+                    cin >> choice;
+                    shop_->buyItem("Potions", choice, player_);
+                    break;
+                }
+
+                case 4: {
+                    buying = false;
+                    break;
+                }
+
+
+            }
+        }
+
+
+    }
+
+    //Taken from: http://stackoverflow.com/questions/15467412/c-cin-only-accept-numeric-values
+    void Game::getIntBetween(int &choice, int min, int max, std::string prompt, std::string fail) {
+
+        while (1) {
+            Game::getInt(choice, prompt, fail);
+            if (choice > max || choice < min) {
+                std::cout << "Sorry, your choice is out of range.\n";
+                continue;
+            }
+            break;
+        }
+
+
+    }
+
+    //Taken from: http://stackoverflow.com/questions/15467412/c-cin-only-accept-numeric-values
+    void Game::getInt(int &choice, std::string prompt, std::string fail) {
+
+        while (1) {
+
+            std::cout << prompt;
+            std::string str;
+            std::cin >> str;
+
+            std::istringstream ss(str);
+            int val1;
+            ss >> val1;
+
+            if (!ss.eof()) {
+                std::cout << fail;
+                continue;
+            } else {
+                choice = val1;
+                break;
+            }
+        }
 
     }
 

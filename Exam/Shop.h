@@ -8,6 +8,7 @@
 #include <vector>
 #include <map>
 #include "IItem.h"
+#include "Player.h"
 
 namespace pokemonGame{
 
@@ -16,11 +17,13 @@ namespace pokemonGame{
     public:
         Shop();
         virtual ~Shop();
+
         void listItems();
-        IItem* buyItem(int number);
+
+        int buyItem(std::string item, int quantity, Player *player);
 
     private:
-        std::map<std::string, std::vector<IItem*> > items_;
+        std::map<std::string, std::vector<std::shared_ptr<IItem>>> items_;
     };
 
 }

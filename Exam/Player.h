@@ -14,7 +14,7 @@ namespace pokemonGame{
 class Player
 {
 public:
-    Player() = default;
+    Player();
     virtual ~Player();
     void walkIntoTheWilderness();
     void goToTheShop();
@@ -26,14 +26,14 @@ public:
     std::shared_ptr<IPokemon> getFavoritePokemon() const;
     bool hasFavoritePokemon();
 
+    void addItem(std::string itemName, std::shared_ptr<IItem> item);
+
 
     void setPokemonsSeen(std::vector<std::shared_ptr<IPokemon>> &pokemons);// TODO DEBUG
 
+
 private:
-    void getIntBetween(int& d, int min, int max, std::string prompt, std::string fail);
-    void getInt(int& d, std::string prompt, std::string fail);
-private:
-    std::vector<IItem*> items_{}; //TODO make map with vector as in Shop
+    std::map<std::string, std::vector<std::shared_ptr<IItem>>> items_;
     std::vector<std::shared_ptr<IPokemon>> caughtPokemons_{};
     std::vector<std::shared_ptr<IPokemon>> seenPokemons_{};
     std::shared_ptr<IPokemon> favoritePokemon_{nullptr};

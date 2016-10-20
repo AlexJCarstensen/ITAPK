@@ -12,9 +12,9 @@ namespace pokemonGame {
 
 
     Player::~Player() {
-        for (auto &&item :items_) {
-            delete item;
-        }
+//        for (auto &&item :items_) {
+//            delete item;
+//        }
     }
 
     void Player::walkIntoTheWilderness() {
@@ -57,12 +57,11 @@ namespace pokemonGame {
     }
 
     void Player::checkYourItems() {
-        //TODO check up on this
 
         std::cout << "You have the following items: " << std::endl;
 
         for (auto &&item : items_) {
-
+            cout << item.first << " x " << item.second.size() << endl;
 
         }
     }
@@ -118,7 +117,7 @@ namespace pokemonGame {
         //TODO should it be in game?
         int numberOfMoves = favoritePokemon_->DisplayMoves();
         int choice = 0;
-        getIntBetween(choice, 1, numberOfMoves, "Please select a move: ", "Not a valid move");
+        Game::getIntBetween(choice, 1, numberOfMoves, "Please select a move: ", "Not a valid move");
 
         //Our pokemon attacks
         favoritePokemon_->doMove(wildPokemon.get(), choice - 1);
@@ -131,46 +130,31 @@ namespace pokemonGame {
         wildPokemon->doMove(favoritePokemon_.get(), randomChoice);
     }
 
-    //Taken from: http://stackoverflow.com/questions/15467412/c-cin-only-accept-numeric-values
-    void Player::getIntBetween(int &d, int min, int max, std::string prompt, std::string fail) {
 
-        while (1) {
-            getInt(d, prompt, fail);
-            if (d > max || d < min) {
-                std::cout << "Sorry, your choice is out of range.\n";
-                continue;
-            }
-            break;
-        }
-
-
-    }
-
-    //Taken from: http://stackoverflow.com/questions/15467412/c-cin-only-accept-numeric-values
-    void Player::getInt(int &d, std::string prompt, std::string fail) {
-
-        while (1) {
-
-            std::cout << prompt;
-            std::string str;
-            std::cin >> str;
-
-            std::istringstream ss(str);
-            int val1;
-            ss >> val1;
-
-            if (!ss.eof()) {
-                std::cout << fail;
-                continue;
-            } else {
-                d = val1;
-                break;
-            }
-        }
-
-    }
 
     bool Player::hasFavoritePokemon() {
         return hasFavoritePokemon_;
+    }
+
+    void Player::addItem(std::string itemName, std::shared_ptr<IItem> item) {
+        items_.find(itemName)->second.push_back(item);
+    }
+
+    Player::Player() {
+
+
+        std::vector<std::shared_ptr<IItem>> potions;
+        std::vector<std::shared_ptr<IItem>> pokeballs;
+        std::vector<std::shared_ptr<IItem>> revives;
+
+        for (int i = 0; i < 5; ++i) {
+            potions.push_back(std::make_shared<Potion>());
+
+            pokeballs.push_back(std::make_shared<Pokeball>());
+            revives.push_back(std::make_shared<Revive>());
+        }
+
+        items_ = {std::make_pair("Potions", std::move(potions)), std::make_pair("Pokeballs", std::move(pokeballs)),
+                  std::make_pair("Revives", std::move(revives))};
     }
 }

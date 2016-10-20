@@ -47,7 +47,7 @@ namespace pokemonGame {
 
         Element *getElement() const { return element_.get(); }
 
-        vector <string> getMoves() {
+        std::vector<std::string> getMoves() {
             std::vector<std::string> moveNames;
             for (int i = 0; i < moves_.size(); ++i) {
 
@@ -62,7 +62,7 @@ namespace pokemonGame {
         int DisplayMoves() {
             int number = 0;
             for (auto &&move : moves_) {
-                cout << ++number << ". " << move.get()->getMoveName() << endl;
+                std::cout << ++number << ". " << move.get()->getMoveName() << std::endl;
             }
             return number;
         }
@@ -92,8 +92,8 @@ namespace pokemonGame {
         bool isFainted() { return fainted_; }
 
         void printPokemon() {
-            cout << getName() << "\t" << "Lvl: " << getLvl() << endl;
-            cout << getName() << " has " << getCurrentHealth() << " hp out of " << getHealth() << "hp";
+            std::cout << getName() << "\t" << "Lvl: " << getLvl() << std::endl;
+            std::cout << getName() << " has " << getCurrentHealth() << " hp out of " << getHealth() << "hp";
         }
 
 
