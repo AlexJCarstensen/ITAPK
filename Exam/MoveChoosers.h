@@ -14,7 +14,7 @@
 
 namespace pokemonGame
 {
-    static bool containsMove(vector<int> moves, int move) {
+    static bool containsMove(std::vector<int> moves, int move) {
 
         if(std::find(moves.begin(), moves.end(), move) != moves.end()) {
             /* v contains x */
@@ -26,13 +26,13 @@ namespace pokemonGame
 
     }
 
-    static vector<int> generateMoveNumbers(int maxNumberInMoveset)
+    static std::vector<int> generateMoveNumbers(int maxNumberInMoveset)
     {
         //Creating random of how many moves are to be assigned
         int maxNumberOfMoves = 4;
         std::random_device rd;
         std::mt19937 eng(rd());
-        uniform_int_distribution<> distr(1, maxNumberOfMoves);
+        std::uniform_int_distribution<> distr(1, maxNumberOfMoves);
         int numberOfMoves = distr(eng);
 
         //Creating random numbers between 0 and numberOfMoves in moveSet
@@ -40,7 +40,7 @@ namespace pokemonGame
         for (int i = 0; i < numberOfMoves; ++i) {
             std::random_device rd;
             std::mt19937 eng(rd());
-            uniform_int_distribution<> distr(0, maxNumberInMoveset);
+            std::uniform_int_distribution<> distr(0, maxNumberInMoveset);
             int move = distr(eng);
 
 
@@ -77,7 +77,7 @@ namespace pokemonGame
             firemoves = new FireMoveSet();
 
             //Generating numbers to retrieve from firemoveSet
-            vector<int> moveNumbers = generateMoveNumbers(firemoves->NumberOfMoves()-1);
+            std::vector<int> moveNumbers = generateMoveNumbers(firemoves->NumberOfMoves()-1);
 
             //Generating new moves based on numbers generated
             for (auto &&number  : moveNumbers)
@@ -101,7 +101,7 @@ namespace pokemonGame
             IMoveSet* lightningmoves = new LightningMoveSet();
 
             //Generating numbers to retrieve from firemoveSet
-            vector<int> moveNumbers = generateMoveNumbers(lightningmoves->NumberOfMoves()-1);
+            std::vector<int> moveNumbers = generateMoveNumbers(lightningmoves->NumberOfMoves()-1);
 
             //Generating new moves based on numbers generated
             for (auto &&number  : moveNumbers)
@@ -123,7 +123,7 @@ namespace pokemonGame
             IMoveSet* grassmoves = new GrassMoveSet();
 
             //Generating numbers to retrieve from firemoveSet
-            vector<int> moveNumbers = generateMoveNumbers(grassmoves->NumberOfMoves()-1);
+            std::vector<int> moveNumbers = generateMoveNumbers(grassmoves->NumberOfMoves()-1);
 
             //Generating new moves based on numbers generated
             for (auto &&number  : moveNumbers)
@@ -147,7 +147,7 @@ namespace pokemonGame
             IMoveSet *watermoves = new WaterMoveSet();
 
             //Generating numbers to retrieve from firemoveSet
-            vector<int> moveNumbers = generateMoveNumbers(watermoves->NumberOfMoves() - 1);
+            std::vector<int> moveNumbers = generateMoveNumbers(watermoves->NumberOfMoves() - 1);
 
             //Generating new moves based on numbers generated
             for (auto &&number  : moveNumbers) {
@@ -167,7 +167,7 @@ namespace pokemonGame
             IMoveSet *groundmoves = new GroundMoveSet();
 
             //Generating numbers to retrieve from firemoveSet
-            vector<int> moveNumbers = generateMoveNumbers(groundmoves->NumberOfMoves() - 1);
+            std::vector<int> moveNumbers = generateMoveNumbers(groundmoves->NumberOfMoves() - 1);
 
             //Generating new moves based on numbers generated
             for (auto &&number  : moveNumbers) {

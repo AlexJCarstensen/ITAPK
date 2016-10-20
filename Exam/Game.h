@@ -36,9 +36,9 @@ namespace pokemonGame {
 
         void setShop(Shop *shop);
 
-        void setPokemons(std::vector<shared_ptr<IPokemon>> pokemons);
+        void setPokemons(std::vector<std::shared_ptr<IPokemon>> pokemons);
 
-        std::vector<shared_ptr<IPokemon>> getPokemons(); //TODO debug
+        std::vector<std::shared_ptr<IPokemon>> getPokemons(); //TODO debug
         std::map<Elements, std::shared_ptr<Element>> seeElements();//TODO debug
 
     public:
@@ -63,7 +63,7 @@ namespace pokemonGame {
 
     private:
         std::map<Elements, std::shared_ptr<Element> > elements_{};
-        std::vector<shared_ptr<IPokemon>> pokemons_;
+        std::vector<std::shared_ptr<IPokemon>> pokemons_;
         GameState *gameState_;
         Player *player_;
         Shop *shop_;

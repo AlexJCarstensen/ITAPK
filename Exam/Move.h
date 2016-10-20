@@ -17,35 +17,13 @@ namespace pokemonGame {
 //TODO make .cpp file
     class AttackMove : public IMove {
     public:
-        AttackMove(std::shared_ptr<Element> e, std::string name, size_t power) : IMove(e), power_(power), name_(name) {isAttack_ = true;}
+        AttackMove(std::shared_ptr<Element> e, std::string name, size_t power);
 
         ~AttackMove() {};
 
-        void doMove(IPokemon* pokemon) {
+        void doMove(IPokemon* pokemon);
 
-            Element *someElement = pokemon->getElement();
-
-            int someElementInt = (int)someElement->getElement();
-
-            int thisElementInt = (int)this->element_.get()->getElement();
-
-            if (this->element_.get()->isSuperEffective(pokemon->getElement())) {
-                //Reduce opposing pokemon health significantly
-                std::cout << name_ << " was super effective!" << std::endl;
-                pokemon->setCurrentHealth((pokemon->getHealth() - (power_ * 1.5)));
-            } else if (this->element_.get()->isNotEffective(pokemon->getElement())) {
-                //Reduce opposing pokemon health slightly
-                std::cout << name_ <<" is not very effective.." << std::endl;
-                pokemon->setCurrentHealth((pokemon->getHealth() - (power_ * 0.5)));
-            } else {
-                //Reduce opposing pokemon health normally
-                std::cout << name_ << " is normally effective" << std::endl;
-                pokemon->setCurrentHealth((pokemon->getHealth() - power_));
-            }
-
-        }
-
-        std::string getMoveName() { return name_; }
+        std::string getMoveName();
 
     private:
         size_t power_;

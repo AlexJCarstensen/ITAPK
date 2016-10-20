@@ -6,6 +6,7 @@
 #define EXAM_IPOKEMON_H
 
 #include "Element.h"
+#include <vector>
 
 
 namespace pokemonGame {
