@@ -594,7 +594,10 @@ namespace pokemonGame
 
         int randomChoice = rand() % wildNumberOfMoves + 1;
 
-        wildPokemon->doMove(ourPokemon.get(), randomChoice - 1);
+        //Wild ourPokemon attacks
+        bool killingBlow = wildPokemon->doMove(ourPokemon.get(), randomChoice - 1);
+
+        return killingBlow;
     }
 
     int Game::randomNumber(int min, int max)

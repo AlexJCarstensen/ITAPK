@@ -18,7 +18,7 @@ namespace pokemonGame {
     public:
         AttackMove(std::shared_ptr<IElement> e, std::string name, size_t power);
 
-        bool doMove(IPokemon* pokemon);
+        bool doMove(int lvl, IPokemon* pokemon);
 
         std::string getMoveName();
 
