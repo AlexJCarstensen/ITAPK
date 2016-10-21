@@ -45,7 +45,7 @@ namespace pokemonGame
 
         EvFlee(const bool didPokemonFlee) : didPokemonFlee_(didPokemonFlee) {
             if(didPokemonFlee)
-                std::cout << "Pokemon fled" << std::endl;
+                std::cout << " fled.." << std::endl;
             else
                 std::cout << "Safely got away" << std::endl;
 
