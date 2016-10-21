@@ -5,18 +5,10 @@
 #include "Grass.h"
 namespace pokemonGame{
 
-    Elements Grass::getElement()
+    Grass::Grass()
     {
-        return elements_;
-    }
-
-    Elements Grass::getWeakness()
-    {
-        return weakness_;
-    }
-
-    Elements Grass::getSuper()
-    {
-        return super_;
+        elementType_ = Elements::GRASS;
+        super_ = Elements::WATER;
+        weakness_ = Elements::FIRE;
     }
 }

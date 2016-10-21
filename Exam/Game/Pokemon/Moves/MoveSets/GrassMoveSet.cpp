@@ -14,7 +14,7 @@ namespace pokemonGame
         //Creating moves to put in container
         std::shared_ptr<IElement> grass = std::make_shared<Grass>();
         std::shared_ptr<IMove> razorLeafs = std::make_shared<AttackMove>(grass, "Razor Leafs", 25);
-        std::shared_ptr<IMove> megaDrain = std::make_shared<AttackMove>(grass, "Thunder", 30);
+        std::shared_ptr<IMove> megaDrain = std::make_shared<AttackMove>(grass, "Mega drain", 30);
         std::shared_ptr<IMove> absorb = std::make_shared<AttackMove>(grass, "Absorb", 15);
         std::shared_ptr<IMove> solarBeam = std::make_shared<AttackMove>(grass, "Solar Beam", 80);
         std::shared_ptr<IMove> vineWhip = std::make_shared<AttackMove>(grass, "Vine Whip", 45);

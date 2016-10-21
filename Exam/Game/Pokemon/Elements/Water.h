@@ -12,18 +12,7 @@ namespace pokemonGame
     class Water : public IElement
     {
     public:
-        Water() = default;
-
-        Elements getElement();
-
-        Elements getWeakness();
-
-        Elements getSuper();
-
-    private:
-        Elements elements_{Elements::WATER};
-        Elements weakness_{Elements::LIGHTNING};
-        Elements super_{Elements::GROUND};
+        Water();
     };
 }
 

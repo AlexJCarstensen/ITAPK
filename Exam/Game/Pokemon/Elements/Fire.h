@@ -12,18 +12,7 @@ namespace pokemonGame
     class Fire : public IElement
     {
     public:
-        Fire() = default;
-
-        Elements getElement();
-
-        Elements getWeakness();
-
-        Elements getSuper();
-
-    private:
-        Elements elements_{Elements::FIRE};
-        Elements weakness_{Elements::WATER};
-        Elements super_{Elements::GRASS};
+        Fire();
     };
 }
 

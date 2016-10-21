@@ -5,18 +5,11 @@
 #include "Ground.h"
 namespace pokemonGame
 {
-    Elements Ground::getElement()
-    {
-        return elements_;
-    }
 
-    Elements Ground::getWeakness()
+    Ground::Ground()
     {
-        return weakness_;
-    }
-
-    Elements Ground::getSuper()
-    {
-        return super_;
+        elementType_ = Elements::GROUND;
+        super_ = Elements::FIRE;
+        weakness_ = Elements::WATER;
     }
 }

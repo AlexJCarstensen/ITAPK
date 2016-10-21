@@ -12,18 +12,7 @@ namespace pokemonGame
     class Grass : public IElement
     {
     public:
-        Grass() = default;
-
-        Elements getElement();
-
-        Elements getWeakness();
-
-        Elements getSuper();
-
-    private:
-        Elements elements_{Elements::GRASS};
-        Elements weakness_{Elements::FIRE};
-        Elements super_{Elements::WATER};
+        Grass();
     };
 }
 

@@ -31,22 +31,25 @@ namespace pokemonGame
 
     }
 
+    static int generateRandomNumber(int min, int max){
+        std::random_device rd;
+        std::mt19937 eng(rd());
+        std::uniform_int_distribution<> distr(min, max);
+        return distr(eng);
+    }
+
     static std::vector<int> generateMoveNumbers(int maxNumberInMoveset)
     {
         //Creating random of how many moves are to be assigned
         int maxNumberOfMoves = 4;
-        std::random_device rd;
-        std::mt19937 eng(rd());
-        std::uniform_int_distribution<> distr(1, maxNumberOfMoves);
-        int numberOfMoves = distr(eng);
+
+        int numberOfMoves = generateRandomNumber(1, maxNumberOfMoves);
 
         //Creating random numbers between 0 and numberOfMoves in moveSet
         std::vector<int> moveNumbers;
         for (int i = 0; i < numberOfMoves; ++i) {
-            std::random_device rd;
-            std::mt19937 eng(rd());
-            std::uniform_int_distribution<> distr(0, maxNumberInMoveset);
-            int move = distr(eng);
+
+            int move = generateRandomNumber(0, maxNumberInMoveset);
 
 
             //if moveNumbers is empty, put in generated number
@@ -78,16 +81,14 @@ namespace pokemonGame
 
         std::vector<std::shared_ptr<IMove>> getMoves() {
             std::vector<std::shared_ptr<IMove>> moves;
-            IMoveSet* firemoves;
-            firemoves = new FireMoveSet();
-            //TODO ANY CLEAN UP HERE???
+            std::unique_ptr<IMoveSet> firemoves = std::make_unique<FireMoveSet>();
             //Generating numbers to retrieve from firemoveSet
-            std::vector<int> moveNumbers = generateMoveNumbers(firemoves->NumberOfMoves() - 1);
+            std::vector<int> moveNumbers = generateMoveNumbers(firemoves.get()->NumberOfMoves() - 1);
 
             //Generating new moves based on numbers generated
             for (auto &&number  : moveNumbers)
             {
-                moves.push_back(firemoves->getNewMove(number));
+                moves.push_back(firemoves.get()->getNewMove(number));
             }
 
             return moves;
@@ -103,9 +104,8 @@ namespace pokemonGame
 
         std::vector<std::shared_ptr<IMove>> getMoves() {
             std::vector<std::shared_ptr<IMove>> moves;
-            IMoveSet* lightningmoves = new LightningMoveSet();
-
-            //Generating numbers to retrieve from firemoveSet
+            std::unique_ptr<IMoveSet> lightningmoves = std::make_unique<LightningMoveSet>();
+            //Generating numbers to retrieve from lightningmoveSet
             std::vector<int> moveNumbers = generateMoveNumbers(lightningmoves->NumberOfMoves() - 1);
 
             //Generating new moves based on numbers generated
@@ -125,9 +125,8 @@ namespace pokemonGame
 
         std::vector<std::shared_ptr<IMove>> getMoves() {
             std::vector<std::shared_ptr<IMove>> moves;
-            IMoveSet* grassmoves = new GrassMoveSet();
-
-            //Generating numbers to retrieve from firemoveSet
+            std::unique_ptr<IMoveSet> grassmoves = std::make_unique<GrassMoveSet>();
+            //Generating numbers to retrieve from grassmoveSet
             std::vector<int> moveNumbers = generateMoveNumbers(grassmoves->NumberOfMoves() - 1);
 
             //Generating new moves based on numbers generated
@@ -149,9 +148,8 @@ namespace pokemonGame
 
         std::vector<std::shared_ptr<IMove>> getMoves() {
             std::vector<std::shared_ptr<IMove>> moves;
-            IMoveSet *watermoves = new WaterMoveSet();
-
-            //Generating numbers to retrieve from firemoveSet
+            std::unique_ptr<IMoveSet> watermoves = std::make_unique<WaterMoveSet>();
+            //Generating numbers to retrieve from watermoveSet
             std::vector<int> moveNumbers = generateMoveNumbers(watermoves->NumberOfMoves() - 1);
 
             //Generating new moves based on numbers generated
@@ -169,9 +167,8 @@ namespace pokemonGame
 
         std::vector<std::shared_ptr<IMove>> getMoves() {
             std::vector<std::shared_ptr<IMove>> moves;
-            IMoveSet *groundmoves = new GroundMoveSet();
-
-            //Generating numbers to retrieve from firemoveSet
+            std::unique_ptr<IMoveSet> groundmoves = std::make_unique<GroundMoveSet>();
+            //Generating numbers to retrieve from groundmoveSet
             std::vector<int> moveNumbers = generateMoveNumbers(groundmoves->NumberOfMoves() - 1);
 
             //Generating new moves based on numbers generated

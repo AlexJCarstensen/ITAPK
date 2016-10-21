@@ -12,18 +12,7 @@ namespace pokemonGame
     class Lightning : public IElement
     {
     public:
-        Lightning() {};
-
-        Elements getElement();
-
-        Elements getWeakness();
-
-        Elements getSuper();
-
-    private:
-        Elements elements_{Elements::LIGHTNING};
-        Elements weakness_{Elements::GROUND};
-        Elements super_{Elements::WATER};
+        Lightning();
     };
 }
 

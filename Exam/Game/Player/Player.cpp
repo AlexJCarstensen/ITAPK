@@ -135,7 +135,7 @@ namespace pokemonGame
 
         for (auto &&caughtPokemon : caughtPokemons_)
         {
-            cout << index++ << flush;
+            cout << index++ << ". "<< flush;
             caughtPokemon->printPokemon();
             cout << endl;
         }

@@ -6,19 +6,12 @@
 
 namespace pokemonGame
 {
-    Elements Fire::getElement()
+    Fire::Fire()
     {
-        return elements_;
+        elementType_ = Elements::FIRE;
+        super_ = Elements::GRASS;
+        weakness_ = Elements::WATER;
     }
 
-    Elements Fire::getWeakness()
-    {
-        return weakness_;
-    }
-
-    Elements Fire::getSuper()
-    {
-        return super_;
-    }
 }
 

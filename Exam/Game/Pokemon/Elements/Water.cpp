@@ -6,18 +6,10 @@
 
 namespace pokemonGame
 {
-    Elements pokemonGame::Water::getElement()
+    Water::Water()
     {
-        return elements_;
-    }
-
-    Elements pokemonGame::Water::getWeakness()
-    {
-        return weakness_;
-    }
-
-    Elements pokemonGame::Water::getSuper()
-    {
-        return super_;
+        elementType_ = Elements::WATER;
+        super_ = Elements::FIRE;
+        weakness_ = Elements::GRASS;
     }
 }

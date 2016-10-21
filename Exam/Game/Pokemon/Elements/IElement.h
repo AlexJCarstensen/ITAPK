@@ -17,31 +17,30 @@ namespace pokemonGame
 
         virtual ~IElement() = default;
 
-        virtual Elements getElement() = 0;
+        Elements getElement();
 
-        virtual Elements getWeakness() = 0;
+        Elements getWeakness();
 
-        virtual Elements getSuper() = 0;
+        Elements getSuper();
 
         bool operator==(IElement &other) const
         {
-            if (this->elements_ == other.elements_)
+            if (this->elementType_ == other.elementType_)
                 return true;
             return false;
         }
 
-        bool isSuperEffective(std::shared_ptr<IElement> e)
-        {
-            return (e->getElement() == this->getSuper());
-        }
+        bool isSuperEffective(std::shared_ptr<IElement> e);
 
-        bool isNotEffective(std::shared_ptr<IElement> e)
-        {
-            return (e->getElement() == this->getWeakness());
-        }
+        bool isNotEffective(std::shared_ptr<IElement> e);
 
-    private:
-        Elements elements_;
+
+    protected:
+        Elements elementType_;
+        Elements weakness_;
+        Elements super_;
+
+
     };
 }
 #endif //EXAM_ELEMENT_H

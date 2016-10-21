@@ -27,7 +27,7 @@ namespace pokemonGame
 
         unsigned int catchChange = rand() % 99 + 1;
 
-        if (catchChange <= (chanceHealth + chanceLevel))
+        if (catchChange >= (chanceHealth + chanceLevel))
         {
             std::cout << pokemon->getName() << " was caught!" << std::endl;
             pokemon->setCaught(true);

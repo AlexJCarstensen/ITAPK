@@ -12,18 +12,7 @@ namespace pokemonGame
     class Ground : public IElement
     {
     public:
-        Ground() = default;
-
-        Elements getElement();
-
-        Elements getWeakness();
-
-        Elements getSuper();
-
-    private:
-        Elements elements_{Elements::GROUND};
-        Elements weakness_{Elements::WATER};
-        Elements super_{Elements::LIGHTNING};
+        Ground();
     };
 }
 

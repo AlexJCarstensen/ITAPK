@@ -5,18 +5,10 @@
 #include "Lightning.h"
 namespace pokemonGame
 {
-    Elements pokemonGame::Lightning::getElement()
+    Lightning::Lightning()
     {
-        return elements_;
-    }
-
-    Elements pokemonGame::Lightning::getWeakness()
-    {
-        return weakness_;
-    }
-
-    Elements pokemonGame::Lightning::getSuper()
-    {
-        return super_;
+        elementType_ = Elements::LIGHTNING;
+        super_ = Elements::WATER;
+        weakness_ = Elements::GROUND;
     }
 }
