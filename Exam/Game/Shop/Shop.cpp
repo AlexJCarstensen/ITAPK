@@ -55,6 +55,7 @@ namespace pokemonGame {
                     player->addItem(item, std::move(*it));
                     it->reset();
                     items_.find(item)->second.pop_back();
+
                 }
             }
         }
