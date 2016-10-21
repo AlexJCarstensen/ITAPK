@@ -8,7 +8,7 @@ using namespace pokemonGame;
 int main() {
 
 
-
+//TODO Bubble was normally effective on Arcanine ???? Even though pokemon is fainted it can still attack!!!
     std::unique_ptr<GameState> gameStatePtr(new GameState());
     Game::getInstance()->setGameState(gameStatePtr.get());
     std::unique_ptr<Shop> shopPtr(new Shop());

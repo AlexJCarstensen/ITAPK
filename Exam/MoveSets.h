@@ -8,9 +8,14 @@
 #include <iostream>
 #include <memory>
 #include "Move.h"
-#include "Element.h"
+#include "Elements/Element.h"
 #include "Pokemon.h"
 #include "IMoveSet.h"
+#include "Elements/Fire.h"
+#include "Elements/Water.h"
+#include "Elements/Lightning.h"
+#include "Elements/Ground.h"
+#include "Elements/Grass.h"
 
 
 namespace pokemonGame {

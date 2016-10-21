@@ -8,13 +8,12 @@
 #include <iostream>
 #include <memory>
 #include <map>
-#include "Element.h"
+#include "Elements/Element.h"
 #include "Pokemon.h"
 #include "Player.h"
 #include "Shop.h"
 
 namespace pokemonGame {
-
 
     class Game {
     public:

@@ -7,6 +7,16 @@
 #include "Game.h"
 #include "pokemonState.h"
 #include "MoveChoosers.h"
+#include "Elements/Fire.h"
+#include "Elements/Water.h"
+#include "Elements/Lightning.h"
+#include "Elements/Grass.h"
+#include "Elements/Ground.h"
+#include "Elements/Water.h"
+#include "Elements/Lightning.h"
+#include "Elements/Ground.h"
+#include "Elements/Grass.h"
+#include "Elements/Elements.h"
 
 
 using namespace std;

@@ -7,7 +7,7 @@
 
 #include <iostream>
 #include <vector>
-#include "Element.h"
+#include "Elements/Element.h"
 #include "IMove.h"
 #include "IPokemon.h"
 #include "Move.h"

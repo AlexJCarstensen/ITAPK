@@ -11,6 +11,7 @@
 #include "IMove.h"
 #include "IMoveSet.h"
 #include "MoveSets.h"
+#include "Elements/Elements.h"
 
 namespace pokemonGame
 {
