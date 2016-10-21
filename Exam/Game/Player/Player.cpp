@@ -10,6 +10,7 @@
 #include "../Items/Pokeball.h"
 #include "../Items/Revive.h"
 #include "../Items/ItemNames.h"
+#include "../Exception/NoNamePokemonException.h"
 
 using namespace std;
 namespace pokemonGame
@@ -99,16 +100,20 @@ namespace pokemonGame
                                    {
                                        return pokemon.get()->getName() == nameOfPokemon;
                                    });
+
         try
         {
+            if (result == caughtPokemons_.end())
+                throw NoNamePokemonException("You don't have any pokemon with that name");
             favoritePokemon_ = *result;
             hasFavoritePokemon_ = true;
+            cout << favoritePokemon_->getName() << " is now your favorite pokemon" << endl;
+
         } catch (std::exception &ex)
         {
-            ex.what();
+            std::cout << ex.what() << std::endl;
         }
 
-        cout << favoritePokemon_->getName() << " is now your favorite pokemon" << endl;
     }
 
     void Player::addItem(std::string itemName, std::shared_ptr<IItem> item)

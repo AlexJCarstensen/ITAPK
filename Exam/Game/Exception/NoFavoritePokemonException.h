@@ -7,18 +7,20 @@
 
 #include <iostream>
 
-class NoFavoritePokemonException : public std::exception
+namespace pokemonGame
 {
+    class NoFavoritePokemonException : public std::exception
+    {
 
-public:
-    NoFavoritePokemonException(const char *msg) : err_msg(msg) {};
+    public:
+        NoFavoritePokemonException(const char *msg) : err_msg(msg) {};
 
-    ~NoFavoritePokemonException() throw() {};
+        ~NoFavoritePokemonException() throw() {};
 
-    const char *what() const throw() { return this->err_msg.c_str(); };
-private:
-    std::string err_msg;
-};
-
+        const char *what() const throw() { return this->err_msg.c_str(); };
+    private:
+        std::string err_msg;
+    };
+}
 
 #endif //EXAM_NOFAVORITEPOKEMONEXCEPTION_H

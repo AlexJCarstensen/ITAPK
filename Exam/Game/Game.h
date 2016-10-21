@@ -61,9 +61,9 @@ namespace pokemonGame
 
         void initializeStateMachine();
 
-        int randomNumber(int min, int max);
-
         void wildPokemonAttacks(std::shared_ptr<IPokemon> wildPokemon, std::shared_ptr<IPokemon> ourPokemon);
+
+        int randomNumber(int min, int max);
 
 
     private:
