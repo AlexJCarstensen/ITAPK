@@ -5,6 +5,7 @@
 #ifndef EXAM_ELEMENT_H
 #define EXAM_ELEMENT_H
 
+#include <boost/shared_ptr.hpp>
 #include "Elements.h"
 
 namespace pokemonGame
@@ -29,12 +30,12 @@ namespace pokemonGame
             return false;
         }
 
-        bool isSuperEffective(IElement *e)
+        bool isSuperEffective(std::shared_ptr<IElement> e)
         {
             return (e->getElement() == this->getSuper());
         }
 
-        bool isNotEffective(IElement *e)
+        bool isNotEffective(std::shared_ptr<IElement> e)
         {
             return (e->getElement() == this->getWeakness());
         }
