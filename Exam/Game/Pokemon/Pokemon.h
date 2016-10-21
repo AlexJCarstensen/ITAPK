@@ -50,22 +50,19 @@ namespace pokemonGame
 
         std::string getName() const;
 
-//TODO return shared ptr instead??
         std::shared_ptr<IElement> getElement() const;
 
         std::vector<std::string> getMoves();
 
         bool operator==(Pokemon &other) const
         {
-            if (this->element_ == other.element_)
-                return true;
-            return false;
+            return this->element_ == other.element_;
         }
     private:
         std::string name_;
         std::shared_ptr<IElement> element_;
-        size_t lvl_;
-        size_t maxHealth_{30};
+        int lvl_;
+        int maxHealth_{30};
         int currentHealth_{};
         std::vector<std::shared_ptr<IMove>> moves_;
         bool caught{false};

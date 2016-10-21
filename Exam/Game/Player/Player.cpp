@@ -117,13 +117,20 @@ namespace pokemonGame
 
     void Player::setSeenPokemon(std::shared_ptr<IPokemon> seenPokemon)
     {
-        seenPokemons_.push_back(seenPokemon);
+
+
+        auto result = std::find_if(seenPokemons_.begin(), seenPokemons_.end(),
+                                   [seenPokemon, this](const shared_ptr<IPokemon> pokemon)
+                                   {
+                                       return pokemon->getName() == seenPokemon->getName();
+                                   });
+        if (result == seenPokemons_.end())
+            seenPokemons_.push_back(seenPokemon);
     }
 
 
     bool Player::checkYourPokemons()
     {
-        //TODO check up on this
         if (caughtPokemons_.empty())
         {
             cout << "You dont have any Pokemons" << endl << endl;
@@ -169,6 +176,7 @@ namespace pokemonGame
         } else
         {
             std::cout << "You don't have any more " << item << "s" << std::endl;
+            return false;
         }
     }
 
@@ -187,7 +195,7 @@ namespace pokemonGame
         return favoritePokemon_->doMove(wildPokemon.get(), choice - 1);
     }
 
-    int Player::getNumberOfPokemons()
+    unsigned long Player::getNumberOfPokemons()
     {
         return caughtPokemons_.size();
     }
@@ -209,11 +217,12 @@ namespace pokemonGame
         } catch (NoFavoritePokemonException &ex)
         {
             cout << ex.what() << endl << endl;
+            return nullptr;
         }
 
     }
 
-    std::shared_ptr<IPokemon> Player::getPokemon(int number)
+    std::shared_ptr<IPokemon> Player::getPokemon(unsigned long number)
     {
         return caughtPokemons_.at(number);
     }

@@ -86,9 +86,9 @@ namespace pokemonGame
                     else
                     {
                         cout << "Enter the name of the pokemon you want as favorite " << flush;
-                        std::string choice;
-                        cin >> choice;
-                        player_->setFavoritePokemon(choice);
+                        std::string nameChoice;
+                        cin >> nameChoice;
+                        player_->setFavoritePokemon(nameChoice);
                     }
                     break;
                 }
@@ -294,7 +294,7 @@ namespace pokemonGame
                                     std::cout << "Your " << player_->getFavoritePokemon()->getName() << " fainted.."
                                               << std::endl;
                                     bool hasPokemonLeft = false;
-                                    for (int i = 0; i < player_->getNumberOfPokemons(); ++i)
+                                    for (unsigned long i = 0; i < player_->getNumberOfPokemons(); ++i)
                                     {
                                         if (!player_->getPokemon(i)->isFainted())
                                         {
@@ -412,9 +412,9 @@ namespace pokemonGame
                         if (player_->checkYourPokemons())
                         {
                             cout << "Enter the Pokemon you wish to use: " << flush;
-                            std::string choice;
-                            cin >> choice;
-                            player_->setFavoritePokemon(choice);
+                            std::string nameChoice;
+                            cin >> nameChoice;
+                            player_->setFavoritePokemon(nameChoice);
                         }
                         break;
                     }

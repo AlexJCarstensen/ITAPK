@@ -21,13 +21,7 @@ namespace pokemonGame
 {
     static bool containsMove(std::vector<int> moves, int move) {
 
-        if(std::find(moves.begin(), moves.end(), move) != moves.end()) {
-            /* v contains x */
-            return true;
-        } else {
-            /* v does not contain x */
-            return false;
-        }
+        return std::find(moves.begin(), moves.end(), move) != moves.end();
 
     }
 

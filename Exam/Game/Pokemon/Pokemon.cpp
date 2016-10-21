@@ -22,7 +22,6 @@ namespace pokemonGame
         caught = isCaught;
     }
 
-    //TODO overwrite << instead??
     void Pokemon::printPokemon()
     {
         std::cout << getName() << "\t" << "Lvl: " << getLvl() << std::endl;
@@ -78,7 +77,6 @@ namespace pokemonGame
             killingBlow = moves_[index]->doMove(pokemon);
         else
         {
-            //TODO: make ultility moves and utility attacks like sleep
             moves_[index]->doMove(this);
         }
         return killingBlow;

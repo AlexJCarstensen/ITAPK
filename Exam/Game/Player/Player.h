@@ -41,9 +41,9 @@ namespace pokemonGame
 
         bool fight(std::shared_ptr<IPokemon> wildPokemon);
 
-        int getNumberOfPokemons();
+        unsigned long getNumberOfPokemons();
 
-        std::shared_ptr<IPokemon> getPokemon(int number);
+        std::shared_ptr<IPokemon> getPokemon(unsigned long number);
 
         std::shared_ptr<IPokemon> getFavoritePokemon() const;
 

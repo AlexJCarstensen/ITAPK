@@ -25,9 +25,7 @@ namespace pokemonGame
 
         bool operator==(IElement &other) const
         {
-            if (this->elementType_ == other.elementType_)
-                return true;
-            return false;
+            return this->elementType_ == other.elementType_;
         }
 
         bool isSuperEffective(std::shared_ptr<IElement> e);

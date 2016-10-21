@@ -46,7 +46,6 @@ namespace pokemonGame
 
         virtual std::string getName() const = 0;
 
-//TODO return shared ptr instead??
         virtual std::shared_ptr<IElement> getElement() const = 0;
 
         virtual std::vector<std::string> getMoves()  = 0;

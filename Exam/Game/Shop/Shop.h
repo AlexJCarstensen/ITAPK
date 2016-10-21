@@ -20,7 +20,7 @@ namespace pokemonGame
 
         void listItems();
 
-        int buyItem(std::string item, int quantity, std::shared_ptr<Player> player);
+        void buyItem(std::string item, int quantity, std::shared_ptr<Player> player);
 
     private:
         std::map<std::string, std::vector<std::shared_ptr<IItem>>> items_;

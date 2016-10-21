@@ -43,7 +43,7 @@ namespace pokemonGame
                   << std::endl;
     }
 
-    int pokemonGame::Shop::buyItem(std::string item, int quantity, std::shared_ptr<Player> player)
+    void pokemonGame::Shop::buyItem(std::string item, int quantity, std::shared_ptr<Player> player)
     {
         if (items_.find(item)->second.empty())
             std::cout << "We are all out of " << item << "s" << std::endl << std::endl;
