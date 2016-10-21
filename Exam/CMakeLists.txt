@@ -15,7 +15,7 @@ if (Boost_FOUND)
     include_directories(${Boost_INCLUDE_DIRS})
 endif ()
 
-add_executable(Exam ${SOURCE_FILES})
+add_executable(PokemonGame ${SOURCE_FILES})
 if (Boost_FOUND)
     target_link_libraries(Exam ${Boost_LIBRARIES})
 endif ()
