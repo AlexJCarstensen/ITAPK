@@ -75,7 +75,7 @@ namespace pokemonGame
 
         std::vector<std::shared_ptr<IMove>> getMoves() {
             std::vector<std::shared_ptr<IMove>> moves;
-            std::unique_ptr<IMoveSet> firemoves = std::make_unique<FireMoveSet>();
+            std::shared_ptr<IMoveSet> firemoves = std::make_shared<FireMoveSet>();
             //Generating numbers to retrieve from firemoveSet
             std::vector<int> moveNumbers = generateMoveNumbers(firemoves.get()->NumberOfMoves() - 1);
 
@@ -98,7 +98,7 @@ namespace pokemonGame
 
         std::vector<std::shared_ptr<IMove>> getMoves() {
             std::vector<std::shared_ptr<IMove>> moves;
-            std::unique_ptr<IMoveSet> lightningmoves = std::make_unique<LightningMoveSet>();
+            std::shared_ptr<IMoveSet> lightningmoves = std::make_shared<LightningMoveSet>();
             //Generating numbers to retrieve from lightningmoveSet
             std::vector<int> moveNumbers = generateMoveNumbers(lightningmoves->NumberOfMoves() - 1);
 
@@ -119,7 +119,7 @@ namespace pokemonGame
 
         std::vector<std::shared_ptr<IMove>> getMoves() {
             std::vector<std::shared_ptr<IMove>> moves;
-            std::unique_ptr<IMoveSet> grassmoves = std::make_unique<GrassMoveSet>();
+            std::shared_ptr<IMoveSet> grassmoves = std::make_shared<GrassMoveSet>();
             //Generating numbers to retrieve from grassmoveSet
             std::vector<int> moveNumbers = generateMoveNumbers(grassmoves->NumberOfMoves() - 1);
 
@@ -142,7 +142,7 @@ namespace pokemonGame
 
         std::vector<std::shared_ptr<IMove>> getMoves() {
             std::vector<std::shared_ptr<IMove>> moves;
-            std::unique_ptr<IMoveSet> watermoves = std::make_unique<WaterMoveSet>();
+            std::shared_ptr<IMoveSet> watermoves = std::make_shared<WaterMoveSet>();
             //Generating numbers to retrieve from watermoveSet
             std::vector<int> moveNumbers = generateMoveNumbers(watermoves->NumberOfMoves() - 1);
 
@@ -161,7 +161,7 @@ namespace pokemonGame
 
         std::vector<std::shared_ptr<IMove>> getMoves() {
             std::vector<std::shared_ptr<IMove>> moves;
-            std::unique_ptr<IMoveSet> groundmoves = std::make_unique<GroundMoveSet>();
+            std::shared_ptr<IMoveSet> groundmoves = std::make_shared<GroundMoveSet>();
             //Generating numbers to retrieve from groundmoveSet
             std::vector<int> moveNumbers = generateMoveNumbers(groundmoves->NumberOfMoves() - 1);
 

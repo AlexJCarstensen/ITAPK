@@ -4,6 +4,8 @@
 
 #ifndef EXAM_MACRO_H
 #define EXAM_MACRO_H
+
+#include <iostream>
 namespace pokemonGame
 {
 
