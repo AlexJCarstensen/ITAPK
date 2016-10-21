@@ -17,8 +17,6 @@ namespace pokemonGame
     public:
         Player();
 
-        virtual ~Player();
-
         void walkIntoTheWilderness();
 
         void goToTheShop();
@@ -32,6 +30,8 @@ namespace pokemonGame
         void setFavoritePokemon(std::string nameOfPokemon);
 
         void addItem(std::string itemName, std::shared_ptr<IItem> item);
+
+        void setSeenPokemon(std::shared_ptr<IPokemon> seenPokemon);
 
         bool checkYourPokemons();
 

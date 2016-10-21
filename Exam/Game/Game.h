@@ -43,9 +43,6 @@ namespace pokemonGame
 
         static void getInt(int &choice, std::string prompt, std::string fail);
 
-        std::vector<std::shared_ptr<IPokemon>> getPokemons(); //TODO debug
-        std::map<Elements, std::shared_ptr<IElement>> seeElements();//TODO debug
-
     public:
         //Slots
         void enteredShop();

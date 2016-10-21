@@ -42,17 +42,17 @@ namespace pokemonGame
 
     void Game::enterWorld()
     {
-        cout << "Welcome to the world of Pokemons" << endl;
+        cout << "Welcome to the world of Pokemons!" << endl << endl;
         gameState_->process_event(EvGameOn());
         bool playing = true;
         while (playing)
         {
             int choice;
 
-            cout << "What would you like to do?" << endl;
+            cout << endl << "What would you like to do?" << endl;
             cout << "'1' Walk in the wilderness" << endl;
             cout << "'2' Go to the shop" << endl;
-            cout << "'3' Take a loot in the pokedex" << endl;
+            cout << "'3' Take a look in the pokedex" << endl;
             cout << "'4' Check your Pokemons" << endl;
             cout << "'5' Choose your favorite Pokemon" << endl;
             cout << "'6' Show your favorite Pokemon" << endl;
@@ -60,6 +60,7 @@ namespace pokemonGame
             cout << "'8' Go home" << endl;
 
             Game::getIntBetween(choice, 1, 8, "Please make a choice: ", "Please select a number from 1-8");
+            cout << endl;
 
             switch (choice)
             {
@@ -96,6 +97,8 @@ namespace pokemonGame
 
                 case 8:
                     playing = false;
+                    break;
+                default:
                     break;
             }
         }
@@ -142,7 +145,7 @@ namespace pokemonGame
     {
         while (1)
         {
-            std::cout << prompt;
+            std::cout << prompt << flush;
             std::string str;
             std::cin >> str;
 
@@ -209,6 +212,8 @@ namespace pokemonGame
                     buying = false;
                     break;
                 }
+                default:
+                    break;
             }
         }
     }
@@ -231,7 +236,8 @@ namespace pokemonGame
                 return wildPokemon;
             };
 
-            std::cout << "Wild " << getRandomPokemon()->getName() << " appeared" << std::endl << std::endl;
+            player_->setSeenPokemon(getRandomPokemon());
+            std::cout << "Wild " << wildPokemon->getName() << " appeared" << std::endl << std::endl;
             bool battling = true;
             while (battling)
             {
@@ -363,6 +369,8 @@ namespace pokemonGame
                                     couldUsePotionOrRevive = true;
                                 break;
                             }
+                            default:
+                                break;
                         }
                         if (couldUsePotionOrRevive)
                             wildPokemonAttacks(wildPokemon, player_->getFavoritePokemon());
@@ -385,12 +393,13 @@ namespace pokemonGame
                         battling = false;
                         break;
                     }
+                    default:
+                        break;
                 }
             }
         } else
         {
-            std::cout << "Sadly you didn't find any Pokemons" <<
-                      std::endl;
+            std::cout << "Sadly you didn't find any Pokemons" << std::endl;
         }
     }
 

@@ -28,19 +28,12 @@ namespace pokemonGame
             pokeballs.push_back(std::make_shared<Pokeball>());
             revives.push_back(std::make_shared<Revive>());
         }
-        //TODO SHOULD IT BE MOVE??
+
         items_ = {std::make_pair(itemNames::POTION, std::move(potions)),
                   std::make_pair(itemNames::POKEBALL, std::move(pokeballs)),
                   std::make_pair(itemNames::REVIVE, std::move(revives))};
     }
 
-    Player::~Player()
-    {
-        //TODO Check
-//        for (auto &&item :items_) {
-//            delete item;
-//        }
-    }
 
     void Player::walkIntoTheWilderness()
     {
@@ -58,15 +51,16 @@ namespace pokemonGame
 
     void Player::lookInPokedex()
     {
-        //TODO Check up on this
-        std::cout << "You have in the world of Pokemon seen these Pokemons: " << std::endl;
+        std::cout << "You have in the world of Pokemon seen these Pokemons: " << std::endl << std::endl;
+        int index = 1;
         for (auto &&pokemon : seenPokemons_)
         {
             if (pokemon->isCaught())
-                std::cout << pokemon->getName() << " Caught" << std::endl;
+                std::cout << index++ << ". " << pokemon->getName() << " Caught" << std::endl;
             else
-                std::cout << pokemon->getName() << " Seen" << std::endl;
+                std::cout << index++ << ". " << pokemon->getName() << " Seen" << std::endl;
         }
+        std::cout << std::endl;
     }
 
     void Player::checkYourItems()
@@ -121,6 +115,12 @@ namespace pokemonGame
         items_.find(itemName)->second.push_back(item);
     }
 
+    void Player::setSeenPokemon(std::shared_ptr<IPokemon> seenPokemon)
+    {
+        seenPokemons_.push_back(seenPokemon);
+    }
+
+
     bool Player::checkYourPokemons()
     {
         //TODO check up on this
@@ -166,6 +166,9 @@ namespace pokemonGame
                 }
             }
             return success;
+        } else
+        {
+            std::cout << "You don't have any more " << item << "s" << std::endl;
         }
     }
 
@@ -176,7 +179,6 @@ namespace pokemonGame
 
     bool Player::fight(shared_ptr<IPokemon> wildPokemon)
     {
-        //TODO should it be in game?
         int numberOfMoves = favoritePokemon_->DisplayMoves();
         int choice = 0;
         Game::getIntBetween(choice, 1, numberOfMoves, "Please select a move: ", "Not a valid move");
@@ -192,7 +194,6 @@ namespace pokemonGame
 
     shared_ptr<IPokemon> Player::getFavoritePokemon() const
     {
-        //TODO check up on this
         try
         {
             if (favoritePokemon_ == nullptr)
@@ -207,7 +208,6 @@ namespace pokemonGame
 
         } catch (NoFavoritePokemonException &ex)
         {
-            //TODO remove cout when final
             cout << ex.what() << endl << endl;
         }
 
