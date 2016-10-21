@@ -10,13 +10,13 @@
 #include "../Items/IItem.h"
 #include "../Player/Player.h"
 
-namespace pokemonGame{
-
-    class Shop {
+namespace pokemonGame
+{
+    class Shop
+    {
 
     public:
         Shop();
-        virtual ~Shop();
 
         void listItems();
 
@@ -25,9 +25,6 @@ namespace pokemonGame{
     private:
         std::map<std::string, std::vector<std::shared_ptr<IItem>>> items_;
     };
-
 }
-
-
 
 #endif //EXAM_SHOP_H
