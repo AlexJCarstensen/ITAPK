@@ -25,31 +25,27 @@ namespace pokemonGame
 
         void lookInPokedex();
 
-        bool checkYourPokemons();
+        void checkYourItems();
 
         void addPokemon(std::shared_ptr<IPokemon> pokemon);
+
+        void setFavoritePokemon(std::string nameOfPokemon);
+
+        void addItem(std::string itemName, std::shared_ptr<IItem> item);
+
+        bool checkYourPokemons();
+
+        bool useItem(std::string item, std::shared_ptr<IPokemon> pokemon);
+
+        bool hasFavoritePokemon();
+
+        bool fight(std::shared_ptr<IPokemon> wildPokemon);
 
         int getNumberOfPokemons();
 
         std::shared_ptr<IPokemon> getPokemon(int number);
 
-        void checkYourItems();
-
-        bool useItem(std::string item, std::shared_ptr<IPokemon> pokemon);
-
-        void setFavoritePokemon(std::string nameOfPokemon);
-
-        bool fight(std::shared_ptr<IPokemon> wildPokemon);
-
         std::shared_ptr<IPokemon> getFavoritePokemon() const;
-
-        bool hasFavoritePokemon();
-
-        void addItem(std::string itemName, std::shared_ptr<IItem> item);
-
-
-        void setPokemonsSeen(std::vector<std::shared_ptr<IPokemon>> &pokemons);// TODO DEBUG
-
 
     private:
         std::map<std::string, std::vector<std::shared_ptr<IItem>>> items_;
