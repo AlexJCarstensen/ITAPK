@@ -81,10 +81,15 @@ namespace pokemonGame
                     break;
                 case 5:
                 {
-                    cout << "Enter the name of the pokemon you want as favorite " << flush;
-                    std::string choice;
-                    cin >> choice;
-                    player_->setFavoritePokemon(choice);
+                    if (player_->getNumberOfPokemons() == 0)
+                        cout << "You dont have any Pokemons" << endl;
+                    else
+                    {
+                        cout << "Enter the name of the pokemon you want as favorite " << flush;
+                        std::string choice;
+                        cin >> choice;
+                        player_->setFavoritePokemon(choice);
+                    }
                     break;
                 }
                 case 6:
@@ -145,7 +150,7 @@ namespace pokemonGame
     {
         while (1)
         {
-            std::cout << prompt << flush;
+            std::cout << prompt;
             std::string str;
             std::cin >> str;
 
@@ -155,7 +160,7 @@ namespace pokemonGame
 
             if (!ss.eof())
             {
-                std::cout << fail;
+                std::cout << fail << std::endl;
                 continue;
             } else
             {
@@ -173,7 +178,7 @@ namespace pokemonGame
         {
             shop_->listItems();
 
-            cout << "What would you like to do: " << endl;
+            cout << std::endl << "What would you like to do: " << endl;
             cout << "'1' Buy a Potion\t" << flush;
             cout << "'2' Buy a Pokeball" << endl;
             cout << "'3' Buy a Revive\t" << flush;
@@ -263,9 +268,11 @@ namespace pokemonGame
                 cout << endl;
                 switch (choice)
                 {
-                    case 1: {
+                    case 1:
+                    {
                         if (player_->hasFavoritePokemon())
-                            if(player_->fight(wildPokemon))
+                        {
+                            if (player_->fight(wildPokemon))
                             {
                                 std::cout << "Wild " << wildPokemon->getName() << " fainted" << std::endl;
                                 battling = false;
@@ -273,61 +280,71 @@ namespace pokemonGame
                                 wildPokemon.get()->respawn();
                                 break;
                             }
-                        if(randomNumber(1, 100) >= 95)
-                        {
-                            //Wild pokemon flees
-                            std::cout << "wild " << wildPokemon->getName();
-                            //event gets 'true' cause it's the pokemon who flees
-                            gameState_->process_event(EvFlee(true));
-                            battling = false;
-                        }
-                        else {
-                            if (wildPokemonAttacks(wildPokemon, player_->getFavoritePokemon())) {
-                                std::cout << "Your " << player_->getFavoritePokemon()->getName() << " fainted.."
-                                          << std::endl;
-                                bool hasPokemonLeft = false;
-                                for (int i = 0; i < player_->getNumberOfPokemons(); ++i) {
-                                    if (!player_->getPokemon(i)->isFainted()) {
-                                        hasPokemonLeft = true;
-                                    }
-                                }
-
-                                if (!hasPokemonLeft) {
-                                    //Write out you fainted
-                                    std::cout << "/~~~~~~~~~~~~~~~~~~~~~~~~~~~/\nYou are out of pokemon!\n"
-                                              << "Player lost consciousness...\n/~~~~~~~~~~~~~~~~~~~~~~~~~~~/"
+                            if (randomNumber(1, 100) >= 95)
+                            {
+                                //Wild pokemon flees
+                                std::cout << "wild " << wildPokemon->getName();
+                                //event gets 'true' cause it's the pokemon who flees
+                                gameState_->process_event(EvFlee(true));
+                                battling = false;
+                            } else
+                            {
+                                if (wildPokemonAttacks(wildPokemon, player_->getFavoritePokemon()))
+                                {
+                                    std::cout << "Your " << player_->getFavoritePokemon()->getName() << " fainted.."
                                               << std::endl;
-                                    battling = false;
-                                    gameState_->process_event(EvFaint());
-
-                                    //Respawning all pokemon
-                                    wildPokemon->respawn();
-                                    for (int i = 0; i < player_->getNumberOfPokemons(); ++i) {
-                                        player_->getPokemon(i)->respawn();
+                                    bool hasPokemonLeft = false;
+                                    for (int i = 0; i < player_->getNumberOfPokemons(); ++i)
+                                    {
+                                        if (!player_->getPokemon(i)->isFainted())
+                                        {
+                                            hasPokemonLeft = true;
+                                        }
                                     }
 
-                                    std::cout
-                                            << "/**************************************/\nPlayer woke up at the Pokemon Center!\n/**************************************/"
-                                            << std::endl;
+                                    if (!hasPokemonLeft)
+                                    {
+                                        //Write out you fainted
+                                        std::cout << "/~~~~~~~~~~~~~~~~~~~~~~~~~~~/\nYou are out of pokemon!\n"
+                                                  << "Player lost consciousness...\n/~~~~~~~~~~~~~~~~~~~~~~~~~~~/"
+                                                  << std::endl;
+                                        battling = false;
+                                        gameState_->process_event(EvFaint());
 
-                                } else {
+                                        //Respawning all pokemon
+                                        wildPokemon->respawn();
+                                        for (int i = 0; i < player_->getNumberOfPokemons(); ++i)
+                                        {
+                                            player_->getPokemon(i)->respawn();
+                                        }
+
+                                        std::cout
+                                                << "/**************************************/\nPlayer woke up at the Pokemon Center!\n/**************************************/"
+                                                << std::endl;
+
+                                    } else
+                                    {
 
 
-                                    //Choosing new pokemon
-                                    //Displaying pokemon
-                                    bool chosenFaintedPokemon = true;
-                                    while (chosenFaintedPokemon) {
-                                        player_->checkYourPokemons();
-                                        Game::getIntBetween(choice, 1, player_->getNumberOfPokemons(),
-                                                            "Choose a new Pokemon: ", "Please select a number from 1-" +
-                                                                                      player_->getNumberOfPokemons());
+                                        //Choosing new pokemon
+                                        //Displaying pokemon
+                                        bool chosenFaintedPokemon = true;
+                                        while (chosenFaintedPokemon)
+                                        {
+                                            player_->checkYourPokemons();
+                                            Game::getIntBetween(choice, 1, player_->getNumberOfPokemons(),
+                                                                "Choose a new Pokemon: ",
+                                                                "Please select a number from 1-" +
+                                                                player_->getNumberOfPokemons());
 
-                                        //If pokemon chosen is not fainted, break loop
-                                        if (!player_->getPokemon(choice - 1)->isFainted()) chosenFaintedPokemon = false;
+                                            //If pokemon chosen is not fainted, break loop
+                                            if (!player_->getPokemon(choice - 1)->isFainted())
+                                                chosenFaintedPokemon = false;
 
+                                        }
+                                        //Setting favorite pokemon aka the battling pokemon
+                                        player_->setFavoritePokemon(player_->getPokemon(choice - 1)->getName());
                                     }
-                                    //Setting favorite pokemon aka the battling pokemon
-                                    player_->setFavoritePokemon(player_->getPokemon(choice - 1)->getName());
                                 }
                             }
                         }

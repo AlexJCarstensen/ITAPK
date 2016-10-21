@@ -52,15 +52,21 @@ namespace pokemonGame
     void Player::lookInPokedex()
     {
         std::cout << "You have in the world of Pokemon seen these Pokemons: " << std::endl << std::endl;
-        int index = 1;
-        for (auto &&pokemon : seenPokemons_)
+
+        if (seenPokemons_.empty())
+            std::cout << "You haven't yet discovered any Pokemons" << std::endl;
+        else
         {
-            if (pokemon->isCaught())
-                std::cout << index++ << ". " << pokemon->getName() << " Caught" << std::endl;
-            else
-                std::cout << index++ << ". " << pokemon->getName() << " Seen" << std::endl;
+            int index = 1;
+            for (auto &&pokemon : seenPokemons_)
+            {
+                if (pokemon->isCaught())
+                    std::cout << index++ << ". " << pokemon->getName() << " Caught" << std::endl;
+                else
+                    std::cout << index++ << ". " << pokemon->getName() << " Seen" << std::endl;
+            }
+            std::cout << std::endl;
         }
-        std::cout << std::endl;
     }
 
     void Player::checkYourItems()
@@ -82,13 +88,6 @@ namespace pokemonGame
 
     void Player::setFavoritePokemon(std::string nameOfPokemon)
     {
-        //TODO check up on this
-        if (caughtPokemons_.empty())
-        {
-            cout << "You dont have any Pokemons" << endl;
-            return;
-        }
-
         auto result = std::find_if(caughtPokemons_.begin(), caughtPokemons_.end(),
                                    [nameOfPokemon](const shared_ptr<IPokemon> pokemon)
                                    {
@@ -107,6 +106,7 @@ namespace pokemonGame
         {
             std::cout << ex.what() << std::endl;
         }
+
 
     }
 
@@ -135,7 +135,7 @@ namespace pokemonGame
 
         for (auto &&caughtPokemon : caughtPokemons_)
         {
-            cout << index++ << ". "<< flush;
+            cout << index++ << ". " << flush;
             caughtPokemon->printPokemon();
             cout << endl;
         }
@@ -217,4 +217,5 @@ namespace pokemonGame
     {
         return caughtPokemons_.at(number);
     }
+
 }
