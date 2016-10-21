@@ -46,7 +46,7 @@ namespace pokemonGame
     int pokemonGame::Shop::buyItem(std::string item, int quantity, std::shared_ptr<Player> player)
     {
         if (items_.find(item)->second.empty())
-            std::cout << "We are all out of " << item << std::endl;
+            std::cout << "We are all out of " << item << "s" << std::endl << std::endl;
         else
         {
             if (quantity > items_.find(item)->second.size())
