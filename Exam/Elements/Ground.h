@@ -4,26 +4,27 @@
 
 #ifndef EXAM_GROUND_H
 #define EXAM_GROUND_H
-#include "Element.h"
 
-namespace pokemonGame{
+#include "IElement.h"
 
-class Ground : public Element
+namespace pokemonGame
 {
-public:
-    Ground() = default;
+    class Ground : public IElement
+    {
+    public:
+        Ground() = default;
 
-    Elements getElement();
+        Elements getElement();
 
-    Elements getWeakness();
+        Elements getWeakness();
 
-    Elements getSuper();
+        Elements getSuper();
 
-private:
-    Elements elements_{Elements::GROUND};
-    Elements weakness_{Elements::WATER};
-    Elements super_{Elements::LIGHTNING};
-};
+    private:
+        Elements elements_{Elements::GROUND};
+        Elements weakness_{Elements::WATER};
+        Elements super_{Elements::LIGHTNING};
+    };
 }
 
 #endif //EXAM_GROUND_H

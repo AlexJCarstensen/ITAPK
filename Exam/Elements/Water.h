@@ -5,11 +5,11 @@
 #ifndef EXAM_WATER_H
 #define EXAM_WATER_H
 
-#include "Element.h"
+#include "IElement.h"
 
 namespace pokemonGame
 {
-    class Water : public Element
+    class Water : public IElement
     {
     public:
         Water() = default;

@@ -5,11 +5,11 @@
 #ifndef EXAM_LIGHTNING_H
 #define EXAM_LIGHTNING_H
 
-#include "Element.h"
+#include "IElement.h"
 
 namespace pokemonGame
 {
-    class Lightning : public Element
+    class Lightning : public IElement
     {
     public:
         Lightning() {};

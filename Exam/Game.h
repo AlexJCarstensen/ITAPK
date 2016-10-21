@@ -8,7 +8,7 @@
 #include <iostream>
 #include <memory>
 #include <map>
-#include "Elements/Element.h"
+#include "Elements/IElement.h"
 #include "Pokemon.h"
 #include "Player.h"
 #include "Shop.h"
@@ -42,7 +42,7 @@ namespace pokemonGame {
         static void getInt(int &choice, std::string prompt, std::string fail);
 
         std::vector<std::shared_ptr<IPokemon>> getPokemons(); //TODO debug
-        std::map<Elements, std::shared_ptr<Element>> seeElements();//TODO debug
+        std::map<Elements, std::shared_ptr<IElement>> seeElements();//TODO debug
 
     public:
         //Slots
@@ -67,7 +67,7 @@ namespace pokemonGame {
 
 
     private:
-        std::map<Elements, std::shared_ptr<Element> > elements_{};
+        std::map<Elements, std::shared_ptr<IElement> > elements_{};
         std::vector<std::shared_ptr<IPokemon>> pokemons_;
         GameState *gameState_;
         Player *player_;

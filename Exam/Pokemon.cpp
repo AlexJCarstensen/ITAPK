@@ -7,7 +7,7 @@
 
 namespace pokemonGame {
 
-    Pokemon::Pokemon(std::string name, std::shared_ptr<Element> element, int lvl,
+    Pokemon::Pokemon(std::string name, std::shared_ptr<IElement> element, int lvl,
                      std::vector<std::shared_ptr<IMove>> moves) : name_(name), element_(element), lvl_(lvl),
                                                                   moves_(moves) {
         if (lvl_ > 1)
@@ -15,7 +15,7 @@ namespace pokemonGame {
         currentHealth_ = maxHealth_;
     }
 
-    Element *Pokemon::getElement() const { return element_.get(); }
+    IElement *Pokemon::getElement() const { return element_.get(); }
 
     int Pokemon::DisplayMoves() {
         int number = 0;

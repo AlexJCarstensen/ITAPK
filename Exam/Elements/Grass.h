@@ -5,11 +5,11 @@
 #ifndef EXAM_GRASS_H
 #define EXAM_GRASS_H
 
-#include "Element.h"
+#include "IElement.h"
 
 namespace pokemonGame
 {
-    class Grass : public Element
+    class Grass : public IElement
     {
     public:
         Grass() = default;
@@ -26,6 +26,5 @@ namespace pokemonGame
         Elements super_{Elements::WATER};
     };
 }
-
 
 #endif //EXAM_GRASS_H

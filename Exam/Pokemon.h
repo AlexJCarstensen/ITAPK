@@ -7,17 +7,17 @@
 
 #include <iostream>
 #include <vector>
-#include "Elements/Element.h"
-#include "IMove.h"
+#include "Elements/IElement.h"
+#include "Moves/IMove.h"
 #include "IPokemon.h"
-#include "Move.h"
+#include "Moves/Move.h"
 
 namespace pokemonGame {
 
 //TODO make .cpp file
     class Pokemon : public IPokemon {
     public:
-        Pokemon(std::string name, std::shared_ptr<Element> element, int lvl, std::vector<std::shared_ptr<IMove>> moves);
+        Pokemon(std::string name, std::shared_ptr<IElement> element, int lvl, std::vector<std::shared_ptr<IMove>> moves);
 
         ~Pokemon() {};
 
@@ -33,7 +33,7 @@ namespace pokemonGame {
 
         std::string getName() const;
 
-        Element *getElement() const;
+        IElement *getElement() const;
 
         std::vector <std::string> getMoves();
 
@@ -60,7 +60,7 @@ namespace pokemonGame {
 
     private:
         std::string name_;
-        std::shared_ptr<Element> element_;
+        std::shared_ptr<IElement> element_;
         size_t lvl_;
         size_t maxHealth_{30};
         int currentHealth_{};

@@ -5,15 +5,15 @@
 #ifndef EXAM_IMOVE_H
 #define EXAM_IMOVE_H
 
-#include "Elements/Element.h"
-#include "IPokemon.h"
+#include "../Elements/IElement.h"
+#include "../IPokemon.h"
 
-namespace pokemonGame {
-    class IMove {
+namespace pokemonGame
+{
+    class IMove
+    {
     public:
-        IMove() = default;
-
-        IMove(std::shared_ptr<Element> element) : element_(element) {}
+        IMove(std::shared_ptr<IElement> element) : element_(element) {}
 
         virtual ~IMove() {};
 
@@ -25,7 +25,7 @@ namespace pokemonGame {
 
     protected:
         bool isAttack_;
-        std::shared_ptr<Element> element_;
+        std::shared_ptr<IElement> element_;
     };
 }
 #endif //EXAM_IMOVE_H

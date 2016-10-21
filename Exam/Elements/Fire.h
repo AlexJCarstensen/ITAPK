@@ -5,11 +5,11 @@
 #ifndef EXAM_FIRE_H
 #define EXAM_FIRE_H
 
-#include "Element.h"
+#include "IElement.h"
 
 namespace pokemonGame
 {
-    class Fire : public Element
+    class Fire : public IElement
     {
     public:
         Fire() = default;

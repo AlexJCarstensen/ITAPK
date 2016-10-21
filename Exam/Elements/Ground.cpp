@@ -5,7 +5,6 @@
 #include "Ground.h"
 namespace pokemonGame
 {
-
     Elements Ground::getElement()
     {
         return elements_;

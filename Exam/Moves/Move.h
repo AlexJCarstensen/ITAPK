@@ -7,19 +7,16 @@
 
 #include <iostream>
 
-#include "Elements/Element.h"
+#include "../Elements/IElement.h"
 #include "IMove.h"
-#include "Pokemon.h"
+#include "../Pokemon.h"
 
 
 namespace pokemonGame {
 
-
     class AttackMove : public IMove {
     public:
-        AttackMove(std::shared_ptr<Element> e, std::string name, size_t power);
-
-        ~AttackMove() {};
+        AttackMove(std::shared_ptr<IElement> e, std::string name, size_t power);
 
         bool doMove(IPokemon* pokemon);
 
@@ -28,16 +25,7 @@ namespace pokemonGame {
     private:
         size_t power_;
         std::string name_;
-
     };
-
-
-
-
-
-
-
 }
-
 
 #endif //EXAM_MOVES_H

@@ -10,8 +10,12 @@
 #include <random>
 #include "IMove.h"
 #include "IMoveSet.h"
-#include "MoveSets.h"
-#include "Elements/Elements.h"
+#include "MoveSets/GroundMoveSet.h"
+#include "../Elements/Elements.h"
+#include "MoveSets/FireMoveSet.h"
+#include "MoveSets/LightningMoveSet.h"
+#include "MoveSets/GrassMoveSet.h"
+#include "MoveSets/WaterMoveSet.h"
 
 namespace pokemonGame
 {
@@ -76,7 +80,7 @@ namespace pokemonGame
             std::vector<std::shared_ptr<IMove>> moves;
             IMoveSet* firemoves;
             firemoves = new FireMoveSet();
-
+            //TODO ANY CLEAN UP HERE???
             //Generating numbers to retrieve from firemoveSet
             std::vector<int> moveNumbers = generateMoveNumbers(firemoves->NumberOfMoves() - 1);
 

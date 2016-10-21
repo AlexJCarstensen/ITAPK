@@ -9,13 +9,12 @@
 
 namespace pokemonGame
 {
-
-    class Element
+    class IElement
     {
     public:
-        Element() = default;
+        IElement() = default;
 
-        virtual ~Element() = default;
+        virtual ~IElement() = default;
 
         virtual Elements getElement() = 0;
 
@@ -23,19 +22,19 @@ namespace pokemonGame
 
         virtual Elements getSuper() = 0;
 
-        bool operator==(Element &other) const
+        bool operator==(IElement &other) const
         {
             if (this->elements_ == other.elements_)
                 return true;
             return false;
         }
 
-        bool isSuperEffective(Element *e)
+        bool isSuperEffective(IElement *e)
         {
             return (e->getElement() == this->getSuper());
         }
 
-        bool isNotEffective(Element *e)
+        bool isNotEffective(IElement *e)
         {
             return (e->getElement() == this->getWeakness());
         }
@@ -43,6 +42,5 @@ namespace pokemonGame
     private:
         Elements elements_;
     };
-
 }
 #endif //EXAM_ELEMENT_H

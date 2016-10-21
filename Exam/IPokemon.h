@@ -5,7 +5,7 @@
 #ifndef EXAM_IPOKEMON_H
 #define EXAM_IPOKEMON_H
 
-#include "Elements/Element.h"
+#include "Elements/IElement.h"
 #include <vector>
 
 
@@ -32,7 +32,7 @@ namespace pokemonGame {
 
         virtual std::string getName() const = 0;
 
-        virtual Element *getElement() const = 0;
+        virtual IElement *getElement() const = 0;
 
         virtual std::vector<std::string> getMoves()  = 0;
 

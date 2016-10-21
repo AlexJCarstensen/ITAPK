@@ -6,7 +6,7 @@
 #include <sstream>
 #include "Game.h"
 #include "pokemonState.h"
-#include "MoveChoosers.h"
+#include "Moves/MoveChoosers.h"
 #include "Elements/Fire.h"
 #include "Elements/Water.h"
 #include "Elements/Lightning.h"
@@ -168,11 +168,11 @@ namespace pokemonGame {
 
 
     void Game::initializeElements() {
-        shared_ptr<Element> firePtr = make_shared<Fire>();
-        shared_ptr<Element> GrassPtr = make_shared<Grass>();
-        shared_ptr<Element> lightningPtr = make_shared<Lightning>();
-        shared_ptr<Element> groundPtr = make_shared<Ground>();
-        shared_ptr<Element> waterPtr = make_shared<Water>();
+        shared_ptr<IElement> firePtr = make_shared<Fire>();
+        shared_ptr<IElement> GrassPtr = make_shared<Grass>();
+        shared_ptr<IElement> lightningPtr = make_shared<Lightning>();
+        shared_ptr<IElement> groundPtr = make_shared<Ground>();
+        shared_ptr<IElement> waterPtr = make_shared<Water>();
 
         elements_ =
                 {make_pair(Elements::FIRE, firePtr), make_pair(Elements::GRASS, GrassPtr),
@@ -193,7 +193,7 @@ namespace pokemonGame {
     }
 
 
-    map<Elements, shared_ptr<Element>> Game::seeElements() {
+    map<Elements, shared_ptr<IElement>> Game::seeElements() {
         return elements_;
     }
 
