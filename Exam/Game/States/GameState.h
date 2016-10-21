@@ -8,8 +8,8 @@
 
 #include <boost/statechart/state_machine.hpp>
 
-namespace pokemonGame{
-
+namespace pokemonGame
+{
     namespace sc = boost::statechart;
     struct NotPlaying;
 

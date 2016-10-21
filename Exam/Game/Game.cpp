@@ -12,6 +12,7 @@
 #include "Pokemon/Elements/Lightning.h"
 #include "Pokemon/Elements/Grass.h"
 #include "Pokemon/Elements/Ground.h"
+#include "Items/ItemNames.h"
 
 
 using namespace std;
@@ -260,8 +261,9 @@ namespace pokemonGame {
         pokemons_ = pokemons;
     }
 
-    void Game::setGameState(GameState *gameState) {
-        gameState_ = gameState;
+void Game::setGameState(std::shared_ptr<GameState> gameState)
+{
+    gameState_ = std::move(gameState);
 
     }
 
@@ -338,7 +340,8 @@ namespace pokemonGame {
                                 //Pokeball
                                 gameState_->process_event(EvBallThrow());
 
-                                if (player_->useItem("Pokeballs", wildPokemon)) {
+                                if (player_->useItem(itemNames::POKEBALL, wildPokemon))
+                                {
                                     player_->addPokemon(wildPokemon);
                                     gameState_->process_event(EvCatch());
                                     battling = false;
@@ -354,7 +357,8 @@ namespace pokemonGame {
                                 Game::getIntBetween(choice, 1, player_->getNumberOfPokemons(), "Choose a pokemon: ",
                                                     "Enter a number between 1 and " +
                                                     player_->getNumberOfPokemons());
-                                if (!player_->useItem("Potions", player_->getPokemon(choice - 1))) {
+                                if (!player_->useItem(itemNames::POTION, player_->getPokemon(choice - 1)))
+                                {
                                     cout << "Your potion didnt have any effect on "
                                          << player_->getPokemon(choice - 1)->getName() << endl;
                                 } else
@@ -366,7 +370,8 @@ namespace pokemonGame {
                                 player_->checkYourPokemons();
                                 Game::getIntBetween(choice, 1, player_->getNumberOfPokemons(), "Choose a pokemon: ",
                                                     "Enter a number between 1 and " + player_->getNumberOfPokemons());
-                                if (!player_->useItem("Revives", player_->getPokemon(choice - 1))) {
+                                if (!player_->useItem(itemNames::REVIVE, player_->getPokemon(choice - 1)))
+                                {
                                     cout << "Your revive didnt have any effect on "
                                          << player_->getPokemon(choice - 1)->getName() << endl;
 
@@ -407,12 +412,14 @@ namespace pokemonGame {
     //gameState_->process_event(EvBallThrow());
 
     //gameState_->process_event(EvCatch());
-    void Game::setPlayer(Player *player) {
-        player_ = player;
+    void Game::setPlayer(std::shared_ptr<Player> player)
+    {
+        player_ = std::move(player);
     }
 
-    void Game::setShop(Shop *shop) {
-        shop_ = shop;
+void Game::setShop(std::shared_ptr<Shop> shop)
+{
+    shop_ = std::move(shop);
     }
 
     void Game::enteredShop() {

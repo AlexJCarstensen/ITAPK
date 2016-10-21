@@ -14,7 +14,7 @@
 #include <boost/statechart/transition.hpp>
 #include <boost/statechart/custom_reaction.hpp>
 #include <boost/signals2/signal.hpp>
-#include "../macro.h"
+#include "printStates.h"
 #include "../Game.h"
 #include "GameState.h"
 
@@ -29,8 +29,8 @@ namespace pokemonGame
 
 
 #define PRINT_ENTRY_EXIT(lvl, name)     \
-    name() { macro::print(lvl ,#name"()"); }   \
-    ~name() { macro::print(lvl ,"~"#name"()"); }
+    name() { printStates::print(lvl ,#name"()"); }   \
+    ~name() { printStates::print(lvl ,"~"#name"()"); }
 
     /*****************
      *     Events    *
@@ -126,9 +126,6 @@ namespace pokemonGame
         PRINT_ENTRY_EXIT(2, Catching);
 
     };
-
-
 }
-
 
 #endif //EXAM_POKEMONSTATE_H

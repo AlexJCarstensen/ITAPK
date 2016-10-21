@@ -9,13 +9,13 @@ int main() {
 
 
 //TODO Bubble was normally effective on Arcanine ???? Even though pokemon is fainted it can still attack!!!
-    std::unique_ptr<GameState> gameStatePtr(new GameState());
-    Game::getInstance()->setGameState(gameStatePtr.get());
-    std::unique_ptr<Shop> shopPtr(new Shop());
-    Game::getInstance()->setShop(shopPtr.get());
+    std::shared_ptr<GameState> gameStatePtr = std::make_shared<GameState>();
+    std::shared_ptr<Shop> shopPtr = std::make_shared<Shop>();
+    std::shared_ptr<Player> playerPtr = std::make_shared<Player>();
+    Game::getInstance()->setGameState(gameStatePtr);
+    Game::getInstance()->setShop(shopPtr);
     Game::getInstance()->startGame();
-    std::unique_ptr<Player> playerPtr(new Player());
-    Game::getInstance()->setPlayer(playerPtr.get());
+    Game::getInstance()->setPlayer(playerPtr);
     Game::getInstance()->enterWorld();
 
 

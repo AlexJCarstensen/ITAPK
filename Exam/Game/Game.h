@@ -13,9 +13,11 @@
 #include "Player/Player.h"
 #include "Shop/Shop.h"
 
-namespace pokemonGame {
+namespace pokemonGame
+{
 
-    class Game {
+    class Game
+    {
     public:
         Game(Game const &) = delete;             // Copy construct
         Game(Game &&) = delete;                  // Move construct
@@ -29,11 +31,11 @@ namespace pokemonGame {
 
         void enterWorld();
 
-        void setGameState(GameState *gameState);
+        void setGameState(std::shared_ptr<GameState> gameState);
 
-        void setPlayer(Player *player);
+        void setPlayer(std::shared_ptr<Player> player);
 
-        void setShop(Shop *shop);
+        void setShop(std::shared_ptr<Shop> shop);
 
         void setPokemons(std::vector<std::shared_ptr<IPokemon>> pokemons);
 
@@ -50,11 +52,9 @@ namespace pokemonGame {
 
         void encounterPokemon();
 
-    protected:
+    private:
         Game() = default;
 
-
-    private:
         void populateWorldWithPokemons();
 
         void initializeElements();
@@ -69,9 +69,9 @@ namespace pokemonGame {
     private:
         std::map<Elements, std::shared_ptr<IElement> > elements_{};
         std::vector<std::shared_ptr<IPokemon>> pokemons_;
-        GameState *gameState_;
-        Player *player_;
-        Shop *shop_;
+        std::shared_ptr<GameState> gameState_;
+        std::shared_ptr<Player> player_;
+        std::shared_ptr<Shop> shop_;
         static Game *instance_;
 
 
