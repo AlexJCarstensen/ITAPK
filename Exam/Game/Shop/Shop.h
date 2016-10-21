@@ -7,8 +7,8 @@
 
 #include <vector>
 #include <map>
-#include "IItem.h"
-#include "Player.h"
+#include "../Items/IItem.h"
+#include "../Player/Player.h"
 
 namespace pokemonGame{
 

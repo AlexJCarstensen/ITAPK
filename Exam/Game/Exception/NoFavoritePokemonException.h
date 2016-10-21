@@ -7,7 +7,8 @@
 
 #include <iostream>
 
-class NoFavoritePokemonException : public std::exception {
+class NoFavoritePokemonException : public std::exception
+{
 
 public:
     NoFavoritePokemonException(const char *msg) : err_msg(msg) {};
@@ -17,8 +18,6 @@ public:
     const char *what() const throw() { return this->err_msg.c_str(); };
 private:
     std::string err_msg;
-
-
 };
 
 

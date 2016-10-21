@@ -3,6 +3,9 @@
 //
 
 #include "Shop.h"
+#include "../Items/Potion.h"
+#include "../Items/Pokeball.h"
+#include "../Items/Revive.h"
 
 namespace pokemonGame {
     pokemonGame::Shop::Shop() {

@@ -5,18 +5,13 @@
 
 #include <sstream>
 #include "Game.h"
-#include "pokemonState.h"
-#include "Moves/MoveChoosers.h"
-#include "Elements/Fire.h"
-#include "Elements/Water.h"
-#include "Elements/Lightning.h"
-#include "Elements/Grass.h"
-#include "Elements/Ground.h"
-#include "Elements/Water.h"
-#include "Elements/Lightning.h"
-#include "Elements/Ground.h"
-#include "Elements/Grass.h"
-#include "Elements/Elements.h"
+#include "States/pokemonState.h"
+#include "Pokemon/Moves/MoveChoosers.h"
+#include "Pokemon/Elements/Fire.h"
+#include "Pokemon/Elements/Water.h"
+#include "Pokemon/Elements/Lightning.h"
+#include "Pokemon/Elements/Grass.h"
+#include "Pokemon/Elements/Ground.h"
 
 
 using namespace std;

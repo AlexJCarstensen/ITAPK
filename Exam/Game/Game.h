@@ -8,10 +8,10 @@
 #include <iostream>
 #include <memory>
 #include <map>
-#include "Elements/IElement.h"
-#include "Pokemon.h"
-#include "Player.h"
-#include "Shop.h"
+#include "Pokemon/Elements/IElement.h"
+#include "Pokemon/Pokemon.h"
+#include "Player/Player.h"
+#include "Shop/Shop.h"
 
 namespace pokemonGame {
 

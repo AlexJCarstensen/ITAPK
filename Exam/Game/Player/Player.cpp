@@ -4,8 +4,11 @@
 
 #include <sstream>
 #include "Player.h"
-#include "pokemonState.h"
-#include "NoFavoritePokemonException.h"
+#include "../States/pokemonState.h"
+#include "../Exception/NoFavoritePokemonException.h"
+#include "../Items/Potion.h"
+#include "../Items/Pokeball.h"
+#include "../Items/Revive.h"
 
 using namespace std;
 namespace pokemonGame {

@@ -14,8 +14,8 @@
 #include <boost/statechart/transition.hpp>
 #include <boost/statechart/custom_reaction.hpp>
 #include <boost/signals2/signal.hpp>
-#include "macro.h"
-#include "Game.h"
+#include "../macro.h"
+#include "../Game.h"
 #include "GameState.h"
 
 namespace pokemonGame
