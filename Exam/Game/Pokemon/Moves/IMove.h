@@ -17,7 +17,7 @@ namespace pokemonGame
 
         virtual ~IMove() {};
 
-        virtual bool doMove(IPokemon *pokemon) = 0;
+        virtual bool doMove(int lvl ,IPokemon *pokemon) = 0;
 
         virtual std::string getMoveName() = 0;
 

@@ -74,12 +74,15 @@ namespace pokemonGame
     {
         bool killingBlow = false;
 
-        if (moves_[index]->isAttack())
-            killingBlow = moves_[index]->doMove(pokemon);
+        if (moves_[index]->isAttack()) {
+            std::cout << name_ << " used " << moves_[index]->getMoveName() << std::endl;
+            killingBlow = moves_[index]->doMove(getLvl(), pokemon);
+        }
         else
         {
+            std::cout << name_ << " used " << moves_[index]->getMoveName() << std::endl;
             //TODO: make ultility moves and utility attacks like sleep
-            moves_[index]->doMove(this);
+            moves_[index]->doMove(getLvl(), this);
         }
         return killingBlow;
     }

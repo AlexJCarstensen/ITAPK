@@ -11,24 +11,29 @@ namespace pokemonGame
     AttackMove::AttackMove(std::shared_ptr<IElement> e, std::string name, size_t power)
             : IMove(e), power_(power), name_(name) { isAttack_ = true; }
 
-    bool AttackMove::doMove(IPokemon *pokemon)
+    bool AttackMove::doMove(int lvl, IPokemon *pokemon)
     {
         bool killingBlow;
+
+        double lvlDif = (double)lvl - (double)pokemon->getLvl();
+
+        double powerFromLevelDif = lvlDif /30;
+
         if (this->element_.get()->isSuperEffective(pokemon->getElement()))
         {
             //Reduce opposing pokemon health significantly
-            std::cout << name_ << " was super effective!" << std::endl;
-            killingBlow = pokemon->reduceCurrentHealth(power_ * 1.5);
+            std::cout << "It was super effective!" << std::endl;
+            killingBlow = pokemon->reduceCurrentHealth(power_ * (1.5 + powerFromLevelDif));
         } else if (this->element_.get()->isNotEffective(pokemon->getElement()))
         {
             //Reduce opposing pokemon health slightly
-            std::cout << name_ << " is not very effective.." << std::endl;
-            killingBlow = pokemon->reduceCurrentHealth(power_ * 0.5);
+            std::cout <<" it was not very effective.." << std::endl;
+            killingBlow = pokemon->reduceCurrentHealth(power_ * (0.5 + powerFromLevelDif));
         } else
         {
             //Reduce opposing pokemon health normally
-            std::cout << name_ << " is normally effective" << std::endl;
-            killingBlow = pokemon->reduceCurrentHealth(power_);
+            std::cout << "It was normally effective" << std::endl;
+            killingBlow = pokemon->reduceCurrentHealth(power_ + (10 * powerFromLevelDif));
         }
 
         return killingBlow;
