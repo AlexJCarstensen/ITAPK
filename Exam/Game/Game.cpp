@@ -426,23 +426,23 @@ namespace pokemonGame
 
         MoveChooser<(int) Elements::FIRE> fireMoveChooser;
         shared_ptr<IPokemon> charmander = make_shared<Pokemon>("Charmander", elements_.find(Elements::FIRE)->second,
-                                                               randomNumber(1, 100),
+                                                               randomNumber(1, 11),
                                                                fireMoveChooser.getMoves());
 
         shared_ptr<IPokemon> moltres = make_shared<Pokemon>("Moltres", elements_.find(Elements::FIRE)->second,
-                                                            randomNumber(1, 100),
+                                                            randomNumber(40, 100),
                                                             fireMoveChooser.getMoves());
         shared_ptr<IPokemon> charizard = make_shared<Pokemon>("Charizard", elements_.find(Elements::FIRE)->second,
-                                                              randomNumber(1, 100),
+                                                              randomNumber(36, 70),
                                                               fireMoveChooser.getMoves());
         shared_ptr<IPokemon> arcanine = make_shared<Pokemon>("Arcanine", elements_.find(Elements::FIRE)->second,
-                                                             randomNumber(1, 100),
+                                                             randomNumber(43, 66),
                                                              fireMoveChooser.getMoves());
         shared_ptr<IPokemon> magmar = make_shared<Pokemon>("Magmar", elements_.find(Elements::FIRE)->second,
-                                                           randomNumber(1, 100),
+                                                           randomNumber(20, 80),
                                                            fireMoveChooser.getMoves());
         shared_ptr<IPokemon> flareon = make_shared<Pokemon>("Flareon", elements_.find(Elements::FIRE)->second,
-                                                            randomNumber(1, 100),
+                                                            randomNumber(25, 62),
                                                             fireMoveChooser.getMoves());
 
         /***********************
@@ -451,22 +451,22 @@ namespace pokemonGame
         MoveChooser<(int) Elements::LIGHTNING> lightningMoveChooser;
 
         shared_ptr<IPokemon> pickachu = make_shared<Pokemon>("Pikachu", elements_.find(Elements::LIGHTNING)->second,
-                                                             randomNumber(1, 100),
+                                                             randomNumber(1, 34),
                                                              lightningMoveChooser.getMoves());
         shared_ptr<IPokemon> electrabuzz = make_shared<Pokemon>("Electrabuzz",
                                                                 elements_.find(Elements::LIGHTNING)->second,
-                                                                randomNumber(1, 100), lightningMoveChooser.getMoves());
+                                                                randomNumber(20, 80), lightningMoveChooser.getMoves());
         shared_ptr<IPokemon> magneton = make_shared<Pokemon>("Magneton", elements_.find(Elements::LIGHTNING)->second,
-                                                             randomNumber(1, 100),
+                                                             randomNumber(30, 55),
                                                              lightningMoveChooser.getMoves());
         shared_ptr<IPokemon> electrode = make_shared<Pokemon>("Electrode", elements_.find(Elements::LIGHTNING)->second,
-                                                              randomNumber(1, 100),
+                                                              randomNumber(30, 45),
                                                               lightningMoveChooser.getMoves());
         shared_ptr<IPokemon> jolteon = make_shared<Pokemon>("Jolteon", elements_.find(Elements::LIGHTNING)->second,
-                                                            randomNumber(1, 100),
+                                                            randomNumber(25, 62),
                                                             lightningMoveChooser.getMoves());
         shared_ptr<IPokemon> zapdos = make_shared<Pokemon>("Zapdos", elements_.find(Elements::LIGHTNING)->second,
-                                                           randomNumber(1, 100),
+                                                           randomNumber(40, 100),
                                                            lightningMoveChooser.getMoves());
 
         /*******************
@@ -475,22 +475,22 @@ namespace pokemonGame
         MoveChooser<(int) Elements::WATER> waterMoveChooser;
 
         shared_ptr<IPokemon> squirtle = make_shared<Pokemon>("Squirtle", elements_.find(Elements::WATER)->second,
-                                                             randomNumber(1, 100),
+                                                             randomNumber(1, 11),
                                                              waterMoveChooser.getMoves());
         shared_ptr<IPokemon> blastoise = make_shared<Pokemon>("Blastoise", elements_.find(Elements::WATER)->second,
-                                                              randomNumber(1, 100),
+                                                              randomNumber(36, 70),
                                                               waterMoveChooser.getMoves());
         shared_ptr<IPokemon> vaporeon = make_shared<Pokemon>("Vaporeon", elements_.find(Elements::WATER)->second,
-                                                             randomNumber(1, 100),
+                                                             randomNumber(25, 62),
                                                              waterMoveChooser.getMoves());
         shared_ptr<IPokemon> lapras = make_shared<Pokemon>("Lapras", elements_.find(Elements::WATER)->second,
-                                                           randomNumber(1, 100),
+                                                           randomNumber(30, 80),
                                                            waterMoveChooser.getMoves());
         shared_ptr<IPokemon> magikarp = make_shared<Pokemon>("Magikarp", elements_.find(Elements::WATER)->second,
-                                                             randomNumber(1, 100),
+                                                             randomNumber(1, 18),
                                                              waterMoveChooser.getMoves());
         shared_ptr<IPokemon> omastar = make_shared<Pokemon>("Omastar", elements_.find(Elements::WATER)->second,
-                                                            randomNumber(1, 100),
+                                                            randomNumber(40, 66),
                                                             waterMoveChooser.getMoves());
 
         /*******************
@@ -500,22 +500,22 @@ namespace pokemonGame
         MoveChooser<(int) Elements::GRASS> grassMoveChooser;
 
         shared_ptr<IPokemon> bulbasaur = make_shared<Pokemon>("Bulbasaur", elements_.find(Elements::GRASS)->second,
-                                                              randomNumber(1, 100),
+                                                              randomNumber(1, 11),
                                                               grassMoveChooser.getMoves());
         shared_ptr<IPokemon> venosaur = make_shared<Pokemon>("Venosaur", elements_.find(Elements::GRASS)->second,
-                                                             randomNumber(1, 100),
+                                                             randomNumber(36, 70),
                                                              grassMoveChooser.getMoves());
         shared_ptr<IPokemon> butterfree = make_shared<Pokemon>("Butterfree", elements_.find(Elements::GRASS)->second,
-                                                               randomNumber(1, 100),
+                                                               randomNumber(10, 36),
                                                                grassMoveChooser.getMoves());
-        shared_ptr<IPokemon> victreebel = make_shared<Pokemon>("Victreebel", elements_.find(Elements::GRASS)->second,
-                                                               randomNumber(1, 100),
+        shared_ptr<IPokemon> victreebel = make_shared<Pokemon>("Victreebell", elements_.find(Elements::GRASS)->second,
+                                                               randomNumber(25, 66),
                                                                grassMoveChooser.getMoves());
         shared_ptr<IPokemon> exeggutor = make_shared<Pokemon>("Exeggutor", elements_.find(Elements::GRASS)->second,
-                                                              randomNumber(1, 100),
+                                                              randomNumber(25, 55),
                                                               grassMoveChooser.getMoves());
         shared_ptr<IPokemon> scyther = make_shared<Pokemon>("Scyther", elements_.find(Elements::GRASS)->second,
-                                                            randomNumber(1, 100),
+                                                            randomNumber(20, 80),
                                                             grassMoveChooser.getMoves());
 
         /********************
@@ -525,29 +525,29 @@ namespace pokemonGame
 
 
         shared_ptr<IPokemon> diglett = make_shared<Pokemon>("Diglett", elements_.find(Elements::GROUND)->second,
-                                                            randomNumber(1, 100),
+                                                            randomNumber(5, 33),
                                                             groundMoveChooser.getMoves());
         shared_ptr<IPokemon> golem = make_shared<Pokemon>("Golem", elements_.find(Elements::GROUND)->second,
-                                                          randomNumber(1, 100),
+                                                          randomNumber(40, 60),
                                                           groundMoveChooser.getMoves());
-        shared_ptr<IPokemon> machoke = make_shared<Pokemon>("Machoke", elements_.find(Elements::GROUND)->second,
-                                                            randomNumber(1, 100),
-                                                            groundMoveChooser.getMoves());
+        shared_ptr<IPokemon> onix = make_shared<Pokemon>("Onix", elements_.find(Elements::GROUND)->second,
+                                                         randomNumber(30, 54),
+                                                         groundMoveChooser.getMoves());
         shared_ptr<IPokemon> kabutops = make_shared<Pokemon>("Kabutops", elements_.find(Elements::GROUND)->second,
-                                                             randomNumber(1, 100),
+                                                             randomNumber(40, 66),
                                                              groundMoveChooser.getMoves());
         shared_ptr<IPokemon> sandslash = make_shared<Pokemon>("Sandslash", elements_.find(Elements::GROUND)->second,
-                                                              randomNumber(1, 100),
+                                                              randomNumber(22, 36),
                                                               groundMoveChooser.getMoves());
         shared_ptr<IPokemon> machamp = make_shared<Pokemon>("Machamp", elements_.find(Elements::GROUND)->second,
-                                                            randomNumber(1, 100),
+                                                            randomNumber(50, 85),
                                                             groundMoveChooser.getMoves());
 
         std::vector<shared_ptr<IPokemon>> pokemons = {charmander, moltres, charizard, arcanine, magmar, flareon,
                                                       pickachu, electrabuzz, magneton, electrode, jolteon, zapdos,
                                                       squirtle, blastoise, vaporeon, lapras, magikarp, omastar,
                                                       bulbasaur, venosaur, butterfree, victreebel, exeggutor, scyther,
-                                                      diglett, golem, machoke, kabutops, sandslash, machamp};
+                                                      diglett, golem, onix, kabutops, sandslash, machamp};
 
         setPokemons(pokemons);
     }
