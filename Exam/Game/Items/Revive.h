@@ -16,7 +16,7 @@ namespace pokemonGame
 
         std::string getItemName();
 
-        bool useItem(IPokemon *pokemon);
+        bool useItem(std::shared_ptr<IPokemon> pokemon);
 
     private:
         std::string name_;

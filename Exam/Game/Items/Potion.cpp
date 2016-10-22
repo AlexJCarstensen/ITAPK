@@ -18,7 +18,7 @@ namespace pokemonGame
         return name_;
     }
 
-    bool Potion::useItem(IPokemon *pokemon)
+    bool Potion::useItem(std::shared_ptr<IPokemon> pokemon)
     {
         if (pokemon->getCurrentHealth() == pokemon->getMaxHealth() || pokemon->isFainted())
         { return false; }

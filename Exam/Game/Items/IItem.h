@@ -18,7 +18,7 @@ namespace pokemonGame {
 
         virtual std::string getItemName() = 0;
 
-        virtual bool useItem(IPokemon *pokemon) = 0;
+        virtual bool useItem(std::shared_ptr<IPokemon> pokemon) = 0;
     };
 }
 

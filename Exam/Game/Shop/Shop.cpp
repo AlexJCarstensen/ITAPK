@@ -56,7 +56,6 @@ namespace pokemonGame
                 {
                     auto it = std::prev(items_.find(item)->second.end());
                     player->addItem(item, std::move(*it));
-                    it->reset();
                     items_.find(item)->second.pop_back();
                 }
             } else
@@ -65,7 +64,6 @@ namespace pokemonGame
                 {
                     auto it = std::prev(items_.find(item)->second.end());
                     player->addItem(item, std::move(*it));
-                    it->reset();
                     items_.find(item)->second.pop_back();
 
                 }

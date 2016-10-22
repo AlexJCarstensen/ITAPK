@@ -18,7 +18,7 @@ namespace pokemonGame
         return name_;
     }
 
-    bool Pokeball::useItem(IPokemon *pokemon)
+    bool Pokeball::useItem(std::shared_ptr<IPokemon> pokemon)
     {
         //Making a random number based on level and current hp
 

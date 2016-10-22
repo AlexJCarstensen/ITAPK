@@ -102,7 +102,7 @@ namespace pokemonGame
             hasFavoritePokemon_ = true;
             cout << favoritePokemon_->getName() << " is now your favorite pokemon" << endl;
 
-        } catch (std::exception &ex)
+        } catch (NoNamePokemonException &ex)
         {
             std::cout << ex.what() << std::endl;
         }
@@ -155,7 +155,7 @@ namespace pokemonGame
         if (!items_.find(item)->second.empty())
         {
             auto it = std::prev(items_.find(item)->second.end());
-            bool success = it->get()->useItem(pokemon.get());
+            bool success = it->get()->useItem(pokemon);
 
             //If item is a pokeball, destroy after use
             if (it->get()->getItemName() == itemNames::POKEBALL)

@@ -17,7 +17,7 @@ namespace pokemonGame
         return name_;
     }
 
-    bool Revive::useItem(IPokemon *pokemon)
+    bool Revive::useItem(std::shared_ptr<IPokemon> pokemon)
     {
         bool revived = false;
 

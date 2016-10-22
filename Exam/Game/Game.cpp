@@ -191,7 +191,7 @@ namespace pokemonGame
             {
                 case 1:
                 {
-                    cout << "How many items do you want to buy? " << flush;
+                    cout << "How many " << itemNames::POTION << "s do you want to buy? " << flush;
                     cin >> choice;
                     shop_->buyItem(itemNames::POTION, choice, player_);
                     break;
@@ -199,14 +199,14 @@ namespace pokemonGame
 
                 case 2:
                 {
-                    cout << "How many items do you want to buy? " << flush;
+                    cout << "How many " << itemNames::POKEBALL << "s do you want to buy? " << flush;
                     cin >> choice;
                     shop_->buyItem(itemNames::POKEBALL, choice, player_);
                     break;
                 }
                 case 3:
                 {
-                    cout << "How many items do you want to buy? " << flush;
+                    cout << "How many " << itemNames::REVIVE << "s do you want to buy? " << flush;
                     cin >> choice;
                     shop_->buyItem(itemNames::REVIVE, choice, player_);
                     break;
@@ -374,31 +374,38 @@ namespace pokemonGame
                             }
                             case 2:
                             {
-                                player_->checkYourPokemons();
-                                Game::getIntBetween(choice, 1, player_->getNumberOfPokemons(), "Choose a pokemon: ",
-                                                    "Enter a number between 1 and " +
-                                                    player_->getNumberOfPokemons());
-                                if (!player_->useItem(itemNames::POTION, player_->getPokemon(choice - 1)))
+                                if (player_->checkYourPokemons())
                                 {
-                                    cout << "Your potion didnt have any effect on "
-                                         << player_->getPokemon(choice - 1)->getName() << endl;
-                                } else
-                                    couldUsePotionOrRevive = true;
-                                break;
+                                    Game::getIntBetween(choice, 1, player_->getNumberOfPokemons(), "Choose a pokemon: ",
+                                                        "Enter a number between 1 and " +
+                                                        player_->getNumberOfPokemons());
+                                    if (!player_->useItem(itemNames::POTION, player_->getPokemon(choice - 1)))
+                                    {
+                                        cout << "Your potion didnt have any effect on "
+                                             << player_->getPokemon(choice - 1)->getName() << endl;
+                                    } else
+                                        couldUsePotionOrRevive = true;
+                                    break;
+                                }
+
                             }
                             case 3:
                             {
-                                player_->checkYourPokemons();
-                                Game::getIntBetween(choice, 1, player_->getNumberOfPokemons(), "Choose a pokemon: ",
-                                                    "Enter a number between 1 and " + player_->getNumberOfPokemons());
-                                if (!player_->useItem(itemNames::REVIVE, player_->getPokemon(choice - 1)))
+                                if (player_->checkYourPokemons())
                                 {
-                                    cout << "Your revive didnt have any effect on "
-                                         << player_->getPokemon(choice - 1)->getName() << endl;
+                                    Game::getIntBetween(choice, 1, player_->getNumberOfPokemons(), "Choose a pokemon: ",
+                                                        "Enter a number between 1 and " +
+                                                        player_->getNumberOfPokemons());
+                                    if (!player_->useItem(itemNames::REVIVE, player_->getPokemon(choice - 1)))
+                                    {
+                                        cout << "Your revive didnt have any effect on "
+                                             << player_->getPokemon(choice - 1)->getName() << endl;
 
-                                } else
-                                    couldUsePotionOrRevive = true;
-                                break;
+                                    } else
+                                        couldUsePotionOrRevive = true;
+                                    break;
+                                }
+
                             }
                             default:
                                 break;
